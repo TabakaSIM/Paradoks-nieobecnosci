@@ -1,8 +1,9 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{report}
 
 \input{/home/tabaka/Documents/GitHub/Defs/defs.tex}
 
 %\pagestyle{empty} 			%usuwa nr strony
+\usepackage[polish]{babel}
 
 \newtheorem*{remark}{Uwaga}
 \title{Paradoks nieobecności}
@@ -18,29 +19,35 @@
 	
 	\tableofcontents
 		
+	\chapter*{Wstęp}
+	
+	\chapter*{Cel i zakres pracy}
+	
 	\newpage
 	
-	\section{Wstęp}
+	\chapter{Preliminaria}
 	
-	\newpage
+	\section{Podstawowe pojęcia i oznaczenia}
 	
-	\section{Preliminaria}
+	W niniejszej pracy wprowadzamy podstawowe oznaczenia oraz pojęcia z zakresu teorii wyboru, które będą wykorzystywane w dalszej części pracy. Formalizacja ta umożliwia precyzyjne sformułowanie oraz analizę paradoksu nieobecności.
 	
-	W niniejszym rozdziale wprowadzamy podstawowe oznaczenia oraz pojęcia z zakresu teorii wyboru, które będą wykorzystywane w dalszej części pracy. Formalizacja ta umożliwi precyzyjne sformułowanie oraz analizę paradoksu nieobecności.
+	Niech \(K\) oznacza zbiór kandydatów, przy czym \(\#K = m\), natomiast \(W\) oznacza zbiór wyborców, gdzie \(\#W = n\).
 	
-	Niech \(K\) oznacza zbiór wszystkich kandydatów, przy czym \(\#K = m\), natomiast \(W\) oznacza zbiór wszystkich wyborców, gdzie \(\#W = n\).
-	
-	Przez
-	\[
-	\mathcal{E}(W) := \mathcal{P}(W) \setminus \{\emptyset\}
-	\]
-	oznaczamy zbiór wszystkich elektoratów, tj. zbiór wszystkich niepustych podzbiorów zbioru \(W\). Elementy zbioru \(\mathcal{E}(W)\) interpretujemy jako grupy wyborców biorących udział w głosowaniu.
-	
-	\begin{definition}[Relacja preferencji]
-		Relacją preferencji na zbiorze \(K\) nazywamy zupełną, antysymetryczną oraz przechodnią relację binarną określoną na \(K\).
+	\begin{definition}[Elektorat]
+		Zbiorem wszystkich elektoratów nazywamy zbiór
+		\[
+		\mathcal{E}(W) := \mathcal{P}(W) \setminus \{\emptyset\}.
+		\]
+		Elementy zbioru \(\mathcal{E}(W)\) interpretujemy jako niepuste podzbiory zbioru \(W\), czyli możliwe grupy wyborców uczestniczących w głosowaniu.
 	\end{definition}
 	
-	Relacja preferencji opisuje indywidualne upodobania wyborcy względem kandydatów. Zupełność oznacza, że każda para kandydatów jest porównywalna, antysymetryczność wyklucza sprzeczne preferencje, natomiast przechodniość zapewnia ich logiczną spójność.
+	\section{Preferencje jednostkowe}
+	
+	\begin{definition}[Relacja preferencji]
+		Relacją preferencji na zbiorze \(K\) nazywamy zupełny i przechodni porządek liniowy określony na \(K\).
+	\end{definition}
+	
+	Relacja preferencji opisuje indywidualne upodobania wyborcy względem kandydatów. Zupełność oznacza, że każda para kandydatów jest porównywalna, natomiast przechodniość zapewnia spójność preferencji.
 	
 	\begin{definition}[Relacja preferencji wyborcy]
 		Dla każdego wyborcy \(w \in W\) jego relację preferencji oznaczamy przez \(\overset{w}{>}\). Zapis
@@ -51,15 +58,18 @@
 	\end{definition}
 	
 	\begin{definition}[Przestrzeń relacji preferencji]
-		Zbiorem wszystkich relacji preferencji na zbiorze \(K\) nazywamy zbiór
+		Przestrzenią relacji preferencji na zbiorze \(K\) nazywamy zbiór wszystkich relacji preferencji na \(K\), oznaczany przez
 		\[
 		\mathcal{R}.
 		\]
 	\end{definition}
 	
-	Dla każdego wyborcy \(w \in W\) zachodzi \(\overset{w}{>} \in \mathcal{R}\).
+	Dla każdego wyborcy \(w \in W\) jego relacja preferencji należy do przestrzeni \(\mathcal{R}\), tj.
+	\[
+	\overset{w}{>} \in \mathcal{R}.
+	\]
 	
-	Dla zwięzłości zapisu, pomijając indeks wyborcy, ciąg symboli
+	Dla zwięzłości zapisu pomijamy indeks wyborcy, gdy nie prowadzi to do niejednoznaczności. Wówczas ciąg symboli
 	\[
 	abcd
 	\]
@@ -68,23 +78,23 @@
 	a \overset{w}{>} b \overset{w}{>} c \overset{w}{>} d.
 	\]
 	
-	lub zapisu pionowego
-	
+	Równoważnie można ją przedstawić w postaci pionowej:
 	\[
 	\begin{array}{|c|}
 		\hline
 		w\\
 		\hline
-		a \\
-		b \\
-		c \\
-		d \\
+		a\\
+		b\\
+		c\\
+		d\\
 		\hline
 	\end{array}
 	\]
 	
 	\begin{definition}[Słaba preferencja]
-		Dla relacji ścisłej \(\overset{w}{>}\) definiujemy odpowiadającą jej relację słabej preferencji \(\overset{w}{\geq}\) wzorem
+		Niech \(\overset{w}{>}\) będzie relacją preferencji wyborcy \(w \in W\).
+		Relacją słabej preferencji związaną z \(\overset{w}{>}\) nazywamy relację \(\overset{w}{\geq}\) określoną wzorem
 		\[
 		a \overset{w}{\geq} b
 		\iff
@@ -92,22 +102,24 @@
 		\]
 	\end{definition}
 	
-	Niech \(V \in \mathcal{E}(W)\) będzie ustalonym elektoratem.
+	W dalszej części pracy rozważamy ustalony elektorat \(V \in \mathcal{E}(W)\).
+	
+	\section{Profile preferencji}
 	
 	\begin{definition}[Profil preferencji]
-		Profilem preferencji na elektoracie \(V\) nazywamy funkcję
+		Profilem preferencji na zbiorze wyborców \(W\) nazywamy funkcję
 		\[
-		R : V \to \mathcal{R},
+		R : W \to \mathcal{R},
 		\]
-		która każdemu wyborcy przyporządkowuje jego relację preferencji.
+		która każdemu wyborcy \(w \in W\) przyporządkowuje jego relację preferencji \(R(w)\).
 	\end{definition}
 	
-	Zbiór wszystkich profili preferencji określonych na elektoracie \(V\) oznaczamy przez
+	Zbiór wszystkich profili preferencji określonych na zbiorze \(W\) oznaczamy przez
 	\[
-	\mathcal{R}^{V}.
+	\mathcal{R}^{W}.
 	\]
 	
-	Dla pewnej grupy wyborców będziemy korzystać z przedstawień za pomocą tabeli
+	W dalszej części pracy, dla przejrzystości zapisu, będziemy czasem posługiwać się przedstawieniem zagregowanym profilu preferencji. W takim ujęciu profil opisuje liczebność grup wyborców posiadających daną relację preferencji.
 	
 	\[
 	\begin{array}{|c|c|}
@@ -122,14 +134,20 @@
 	\end{array}
 	\]
 	
-	gdzie górny wiersz oznacza liczbę wyborców z daną poniżej relacją preferencji.
+	W powyższym przykładzie pierwszy blok oznacza jednego wyborcę o preferencjach
+	\(A \succ B \succ C \succ D\), natomiast drugi blok oznacza dwóch wyborców o preferencjach
+	\(D \succ C \succ B \succ A\).
+	
+	\section{Model wyborczy}
 	
 	\begin{definition}[Model wyborczy]
 		Modelem wyborczym nazywamy parę uporządkowaną
 		\[
-		\Sigma := (V, R),
+		\Sigma = (V, R|_V),
 		\]
-		gdzie \(V \in \mathcal{E}(W)\) jest elektoratem, natomiast \(R \in \mathcal{R}^{V}\) jest profilem preferencji.
+		gdzie \(V \in \mathcal{E}(W)\) jest elektoratem, natomiast \(R \in \mathcal{R}^{W}\) jest profilem preferencji na zbiorze wszystkich wyborców.
+		
+		Ograniczenie \(R|_V\) oznacza zawężenie profilu preferencji do wyborców należących do elektoratu \(V\).
 	\end{definition}
 	
 	Zakładamy, że:
@@ -157,30 +175,31 @@
 		Metodę wyborczą nazywamy efektywną, jeżeli dla każdego dopuszczalnego profilu preferencji wyłania co najmniej jednego zwycięzcę.
 	\end{definition}
 	
-	W dalszej części pracy będziemy analizować wpływ udziału wyborców w głosowaniu na wynik wyborów. W tym celu wprowadzamy operacje dodawania oraz usuwania wyborców z rozważanego elektoratu.
+	\section{Operacje na elektoracie}
 	
-	Niech \(R \in \mathcal{R}^{V}\) będzie profilem preferencji, \(w_i \in V\) oraz \(w_j \in W \setminus V\). Dla zadanych relacji preferencji \(\overset{w_i}{>}, \overset{w_j}{>} \in \mathcal{R}\) definiujemy:
+	W dalszej części pracy analizujemy wpływ udziału wyborców w głosowaniu na wynik wyborów. W tym celu wprowadzamy operacje modyfikacji elektoratu oraz odpowiadających im profili preferencji.
+	
+	Niech \(V \in \mathcal{E}(W)\) oraz \(R \in \mathcal{R}^{V}\). Zakładamy, że każdemu wyborcy \(w \in W\) przypisana jest relacja preferencji \(\overset{w}{>} \in \mathcal{R}\).
+	
+	Dla \(w \in V\) definiujemy usunięcie wyborcy:
 	\[
-	R - w_i := R \setminus \{(w_i, \overset{w_i}{>})\},
+	R - w := R \setminus \{(w, \overset{w}{>})\} \in \mathcal{R}^{V \setminus \{w\}}.
 	\]
+	
+	Dla \(w \in W \setminus V\) definiujemy dodanie wyborcy:
 	\[
-	R + (w_j, \overset{w_j}{>}) := R \cup \{(w_j, \overset{w_j}{>})\}.
+	R + w := R \cup \{(w, \overset{w}{>})\} \in \mathcal{R}^{V \cup \{w\}}.
 	\]
 	
-	Operacja \(R - w_i\) oznacza usunięcie wyborcy z elektoratu, natomiast \(R + (w_j, \overset{w_j}{>})\) oznacza dodanie nowego wyborcy wraz z jego preferencjami.
-	
-	Jeżeli dodajemy lub usuwamy kilku wyborców o identycznych preferencjach, stosujemy skrócony zapis:
+	Dla \(k \in \mathbb{N}_+\) zapisujemy skrótowo:
 	\[
-	R + k \cdot \overset{w}{>},
+	R + k \cdot w,
 	\qquad
-	R - k \cdot \overset{w}{>}.
+	R - k \cdot w,
 	\]
+	gdzie oznacza to odpowiednio dodanie lub usunięcie \(k\) wyborców o relacji preferencji \(\overset{w}{>}\).
 	
-	Wprowadzone operacje pozwalają analizować zależność wyniku wyborów od składu elektoratu. W szczególności umożliwiają badanie sytuacji, w których uczestnictwo wyborcy w głosowaniu prowadzi do wyniku mniej dla niego korzystnego niż jego nieobecność.
-	\newpage
-	
-	
-	
+	Wprowadzone operacje pozwalają analizować zależność wyniku wyborów od składu elektoratu.
 	
 	
 	
@@ -205,7 +224,7 @@
 	\section{Kryteria wyborcze}
 	
 	\begin{definition}[Kandydat Condorceta]
-		Niech \(R \in \mathcal{R}^{V}\) będzie profilem preferencji. Kandydat \(a \in K\) jest kandydatem Condorceta (zwycięzcą Condorceta) wtedy i tylko wtedy, gdy w bezpośrednim porównaniu większościowym wygrywa z każdym innym kandydatem, tzn.
+		Niech \(R \in \mathcal{R}^{V}\) będzie profilem preferencji. Kandydata \(a \in K\) nazywamy kandydatem Condorceta (zwycięzcą Condorceta), jeżeli w bezpośrednim porównaniu większościowym wygrywa z każdym innym kandydatem, tj.
 		\[
 		\forall b \in K,\ b \neq a \quad
 		\#\{w \in V : a \overset{w}{>} b\}
@@ -215,14 +234,14 @@
 	\end{definition}
 	
 	\begin{definition}[Kryterium Condorceta]
-		Metoda wyborcza \(M\) spełnia kryterium Condorceta wtedy i tylko wtedy, gdy dla każdego profilu preferencji \(R\), jeżeli istnieje kandydat Condorceta \(a \in K\), to kandydat \(a\) jest jedynym zwycięzcą wyłonionym przez metodę \(M\), tzn.
+		Metoda wyborcza \(M\) spełnia kryterium Condorceta wtedy i tylko wtedy, gdy dla każdego profilu preferencji \(R\), jeśli istnieje kandydat Condorceta \(a \in K\), to jest on jedynym zwycięzcą wyłonionym przez metodę \(M\), tj.
 		\[
 		M(R) = \{a\}.
 		\]
 	\end{definition}
 	
 	\begin{definition}[Przegrany Condorceta]
-		Niech \(R \in \mathcal{R}^{V}\). Kandydat \(a \in K\) jest przegranym Condorceta, jeżeli przegrywa z każdym innym kandydatem w głosowaniach parami, tzn.
+		Niech \(R \in \mathcal{R}^{V}\). Kandydata \(a \in K\) nazywamy przegranym Condorceta, jeżeli przegrywa z każdym innym kandydatem w porównaniach parami, tj.
 		\[
 		\forall b \in K,\ b \neq a \quad
 		\#\{w \in V : b \overset{w}{>} a\}
@@ -234,7 +253,7 @@
 	Kandydat będący przegranym Condorceta nie wygrywa żadnego porównania większościowego i stanowi naturalne przeciwieństwo zwycięzcy Condorceta.
 	
 	\begin{definition}[Kryterium obecności]
-		Metoda wyborcza \(M\) spełnia kryterium obecności, jeżeli każdy wyborca słabo preferuje udział w głosowaniu względem rezygnacji z udziału, tzn.
+		Metoda wyborcza \(M\) spełnia kryterium obecności, jeżeli każdy wyborca słabo preferuje udział w głosowaniu względem jego braku, tj.
 		\[
 		M(R) \overset{v}{\geq} M(R - v),
 		\]
@@ -244,7 +263,7 @@
 	\begin{definition}[Margines większości]
 		Dla profilu preferencji \(R\) funkcją marginesu większości nazywamy funkcję
 		\[
-		g_R : K \times K \to \mathbb{Z}
+		g_R : K \times K \to \mathbb{Z},
 		\]
 		daną wzorem
 		\[
@@ -258,7 +277,7 @@
 	Funkcja \(g_R\) mierzy przewagę jednego kandydata nad drugim w głosowaniach parami.
 	
 	\begin{definition}[Zwycięzca Maximina]
-		Kandydata \(a \in K\) nazywamy zwycięzcą metody Maximina, jeżeli maksymalizuje wartość funkcji
+		Kandydata \(a \in K\) nazywamy zwycięzcą metody Maximina, jeżeli maksymalizuje wartość
 		\[
 		\min_{x \in K \setminus \{a\}} g_R(a,x).
 		\]
@@ -267,15 +286,34 @@
 	Profil preferencji \(R\) indukuje ważony turniej skierowany \(T_R\), którego wierzchołkami są kandydaci, a waga krawędzi \((x,y)\) wynosi \(g_R(x,y)\).
 	
 	\begin{definition}[Ranking Kemeny'ego]
-		Rankingiem Kemeny'ego nazywamy taką relację preferencji \(>\,\in \mathcal{R}\), która maksymalizuje zgodność z preferencjami wyborców, tj. maksymalizuje wartość
+		Rankingiem Kemeny'ego nazywamy relację preferencji \(>\,\in \mathcal{R}\), która maksymalizuje zgodność z preferencjami wyborców, tj. maksymalizuje wartość
 		\[
 		\sum_{w \in V} \left|\,> \cap \overset{w}{>}\right|.
 		\]
 	\end{definition}
 	
 	\begin{definition}[Zwycięzca Kemeny'ego]
-		Kandydat \(a \in K\) jest zwycięzcą Kemeny'ego wtedy i tylko wtedy, gdy zajmuje pierwsze miejsce w pewnym rankingu Kemeny'ego.
+		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny'ego wtedy i tylko wtedy, gdy zajmuje pierwsze miejsce w pewnym rankingu Kemeny'ego.
 	\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	\newpage
 	
 	Mówimy, że metoda wyborcza spełnia kryterium Maximina (odpowiednio kryterium Kemeny'ego), jeżeli dla każdego profilu preferencji wybiera zwycięzcę Maximina (odpowiednio zwycięzcę Kemeny'ego). Jeżeli w danym profilu istnieje wielu takich kandydatów, metoda musi rozstrzygnąć remis i wskazać dokładnie jednego zwycięzcę.
 	
@@ -308,6 +346,314 @@
 	
 	
 	
+	
+	
+	
+	
+	\newpage
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	\newpage
+	\chapter{Paradoks nieobecności}
+	
+	Paradoks nieobecności (ang.~\emph{no-show paradox}) jest jednym z najbardziej zaskakujących zjawisk w teorii wyboru. Polega on na tym, że dla pewnych metod wyborczych udział wyborcy w głosowaniu może prowadzić do wyniku mniej dla niego korzystnego niż jego rezygnacja z udziału.
+	
+	Zjawisko to stoi w sprzeczności z naturalnym oczekiwaniem, że udział w głosowaniu nie powinien pogarszać sytuacji wyborcy.
+	
+	\begin{example}[Paradoks nieobecności dla procedury głosowań parami]
+		Rozważmy procedurę głosowań parami ze statusem quo równym kandydatowi \(D\). Agenda głosowań ma postać:
+		\[
+		B \text{ vs } D,\qquad
+		\text{następnie zwycięzca vs } A,\qquad
+		\text{następnie zwycięzca vs } C.
+		\]
+		
+		Niech profil preferencji będzie dany tabelą:
+		\[
+		\begin{array}{|c|c|c|}
+			\hline
+			10 & 10 & 10\\
+			\hline
+			A & B & D\\
+			B & D & C\\
+			D & C & A\\
+			C & A & B\\
+			\hline
+		\end{array}
+		\]
+		
+		\begin{itemize}
+			\item W pierwszym głosowaniu porównywani są kandydaci \(B\) oraz \(D\). Kandydat \(B\) wygrywa stosunkiem głosów \(20:10\).
+			
+			\item Następnie kandydat \(B\) zostaje porównany z kandydatem \(A\). W tym głosowaniu zwycięża \(A\) stosunkiem głosów \(20:10\).
+			
+			\item W ostatnim etapie kandydat \(A\) zostaje zestawiony z kandydatem \(C\). Kandydat \(C\) wygrywa większością \(20:10\), a zatem końcowym zwycięzcą procedury zostaje \(C\).
+			
+			\item Każdy z trzech typów wyborców preferuje jednak kandydata \(D\) względem zwycięzcy \(C\).
+			
+			\item Oznacza to, że wszyscy wyborcy woleliby utrzymanie statusu quo od wyniku uzyskanego przy pełnej frekwencji.
+			
+			\item W konsekwencji udział wszystkich wyborców w procedurze prowadzi do rezultatu gorszego od statusu quo, co stanowi przykład paradoksu nieobecności.
+		\end{itemize}
+	\end{example}
+	
+	Metoda ta oczywiście nie jest neutralna, gdyż kolejność głosowania pomiędzy kolejnymi kandydatami ma ogromne znaczenie. Możemy zaproponować następującą definicję.
+	
+	\begin{definition}[Paradoks nieobecności]
+		Mówimy, że metoda wyborcza \(M\) jest podatna na paradoks nieobecności, jeżeli istnieje profil preferencji \(R \in \mathcal{R}^{V}\) oraz wyborca \(v \in V\), dla których zachodzi
+		\[
+		M(R - v) \overset{v}{>} M(R).
+		\]
+	\end{definition}
+	
+	Oznacza to, że wyborca \(v\) ściśle preferuje wynik wyborów uzyskany po jego nieobecności względem wyniku, który powstaje, gdy bierze udział w głosowaniu.
+	
+	\medskip
+	
+	Poniższy przykład ilustruje występowanie paradoksu nieobecności dla metody Hare'a (IRV).
+	
+	\begin{example}[Paradoks nieobecności dla metody Copelanda]
+		Rozważmy profil preferencji:
+		\[
+		\begin{array}{|c|c|c|c|}
+			\hline
+			1 & 1 & 1 & 1\\
+			\hline
+			A & B & D & C\\
+			C & A & A & D\\
+			D & C & C & B\\
+			B & D & B & A\\
+			\hline
+		\end{array}
+		\]
+		
+		Załóżmy dodatkowo, że w przypadku remisu metoda wybiera kandydata \(C\).
+		
+		Rozważmy teraz dodanie wyborcy o preferencjach
+		\[
+		C \succ A \succ B \succ D.
+		\]
+		
+		Otrzymujemy profil:
+		\[
+		\begin{array}{|c|c|c|c|c|}
+			\hline
+			1 & 1 & 1 & 1 & 1\\
+			\hline
+			A & B & D & C & C\\
+			C & A & A & D & A\\
+			D & C & C & B & B\\
+			B & D & B & A & D\\
+			\hline
+		\end{array}
+		\]
+		
+		\begin{itemize}
+			\item Przy początkowym profilu kandydaci \(A\) oraz \(C\) uzyskują taki sam wynik Copelanda.
+			
+			\item Zgodnie z przyjętą regułą rozstrzygania remisów zwycięzcą zostaje \(C\).
+			
+			\item Po dołączeniu nowego wyborcy jedynym zwycięzcą metody Copelanda zostaje kandydat \(A\).
+			
+			\item Nowy wyborca posiada preferencje
+			\[
+			C \succ A,
+			\]
+			a więc bardziej preferuje wynik uzyskany przy swojej nieobecności.
+			
+			\item Oznacza to, że udział w głosowaniu pogarsza wynik z punktu widzenia tego wyborcy.
+		\end{itemize}
+		
+		W konsekwencji metoda Copelanda jest podatna na paradoks nieobecności.
+	\end{example}
+	
+	\medskip
+	
+	Możemy zaprononować następujące kryterium
+	
+	\begin{definition}[Metoda odporna na nieobecność]
+		Metodę wyborczą \(M\) nazywamy odporną na nieobecność, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi
+		\[
+		M(R) \overset{w}{\geq} M(R - w).
+		\]
+	\end{definition}
+	
+	Paradoks nieobecności pozostaje w ścisłym związku z kryterium Condorceta, co wyraża poniższe twierdzenie.
+	
+	\section{Twierdzenie Moulina}
+	
+	\begin{theorem}[Moulin]
+		Jeżeli liczba kandydatów spełnia \(\#K \geq 4\), to każda metoda wyborcza spełniająca kryterium Condorceta jest podatna na paradoks nieobecności.
+	\end{theorem}
+	
+	\begin{proof}
+		TODO
+	\end{proof}
+	
+	Twierdzenie to pokazuje fundamentalne napięcie pomiędzy naturalnymi własnościami metod wyborczych: zgodność z kryterium Condorceta implikuje możliwość wystąpienia paradoksu nieobecności.
+	
+	\medskip
+	
+	Warto zauważyć, że implikacja odwrotna nie zachodzi. Istnieją metody wyborcze, które nie spełniają kryterium Condorceta, a mimo to są podatne na paradoks nieobecności (np. metoda Hare'a). Z drugiej strony istnieją metody odporne na ten paradoks, takie jak dyktatura czy metoda punktów Bordy.
+	
+	\begin{proof}[Dyktatura jest metodą odporną na nieobecność]
+		
+		Niech \(M\) będzie metodą dyktatorską z dyktatorem \(d \in W\).
+		
+		Z definicji metody dyktatorskiej wynik wyborów jest zawsze równy najbardziej preferowanemu kandydatowi dyktatora. Oznacza to, że dla każdego profilu preferencji \(R\)
+		\[
+		M(R)=\max_{\overset{d}{>}} K.
+		\]
+		
+		Rozważmy dowolnego wyborcę \(v \in W\).
+		
+		\begin{itemize}
+			\item Jeżeli \(v=d\), to po usunięciu dyktatora wynik wyborów albo pozostaje taki sam, albo zmienia się na mniej preferowany z punktu widzenia dyktatora. W szczególności
+			\[
+			M(R) \overset{d}{\geq} M(R-d).
+			\]
+			
+			\item Jeżeli \(v\neq d\), to usunięcie wyborcy \(v\) nie wpływa na wynik wyborów, ponieważ wynik zależy wyłącznie od preferencji dyktatora. Zatem
+			\[
+			M(R) \overset{v}{=} M(R-v).
+			\]
+		\end{itemize}
+		
+		W obu przypadkach wyborca nie uzyskuje lepszego wyniku poprzez rezygnację z udziału w głosowaniu.
+		
+		W konsekwencji metoda dyktatorska jest odporna na paradoks nieobecności.
+	\end{proof}
+	
+	\begin{proof}[Metoda punktów Bordy jest odporna na paradoks nieobecności]
+		Niech \(R\) będzie profilem preferencji oraz \(w \in W\) dowolnym wyborcą.
+		
+		Bez straty ogólności załóżmy, że preferencje wyborcy \(w\) mają postać
+		\[
+		k_1 \overset{w}{>} k_2 \overset{w}{>} \dots \overset{w}{>} k_m.
+		\]
+		
+		W metodzie Bordy kandydat znajdujący się na \(i\)-tej pozycji otrzymuje \(m-i\) punktów.
+		
+		Niech
+		\[
+		s_i
+		\]
+		oznacza liczbę punktów uzyskaną przez kandydata \(k_i\) w profilu \(R\).
+		
+		Po usunięciu wyborcy \(w\) kandydat \(k_i\) traci dokładnie \(m-i\) punktów, a więc jego nowy wynik wynosi
+		\[
+		s_i-(m-i).
+		\]
+		
+		Zauważmy, że kandydaci wyżej oceniani przez wyborcę \(w\) tracą więcej punktów niż kandydaci oceniani niżej.
+		
+		W szczególności, jeżeli
+		\[
+		i<j,
+		\]
+		to
+		\[
+		(m-i) > (m-j).
+		\]
+		
+		Oznacza to, że usunięcie wyborcy \(w\) działa relatywnie bardziej na korzyść kandydatów mniej preferowanych przez \(w\).
+		
+		W konsekwencji wynik wyborów po usunięciu wyborcy \(w\) nie może być przez niego ściśle preferowany względem wyniku przy jego udziale, tj.
+		\[
+		M(R-w)\overset{w}{\leq} M(R).
+		\]
+		
+		Zatem metoda punktów Bordy spełnia kryterium obecności.
+	\end{proof}
+	
+	\begin{example}[Metoda Hare'a a paradoks nieobecności]
+		Rozważmy metodę Hare'a (IRV) oraz profil preferencji przedstawiony w tabeli:
+		\[
+		\begin{array}{|c|c|c|c|}
+			\hline
+			10 & 5 & 4 & 6\\
+			\hline
+			A & B & B & C\\
+			B & C & C & D\\
+			C & A & D & A\\
+			D & D & A & B\\
+			\hline
+		\end{array}
+		\]
+		
+		Dla powyższego profilu metoda Hare'a wskazuje jako zwycięzcę kandydata \(A\).
+		
+		Rozważmy teraz sytuację, w której grupa \(4\) wyborców o preferencjach
+		\[
+		B \succ C \succ D \succ A
+		\]
+		rezygnuje z udziału w głosowaniu. Otrzymujemy wówczas zmodyfikowany profil:
+		\[
+		\begin{array}{|c|c|c|}
+			\hline
+			10 & 5 & 6\\
+			\hline
+			A & B & C\\
+			B & C & D\\
+			C & A & A\\
+			D & D & B\\
+			\hline
+		\end{array}
+		\]
+		
+		W tym przypadku zwycięzcą zostaje kandydat \(C\).
+		
+		Ponieważ dla wyborców o preferencjach \(B \succ C \succ D \succ A\) zachodzi
+		\[
+		C \succ A,
+		\]
+		oznacza to, że wynik po ich rezygnacji z udziału w głosowaniu jest przez nich ściśle preferowany względem wyniku uzyskanego przy ich uczestnictwie.
+		
+		W konsekwencji metoda Hare'a jest podatna na paradoks nieobecności, mimo że nie spełnia kryterium Condorceta.
+	\end{example}
+	
+	Przykład ten pokazuje, że brak spełnienia kryterium Condorceta nie implikuje odporności na paradoks nieobecności.
+	
+	\section{Inne twierdzenia}
 	
 	\begin{lemma}
 		Załóżmy, że metoda wyborcza \(M\) spełnia kryterium Condorceta oraz warunek uczestnictwa. Niech \(R\) będzie profilem preferencji, a \(B \subseteq K\) zbiorem tzw. \emph{złych} alternatyw, przy czym każdy wyborca klasyfikuje każdą alternatywę \(x \in B\) niżej niż każdą alternatywę \(y \in K \setminus B\). Wówczas
@@ -556,7 +902,6 @@
 	\end{proof}
 	
 	
-	\newpage
 	
 	
 	
@@ -573,292 +918,7 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	\newpage
-	\section{Paradoks nieobecności}
-	
-	Paradoks nieobecności (ang.~\emph{no-show paradox}) jest jednym z najbardziej zaskakujących zjawisk w teorii wyboru. Polega on na tym, że dla pewnych metod wyborczych udział wyborcy w głosowaniu może prowadzić do wyniku mniej dla niego korzystnego niż jego rezygnacja z udziału.
-	
-	Zjawisko to stoi w sprzeczności z naturalnym oczekiwaniem, że udział w głosowaniu nie powinien pogarszać sytuacji wyborcy.
-	
-	\begin{example}[Paradoks nieobecności dla procedury głosowań parami]
-		Rozważmy procedurę głosowań parami ze statusem quo równym kandydatowi \(D\). Agenda głosowań ma postać:
-		\[
-		B \text{ vs } D,\qquad
-		\text{następnie zwycięzca vs } A,\qquad
-		\text{następnie zwycięzca vs } C.
-		\]
-		
-		Niech profil preferencji będzie dany tabelą:
-		\[
-		\begin{array}{|c|c|c|}
-			\hline
-			10 & 10 & 10\\
-			\hline
-			A & B & D\\
-			B & D & C\\
-			D & C & A\\
-			C & A & B\\
-			\hline
-		\end{array}
-		\]
-		
-		\begin{itemize}
-			\item W pierwszym głosowaniu porównywani są kandydaci \(B\) oraz \(D\). Kandydat \(B\) wygrywa stosunkiem głosów \(20:10\).
-			
-			\item Następnie kandydat \(B\) zostaje porównany z kandydatem \(A\). W tym głosowaniu zwycięża \(A\) stosunkiem głosów \(20:10\).
-			
-			\item W ostatnim etapie kandydat \(A\) zostaje zestawiony z kandydatem \(C\). Kandydat \(C\) wygrywa większością \(20:10\), a zatem końcowym zwycięzcą procedury zostaje \(C\).
-			
-			\item Każdy z trzech typów wyborców preferuje jednak kandydata \(D\) względem zwycięzcy \(C\).
-			
-			\item Oznacza to, że wszyscy wyborcy woleliby utrzymanie statusu quo od wyniku uzyskanego przy pełnej frekwencji.
-			
-			\item W konsekwencji udział wszystkich wyborców w procedurze prowadzi do rezultatu gorszego od statusu quo, co stanowi przykład paradoksu nieobecności.
-		\end{itemize}
-	\end{example}
-	
-	Metoda ta oczywiście nie jest neutralna, gdyż kolejność głosowania pomiędzy kolejnymi kandydatami ma ogromne znaczenie. Możemy zaproponować następującą definicję.
-	
-	\begin{definition}[Paradoks nieobecności]
-		Mówimy, że metoda wyborcza \(M\) jest podatna na paradoks nieobecności, jeżeli istnieje profil preferencji \(R \in \mathcal{R}^{V}\) oraz wyborca \(v \in V\), dla których zachodzi
-		\[
-		M(R - v) \overset{v}{>} M(R).
-		\]
-	\end{definition}
-	
-	Oznacza to, że wyborca \(v\) ściśle preferuje wynik wyborów uzyskany po jego nieobecności względem wyniku, który powstaje, gdy bierze udział w głosowaniu.
-	
-	\medskip
-	
-	Poniższy przykład ilustruje występowanie paradoksu nieobecności dla metody Hare'a (IRV).
-	
-	\begin{example}[Paradoks nieobecności dla metody Copelanda]
-		Rozważmy profil preferencji:
-		\[
-		\begin{array}{|c|c|c|c|}
-			\hline
-			1 & 1 & 1 & 1\\
-			\hline
-			A & B & D & C\\
-			C & A & A & D\\
-			D & C & C & B\\
-			B & D & B & A\\
-			\hline
-		\end{array}
-		\]
-		
-		Załóżmy dodatkowo, że w przypadku remisu metoda wybiera kandydata \(C\).
-		
-		Rozważmy teraz dodanie wyborcy o preferencjach
-		\[
-		C \succ A \succ B \succ D.
-		\]
-		
-		Otrzymujemy profil:
-		\[
-		\begin{array}{|c|c|c|c|c|}
-			\hline
-			1 & 1 & 1 & 1 & 1\\
-			\hline
-			A & B & D & C & C\\
-			C & A & A & D & A\\
-			D & C & C & B & B\\
-			B & D & B & A & D\\
-			\hline
-		\end{array}
-		\]
-		
-		\begin{itemize}
-			\item Przy początkowym profilu kandydaci \(A\) oraz \(C\) uzyskują taki sam wynik Copelanda.
-			
-			\item Zgodnie z przyjętą regułą rozstrzygania remisów zwycięzcą zostaje \(C\).
-			
-			\item Po dołączeniu nowego wyborcy jedynym zwycięzcą metody Copelanda zostaje kandydat \(A\).
-			
-			\item Nowy wyborca posiada preferencje
-			\[
-			C \succ A,
-			\]
-			a więc bardziej preferuje wynik uzyskany przy swojej nieobecności.
-			
-			\item Oznacza to, że udział w głosowaniu pogarsza wynik z punktu widzenia tego wyborcy.
-		\end{itemize}
-		
-		W konsekwencji metoda Copelanda jest podatna na paradoks nieobecności.
-	\end{example}
-	
-	\medskip
-	
-	Możemy zaprononować następujące kryterium
-	
-	\begin{definition}[Metoda odporna na nieobecność]
-		Metodę wyborczą \(M\) nazywamy odporną na nieobecność, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi
-		\[
-		M(R - w) \overset{w}{\leq} M(R).
-		\]
-	\end{definition}
-	
-	Paradoks nieobecności pozostaje w ścisłym związku z kryterium Condorceta, co wyraża poniższe twierdzenie.
-	
-	\begin{theorem}[Moulin]
-		Jeżeli liczba kandydatów spełnia \(\#K \geq 4\), to każda metoda wyborcza spełniająca kryterium Condorceta jest podatna na paradoks nieobecności.
-	\end{theorem}
-	
-	\begin{proof}
-		TODO
-	\end{proof}
-	
-	Twierdzenie to pokazuje fundamentalne napięcie pomiędzy naturalnymi własnościami metod wyborczych: zgodność z kryterium Condorceta implikuje możliwość wystąpienia paradoksu nieobecności.
-	
-	\medskip
-	
-	Warto zauważyć, że implikacja odwrotna nie zachodzi. Istnieją metody wyborcze, które nie spełniają kryterium Condorceta, a mimo to są podatne na paradoks nieobecności (np. metoda Hare'a). Z drugiej strony istnieją metody odporne na ten paradoks, takie jak dyktatura czy metoda punktów Bordy.
-	
-	\begin{proof}[Dyktatura jest metodą odporną na nieobecność]
-		
-		Niech \(M\) będzie metodą dyktatorską z dyktatorem \(d \in W\).
-		
-		Z definicji metody dyktatorskiej wynik wyborów jest zawsze równy najbardziej preferowanemu kandydatowi dyktatora. Oznacza to, że dla każdego profilu preferencji \(R\)
-		\[
-		M(R)=\max_{\overset{d}{>}} K.
-		\]
-		
-		Rozważmy dowolnego wyborcę \(v \in W\).
-		
-		\begin{itemize}
-			\item Jeżeli \(v=d\), to po usunięciu dyktatora wynik wyborów albo pozostaje taki sam, albo zmienia się na mniej preferowany z punktu widzenia dyktatora. W szczególności
-			\[
-			M(R) \overset{d}{\geq} M(R-d).
-			\]
-			
-			\item Jeżeli \(v\neq d\), to usunięcie wyborcy \(v\) nie wpływa na wynik wyborów, ponieważ wynik zależy wyłącznie od preferencji dyktatora. Zatem
-			\[
-			M(R) \overset{v}{=} M(R-v).
-			\]
-		\end{itemize}
-		
-		W obu przypadkach wyborca nie uzyskuje lepszego wyniku poprzez rezygnację z udziału w głosowaniu.
-		
-		W konsekwencji metoda dyktatorska jest odporna na paradoks nieobecności.
-	\end{proof}
-	
-	\begin{proof}[Metoda punktów Bordy jest odporna na paradoks nieobecności]
-		Niech \(R\) będzie profilem preferencji oraz \(w \in W\) dowolnym wyborcą.
-		
-		Bez straty ogólności załóżmy, że preferencje wyborcy \(w\) mają postać
-		\[
-		k_1 \overset{w}{>} k_2 \overset{w}{>} \dots \overset{w}{>} k_m.
-		\]
-		
-		W metodzie Bordy kandydat znajdujący się na \(i\)-tej pozycji otrzymuje \(m-i\) punktów.
-		
-		Niech
-		\[
-		s_i
-		\]
-		oznacza liczbę punktów uzyskaną przez kandydata \(k_i\) w profilu \(R\).
-		
-		Po usunięciu wyborcy \(w\) kandydat \(k_i\) traci dokładnie \(m-i\) punktów, a więc jego nowy wynik wynosi
-		\[
-		s_i-(m-i).
-		\]
-		
-		Zauważmy, że kandydaci wyżej oceniani przez wyborcę \(w\) tracą więcej punktów niż kandydaci oceniani niżej.
-		
-		W szczególności, jeżeli
-		\[
-		i<j,
-		\]
-		to
-		\[
-		(m-i) > (m-j).
-		\]
-		
-		Oznacza to, że usunięcie wyborcy \(w\) działa relatywnie bardziej na korzyść kandydatów mniej preferowanych przez \(w\).
-		
-		W konsekwencji wynik wyborów po usunięciu wyborcy \(w\) nie może być przez niego ściśle preferowany względem wyniku przy jego udziale, tj.
-		\[
-		M(R-w)\overset{w}{\leq} M(R).
-		\]
-		
-		Zatem metoda punktów Bordy spełnia kryterium obecności.
-	\end{proof}
-	
-	\begin{example}[Metoda Hare'a a paradoks nieobecności]
-		Rozważmy metodę Hare'a (IRV) oraz profil preferencji przedstawiony w tabeli:
-		\[
-		\begin{array}{|c|c|c|c|}
-			\hline
-			10 & 5 & 4 & 6\\
-			\hline
-			A & B & B & C\\
-			B & C & C & D\\
-			C & A & D & A\\
-			D & D & A & B\\
-			\hline
-		\end{array}
-		\]
-		
-		Dla powyższego profilu metoda Hare'a wskazuje jako zwycięzcę kandydata \(A\).
-		
-		Rozważmy teraz sytuację, w której grupa \(4\) wyborców o preferencjach
-		\[
-		B \succ C \succ D \succ A
-		\]
-		rezygnuje z udziału w głosowaniu. Otrzymujemy wówczas zmodyfikowany profil:
-		\[
-		\begin{array}{|c|c|c|}
-			\hline
-			10 & 5 & 6\\
-			\hline
-			A & B & C\\
-			B & C & D\\
-			C & A & A\\
-			D & D & B\\
-			\hline
-		\end{array}
-		\]
-		
-		W tym przypadku zwycięzcą zostaje kandydat \(C\).
-		
-		Ponieważ dla wyborców o preferencjach \(B \succ C \succ D \succ A\) zachodzi
-		\[
-		C \succ A,
-		\]
-		oznacza to, że wynik po ich rezygnacji z udziału w głosowaniu jest przez nich ściśle preferowany względem wyniku uzyskanego przy ich uczestnictwie.
-		
-		W konsekwencji metoda Hare'a jest podatna na paradoks nieobecności, mimo że nie spełnia kryterium Condorceta.
-	\end{example}
-	
-	Przykład ten pokazuje, że brak spełnienia kryterium Condorceta nie implikuje odporności na paradoks nieobecności.
-	
-	
-	\section{Silny paradoks nieobecności}
+	\chapter{Silny paradoks nieobecności}
 	
 	Klasyczny paradoks nieobecności polega na tym, że pewna grupa wyborców może uzyskać bardziej preferowany wynik poprzez rezygnację z udziału w głosowaniu. W wielu przypadkach zjawisko to nie wydaje się jednak szczególnie istotne, jeżeli uzyskana w ten sposób poprawa dotyczy alternatywy, która nie jest dla tej grupy zdecydowanie preferowana.
 	
@@ -970,7 +1030,7 @@
 	
 	
 	
-	
+	\chapter*{Podsumowanie}
 	
 	\newpage
 	
@@ -984,9 +1044,39 @@
 	
 	\end{thebibliography}
 	
-	\section{Załączniki}
-	\subsection{Kod źródłowy symulacji}
-	\subsection{Dodatkowe obliczenia}
-	\subsection{Wykresy i tabele}
+	
+	\chapter*{Spis symboli i oznaczeń}
+	
+	\chapter*{Spis symboli i oznaczeń}
+	
+	\addcontentsline{toc}{chapter}{Spis symboli i oznaczeń}
+	
+	\begin{itemize}
+		\item \(W\) — zbiór wszystkich wyborców, \(\#W = n\),
+		\item \(K\) — zbiór wszystkich kandydatów, \(\#K = m\),
+		
+		\item \(\mathcal{P}(W)\) — zbiór potęgowy zbioru \(W\),
+		\item \(\mathcal{E}(W) := \mathcal{P}(W) \setminus \{\emptyset\}\) — zbiór wszystkich elektoratów (niepustych podzbiorów zbioru \(W\)),
+		
+		\item \(\mathcal{R}\) — zbiór wszystkich relacji preferencji na zbiorze \(K\),
+		\item \(\mathcal{R}^{V}\) — zbiór wszystkich profili preferencji określonych na elektoracie \(V\),
+		
+		\item \(\overset{w}{>}\) — relacja ścisłej preferencji wyborcy \(w \in W\),
+		\item \(\overset{w}{\geq}\) — relacja słabej preferencji wyborcy \(w \in W\),
+		
+		\item \(R : V \to \mathcal{R}\) — profil preferencji na elektoracie \(V\),
+		\item \(\Sigma = (V, R)\) — model wyborczy,
+		
+		\item \(M : \mathcal{R}^{V} \to \mathcal{P}(K)\) — metoda wyborcza,
+		\item \(M : \mathcal{R}^{V} \to K\) — metoda rozstrzygająca (szczególny przypadek metody wyborczej),
+		
+		\item \(g_R : K \times K \to \mathbb{Z}\) — funkcja marginesu większości,
+		
+		\item \(T_R\) — ważony turniej indukowany przez profil preferencji \(R\),
+		
+		\item \(\#A\) — liczność zbioru \(A\).
+	\end{itemize}
+	
+	\chapter*{Skorowidz}
 	
 \end{document}
