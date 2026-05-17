@@ -259,13 +259,13 @@
 	
 	Kandydat będący przegranym Condorceta nie wygrywa żadnego porównania większościowego i stanowi naturalne przeciwieństwo zwycięzcy Condorceta.
 	
-	\begin{definition}[Kryterium obecności]
-		Metoda wyborcza \(M\) spełnia kryterium obecności, jeżeli każdy wyborca słabo preferuje udział w głosowaniu względem jego braku, tj.
-		\[
-		M(R) \overset{v}{\geq} M(R - v),
-		\]
-		dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\), każdego elektoratu \(V \in \mathcal{E}(W)\) oraz każdego wyborcy \(v \in V\).
-	\end{definition}
+	%begin{definition}[Kryterium obecności]
+	%	Metoda wyborcza \(M\) spełnia kryterium obecności, jeżeli każdy wyborca słabo preferuje udział w głosowaniu względem jego braku, tj.
+	%	\[
+	%	M(R) \overset{v}{\geq} M(R - v),
+	%	\]
+	%	dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\), każdego elektoratu \(V \in \mathcal{E}(W)\) oraz każdego wyborcy \(v \in V\).
+	%\end{definition}
 	
 	\begin{definition}[Margines większości]
 		Dla profilu preferencji \(R\) funkcją marginesu większości nazywamy funkcję
@@ -283,14 +283,34 @@
 	
 	Funkcja \(g_R\) mierzy przewagę jednego kandydata nad drugim w porównaniach parami.
 	
+	[TODO - rozpisać własności funkcji marginesu większości]
+	
 	\begin{definition}[Zwycięzca Maximina]
 		Kandydata \(a \in K\) nazywamy zwycięzcą metody Maximina, jeżeli maksymalizuje wartość
 		\[
-		\min_{x \in K \setminus \{a\}} g_R(a,x).
+		\min_{k \in K \setminus \{a\}} g_R(a,k),
 		\]
+	\end{definition}
+
+	\begin{definition}[Wartość minimalnego wyniku kandydata]
+		Dla każdego kandydata \(k \in K\) definiujemy wartość
+		\[
+		m_k := \min_{x \in K \setminus \{k\}} g_R(k,x).
+		\]
+		Wartość \(m_k\) interpretuje się jako najsłabszy (najmniej korzystny) wynik kandydata \(k\) w porównaniach parami.
 	\end{definition}
 	
 	Profil preferencji \(R\) indukuje ważony turniej skierowany \(T_R\), którego wierzchołkami są kandydaci, a waga krawędzi \((x,y)\) wynosi \(g_R(x,y)\).
+	% TODO: rozpisać przykładowy graf oraz go wyjaśnić
+	
+	\begin{definition}[Zbiór Kramera]
+		Zbiór Kramera \(K^\ast\) definiujemy jako zbiór wszystkich kandydatów maksymalizujących wartość ich najgorszego wyniku w porównaniach parami, tj.
+		\[
+		K^\ast = \{a \in K : m_a \ge m_k \ \text{dla każdego } k \in K\}.
+		\]
+	\end{definition}
+	
+	Innymi słowy, \(K^\ast\) jest zbiorem kandydatów o najmniejszej maksymalnej porażce w porównaniach parami.
 	
 	\begin{definition}[Zwycięzca Kemeny'ego]
 		Niech \(>\in \mathcal{R}\) będzie rankingiem Kemeny’ego, tj. relacją preferencji maksymalizującą funkcję
@@ -398,16 +418,25 @@
 	
 	
 	
-	
-	\newpage
 	\chapter{Paradoks nieobecności}
 	
-	Paradoks nieobecności (ang.~\emph{no-show paradox}) jest jednym z najbardziej zaskakujących zjawisk w teorii wyboru. Polega on na tym, że dla pewnych metod wyborczych udział wyborcy w głosowaniu może prowadzić do wyniku mniej dla niego korzystnego niż jego rezygnacja z udziału.
+	\section{Wprowadzenie}
 	
-	Zjawisko to stoi w sprzeczności z naturalnym oczekiwaniem, że udział w głosowaniu nie powinien pogarszać sytuacji wyborcy.
+	Paradoks nieobecności (ang.~\emph{no-show paradox}) jest jednym z istotnych i zarazem zaskakujących zjawisk badanych w teorii wyboru społecznego. Polega on na tym, że w przypadku pewnych metod wyborczych udział wyborcy w głosowaniu może prowadzić do wyniku mniej dla niego korzystnego niż jego abstencja.
+	
+	Zjawisko to zostało po raz pierwszy opisane przez Fishburna i Bramsa \cite{fishburn1983} i od tego czasu stanowi ważny przedmiot badań w teorii systemów wyborczych. Co szczególnie istotne, Moulin \cite{moulin1988} wykazał, że szeroka klasa metod spełniających kryterium Condorceta jest podatna na ten paradoks, co często interpretuje się jako argument przeciwko stosowaniu tzw.~Condorcet extensions.
+	
+	W literaturze podkreśla się, że paradoksy wyborcze stanowią nieuniknioną konsekwencję ogólności modeli głosowania oraz braku możliwości jednoczesnego spełnienia wszystkich naturalnych postulatów racjonalności procedur wyborczych. Jednocześnie pozostaje otwarte pytanie, na ile zjawiska te mają znaczenie praktyczne.
+	
+	W szczególności nie jest jasne, jak często paradoks nieobecności występuje w typowych modelach preferencji oraz jak jego częstość zależy od liczby kandydatów i wyborców. Problem ten został podjęty w nowszych badaniach empiryczno-analitycznych, m.in. przez Brandta, Hofbauera i Strobla \cite{brandt2017nsp}, którzy analizują częstość występowania paradoksu nieobecności dla wybranych metod Condorcetowskich, wykorzystując zarówno metody analityczne oparte na teorii Ehrharta, jak i symulacje komputerowe.
+	
+	W niniejszej pracy wprowadzamy formalny model pozwalający na analizę wpływu obecności wyborcy na wynik wyborów oraz systematyczne badanie warunków występowania paradoksu nieobecności w różnych procedurach wyborczych.
+	
+	\section{Przykład paradoksu nieobecności}
 	
 	\begin{example}[Paradoks nieobecności dla procedury głosowań parami]
-		Rozważmy procedurę głosowań parami ze statusem quo równym kandydatowi \(D\). Agenda głosowań ma postać:
+		Rozważmy procedurę głosowań parami ze statusem quo równym kandydatowi \(D\).
+		Agenda głosowań ma postać:
 		\[
 		B \text{ vs } D,\qquad
 		\text{następnie zwycięzca vs } A,\qquad
@@ -433,30 +462,27 @@
 			
 			\item Następnie kandydat \(B\) zostaje porównany z kandydatem \(A\). W tym głosowaniu zwycięża \(A\) stosunkiem głosów \(20:10\).
 			
-			\item W ostatnim etapie kandydat \(A\) zostaje zestawiony z kandydatem \(C\). Kandydat \(C\) wygrywa większością \(20:10\), a zatem końcowym zwycięzcą procedury zostaje \(C\).
+			\item W ostatnim etapie kandydat \(A\) zostaje zestawiony z kandydatem \(C\). Kandydat \(C\) wygrywa stosunkiem głosów \(20:10\), a zatem końcowym zwycięzcą procedury zostaje \(C\).
 			
-			\item Każdy z trzech typów wyborców preferuje jednak kandydata \(D\) względem zwycięzcy \(C\).
+			\item Każda z trzech grup wyborców preferuje kandydata \(D\) względem zwycięzcy \(C\).
 			
-			\item Oznacza to, że wszyscy wyborcy woleliby utrzymanie statusu quo od wyniku uzyskanego przy pełnej frekwencji.
+			\item Oznacza to, że wszyscy wyborcy preferowaliby utrzymanie status quo względem wyniku uzyskanego przy pełnej frekwencji.
 			
-			\item W konsekwencji udział wszystkich wyborców w procedurze prowadzi do rezultatu gorszego od statusu quo, co stanowi przykład paradoksu nieobecności.
+			\item W konsekwencji pełny udział wyborców w procedurze prowadzi do wyniku gorszego z punktu widzenia wszystkich grup, co stanowi przykład paradoksu nieobecności.
 		\end{itemize}
 	\end{example}
 	
-	Metoda ta oczywiście nie jest neutralna, gdyż kolejność głosowania pomiędzy kolejnymi kandydatami ma ogromne znaczenie. Możemy zaproponować następującą definicję.
+	Procedura ta nie jest neutralna, ponieważ kolejność głosowań ma istotny wpływ na wynik.
 	
-	\begin{definition}[Paradoks nieobecności]
-		Mówimy, że metoda wyborcza \(M\) jest podatna na paradoks nieobecności, jeżeli istnieje profil preferencji \(R \in \mathcal{R}^{V}\) oraz wyborca \(v \in V\), dla których zachodzi
-		\[
-		M(R - v) \overset{v}{>} M(R).
-		\]
-	\end{definition}
+	\section{Odporność na nieobecność}
 	
-	Oznacza to, że wyborca \(v\) ściśle preferuje wynik wyborów uzyskany po jego nieobecności względem wyniku, który powstaje, gdy bierze udział w głosowaniu.
+	Intuicyjnie, paradoks nieobecności występuje wtedy, gdy obecność wyborcy w elektoracie prowadzi do wyniku wyborów, który jest dla niego mniej preferowany niż wynik uzyskany w sytuacji jego nieobecności.
+	
+	Oznacza to, że udział w głosowaniu może działać przeciwko interesowi samego głosującego, mimo że jego preferencje są w pełni uwzględniane w procesie decyzyjnym.
 	
 	\medskip
 	
-	Poniższy przykład ilustruje występowanie paradoksu nieobecności dla metody Hare'a (IRV).
+	Poniższy przykład ilustruje występowanie tego zjawiska dla metody Copelanda.
 	
 	\begin{example}[Paradoks nieobecności dla metody Copelanda]
 		Rozważmy profil preferencji:
@@ -475,7 +501,7 @@
 		
 		Załóżmy dodatkowo, że w przypadku remisu metoda wybiera kandydata \(C\).
 		
-		Rozważmy teraz dodanie wyborcy o preferencjach
+		Rozważmy dodanie wyborcy o preferencjach:
 		\[
 		C \succ A \succ B \succ D.
 		\]
@@ -494,28 +520,40 @@
 		\end{array}
 		\]
 		
-		\begin{itemize}
-			\item Przy początkowym profilu kandydaci \(A\) oraz \(C\) uzyskują taki sam wynik Copelanda.
-			
-			\item Zgodnie z przyjętą regułą rozstrzygania remisów zwycięzcą zostaje \(C\).
-			
-			\item Po dołączeniu nowego wyborcy jedynym zwycięzcą metody Copelanda zostaje kandydat \(A\).
-			
-			\item Nowy wyborca posiada preferencje
-			\[
-			C \succ A,
-			\]
-			a więc bardziej preferuje wynik uzyskany przy swojej nieobecności.
-			
-			\item Oznacza to, że udział w głosowaniu pogarsza wynik z punktu widzenia tego wyborcy.
-		\end{itemize}
+		W przypadku początkowego profilu kandydaci \(A\) oraz \(C\) uzyskują równą wartość funkcji Copelanda, a zgodnie z przyjętą regułą rozstrzygania remisów zwycięzcą zostaje \(C\).
 		
-		W konsekwencji metoda Copelanda jest podatna na paradoks nieobecności.
+		Po dodaniu nowego wyborcy jedynym zwycięzcą metody Copelanda zostaje kandydat \(A\).
+		
+		Nowy wyborca preferuje \(C \succ A\), a więc woli wynik uzyskany w sytuacji swojej nieobecności.
+		
+		Oznacza to, że jego udział w głosowaniu prowadzi do wyniku mniej preferowanego z jego punktu widzenia.
 	\end{example}
 	
 	\medskip
 	
-	Możemy zaprononować następujące kryterium
+	\begin{definition}[Pozytywne kryterium obecności]
+		Metoda wyborcza \(M\) spełnia pozytywne kryterium obecności, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi:
+		
+		\[
+		\text{jeżeli } a \in M(R - w) \text{ oraz } a \overset{w}{\geq} b \ \text{dla każdego } b \in K,
+		\text{ to } a \in M(R).
+		\]
+		
+		Innymi słowy, jeżeli kandydat najwyżej oceniany przez wyborcę \(w\) zostaje wybrany przy jego nieobecności, to pozostaje on zwycięzcą również przy jego udziale.
+	\end{definition}
+
+	\begin{definition}[Negatywne kryterium obecności]
+		Metoda wyborcza \(M\) spełnia negatywne kryterium obecności, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi:
+		
+		\[
+		\text{jeżeli } a \in M(R) \text{ oraz } b \overset{w}{\geq} a \ \text{dla każdego } b \in K,
+		\text{ to } a \in M(R - w).
+		\]
+		
+		Innymi słowy, jeżeli kandydat najniżej oceniany przez wyborcę \(w\) zostaje wybrany przy jego udziale, to pozostaje on zwycięzcą również przy jego nieobecności.
+	\end{definition}
+	
+	Formalnie własność tę ujmujemy następująco.
 	
 	\begin{definition}[Metoda odporna na nieobecność]
 		Metodę wyborczą \(M\) nazywamy odporną na nieobecność, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi
@@ -524,17 +562,131 @@
 		\]
 	\end{definition}
 	
-	Paradoks nieobecności pozostaje w ścisłym związku z kryterium Condorceta, co wyraża poniższe twierdzenie.
+	Paradoks nieobecności pozostaje w ścisłym związku z kryterium Condorceta, co zostanie wykorzystane w dalszej części pracy.
 	
 	\section{Twierdzenie Moulina}
+
+	\begin{lemma}
+		\label{lem:condorcet-minimax}
+		Jeżeli kandydat \(a \in K\) jest kandydatem Condorceta, to \(a\) jest jedynym zwycięzcą metody maximina.
+	\end{lemma}
 	
-	\begin{theorem}[Moulin]
+	\begin{proof}
+		Niech \(a \in K\) będzie kandydatem Condorceta, tzn.
+		\[
+		g_R(a,k) > 0 \qquad \text{dla każdego } k \in K \setminus \{a\}.
+		\]
+		
+		Rozważmy wartości
+		\[
+		m_k := \min_{x \in K \setminus \{k\}} g_R(k,x),
+		\qquad k \in K.
+		\]
+		
+		Dla kandydata \(a\) mamy:
+		\[
+		m_a = \min_{k \neq a} g_R(a,k) > 0,
+		\]
+		ponieważ wszystkie wartości \(g_R(a,k)\) są dodatnie.
+		
+		Niech teraz \(k \neq a\) będzie dowolnym innym kandydatem. W szczególności zachodzi
+		\[
+		g_R(k,a) < 0,
+		\]
+		co implikuje
+		\[
+		m_k = \min_{x \neq k} g_R(k,x) \le g_R(k,a) < 0.
+		\]
+		
+		Zatem dla każdego \(k \neq a\) mamy ścisłą nierówność
+		\[
+		m_a > m_k.
+		\]
+		
+		W konsekwencji kandydat \(a\) osiąga największą wartość funkcji \(m_k\), czyli
+		\[
+		m_a = \max_{k \in K} m_k.
+		\]
+		
+		Co więcej, ponieważ dla każdego \(k \neq a\) zachodzi \(m_k < m_a\), kandydat \(a\) jest jedynym maksymalizatorem tej wartości. A zatem \(a\) jest jedynym zwycięzcą metody maximina.
+	\end{proof}
+
+	\begin{theorem}[Istnienie metody Condorceta zgodnej z partycypacją dla \(\leq 3\) kandydatów]
+		Jeżeli liczba kandydatów nie przekracza trzech, to istnieje metoda wyborcza spełniająca kryterium Condorceta oraz jednocześnie pozytywne i negatywne kryterium obecności.
+	\end{theorem}
+	
+	\begin{proof}
+		Rozważamy metodę wyborczą wybierającą zawsze kandydata ze zbioru Kramera, zgodnie z podejściem Moulin \cite{moulin1988}. Z Lematu~\ref{lem:condorcet-minimax} wynika, że metoda \(M\) spełnia kryterium Condorceta.
+		
+		Pokażemy teraz, że metoda \(M\) spełnia również pozytywne oraz negatywne kryterium obecności dla trzech kandydatów.
+		
+		Rozważmy dowolny profil preferencji oraz oznaczmy kandydatów przez \(a\), \(b\) oraz \(c\). Załóżmy, że metoda \(M\) wybiera kandydata \(a\). Oznacza to, że \(a \in K^\ast\), a więc w szczególności
+		\[
+		m_a \geq m_b \quad \text{oraz} \quad m_a \geq m_c.
+		\]
+		
+		Rozważamy teraz zmianę profilu polegającą na dodaniu jednego wyborcy. Każda wartość \(m_k\) może zmienić się co najwyżej o \(1\), ponieważ pojedynczy głos wpływa jedynie o jednostkową zmianę na marginesy porównań parami.
+		
+		W związku z tym analizujemy wszystkie możliwe relacje preferencyjne nowego wyborcy względem kandydatów \(a,b,c\). Rozróżniamy trzy istotne przypadki.
+		
+		\begin{enumerate}
+			\item Nowy wyborca ściśle preferuje \(a\) względem \(b\) oraz \(c\).
+			
+			\item Nowy wyborca słabo preferuje \(b\) względem \(a\), ale ściśle preferuje \(a\) względem \(c\).
+			
+			\item Nowy wyborca słabo preferuje zarówno \(b\), jak i \(c\) względem \(a\).
+		\end{enumerate}
+	
+		\begin{enumerate}[\text{Ad} 1.]
+			\item W pierwszym przypadku wartość \(m_a\) wzrasta o \(1\). Ponieważ zmiany wszystkich \(m_k\) są ograniczone jednostkowo, wartości \(m_b\) oraz \(m_c\) nie mogą wzrosnąć bardziej niż \(m_a\). W konsekwencji nadal zachodzi:
+			\[
+			m_a \geq m_b \quad \text{oraz} \quad m_a \geq m_c.
+			\]
+			
+			Zatem kandydat \(a\) pozostaje w zbiorze Kramera po dodaniu wyborcy, a więc metoda \(M\) nadal go wybiera. Oznacza to spełnienie zarówno pozytywnego, jak i negatywnego kryterium obecności.
+			
+			\item W drugim przypadku wartość \(m_c\) maleje o \(1\), natomiast \(m_a\) może zmaleć co najwyżej o \(1\), więc nadal zachodzi:
+			\[
+			m_a \geq m_c.
+			\]
+			
+			Oznacza to, że kandydat $c$ nie może wyprzedzić kandydata $a$ w rankingu wartości $m_k$, a więc nie może wejść do zbioru Kramera, jeśli wcześniej do niego nie należał.
+			
+			W szczególności dodanie nowego wyborcy nie prowadzi do wykluczenia kandydata $a$ z $K^\ast$, a metoda pozostaje zgodna zarówno z pozytywnym, jak i negatywnym kryterium obecności.
+			
+			\item W trzecim przypadku zmiany nie naruszają relacji preferencyjnych istotnych dla zbioru Kramera w sposób wymuszający wykluczenie kandydata \(a\), więc oba kryteria mogą być spełnione bez sprzeczności.
+		\end{enumerate}
+
+		Dla dwóch kandydatów własność ta wynika bezpośrednio z większościowego charakteru metody.
+	\end{proof}
+
+	\begin{theorem}[Moulin \cite{moulin1988}]
 		Jeżeli liczba kandydatów spełnia \(\#K \geq 4\), to każda metoda wyborcza spełniająca kryterium Condorceta jest podatna na paradoks nieobecności.
 	\end{theorem}
 	
 	\begin{proof}
 		TODO
 	\end{proof}
+	
+	\newpage
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	\section{Metody nie spełniające kryterium Condorceta}
 	
 	Twierdzenie to pokazuje fundamentalne napięcie pomiędzy naturalnymi własnościami metod wyborczych: zgodność z kryterium Condorceta implikuje możliwość wystąpienia paradoksu nieobecności.
 	
@@ -1043,16 +1195,31 @@
 	
 	
 	\begin{thebibliography}{99}
-	
-	\bibitem{mon_bg_home}
-	Ministry of Education and Science, Bulgaria, \textit{Official Website}, available online: 
-	\href{https://www.mon.bg/}{https://www.mon.bg/}, accessed March 26, 2026.
-	
-	
+		
+		\bibitem{brandt2017nsp}
+		F.~Brandt, J.~Hofbauer, and M.~Strobel,
+		\textit{Exploring the No-Show Paradox for Condorcet Extensions},
+		in: M.~Diss and V.~Merlin (eds.),
+		\textit{Evaluating Voting Systems with Probability Models:
+			Essays by and in Honor of William Gehrlein and Dominique Lepelley},
+		Springer, Studies in Social Choice and Welfare, 2020.
+		
+		\bibitem{brandt2017sat}
+		F.~Brandt, C.~Geist, and D.~Peters,
+		\textit{Optimal Bounds for the No-Show Paradox via SAT Solving},
+		\textit{Mathematical Social Sciences}, 90 (2017), 18--27.
+		
+		\bibitem{fishburn1983}
+		P.~C.~Fishburn and S.~J.~Brams,
+		\textit{Paradoxes of Preferential Voting},
+		Mathematics Magazine, 56(4) (1983), 207--214.
+		
+		\bibitem{moulin1988}
+		H.~Moulin,
+		\textit{Condorcet’s Principle Implies the No-Show Paradox},
+		Journal of Economic Theory, 45(1) (1988), 53--64.
+		
 	\end{thebibliography}
-	
-	
-	\chapter*{Spis symboli i oznaczeń}
 	
 	\chapter*{Spis symboli i oznaczeń}
 	
