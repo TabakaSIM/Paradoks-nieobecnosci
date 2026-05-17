@@ -224,7 +224,7 @@
 	\section{Kryteria wyborcze}
 	
 	\begin{definition}[Kandydat Condorceta]
-		Niech \(R \in \mathcal{R}^{V}\) będzie profilem preferencji. Kandydata \(a \in K\) nazywamy kandydatem Condorceta (zwycięzcą Condorceta), jeżeli w bezpośrednim porównaniu większościowym wygrywa z każdym innym kandydatem, tj.
+		Niech \(R \in \mathcal{R}^{V}\) będzie profilem preferencji. Kandydat \(a \in K\) jest kandydatem Condorceta (zwycięzcą Condorceta), jeżeli w bezpośrednich porównaniach większościowych wygrywa z każdym innym kandydatem, tj.
 		\[
 		\forall b \in K,\ b \neq a \quad
 		\#\{w \in V : a \overset{w}{>} b\}
@@ -239,9 +239,16 @@
 		M(R) = \{a\}.
 		\]
 	\end{definition}
+
+	\begin{definition}[Kryterium Condorceta]
+		Metoda wyborcza \(M\) spełnia kryterium Condorceta, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\), gdy istnieje kandydat Condorceta \(a \in K\), to
+		\[
+		M(R) = \{a\}.
+		\]
+	\end{definition}
 	
 	\begin{definition}[Przegrany Condorceta]
-		Niech \(R \in \mathcal{R}^{V}\). Kandydata \(a \in K\) nazywamy przegranym Condorceta, jeżeli przegrywa z każdym innym kandydatem w porównaniach parami, tj.
+		Niech \(R \in \mathcal{R}^{V}\). Kandydat \(a \in K\) jest przegranym Condorceta, jeżeli przegrywa z każdym innym kandydatem w porównaniach parami, tj.
 		\[
 		\forall b \in K,\ b \neq a \quad
 		\#\{w \in V : b \overset{w}{>} a\}
@@ -265,7 +272,7 @@
 		\[
 		g_R : K \times K \to \mathbb{Z},
 		\]
-		daną wzorem
+		określoną wzorem
 		\[
 		g_R(a,b) =
 		\#\{w \in V : a \overset{w}{>} b\}
@@ -274,7 +281,7 @@
 		\]
 	\end{definition}
 	
-	Funkcja \(g_R\) mierzy przewagę jednego kandydata nad drugim w głosowaniach parami.
+	Funkcja \(g_R\) mierzy przewagę jednego kandydata nad drugim w porównaniach parami.
 	
 	\begin{definition}[Zwycięzca Maximina]
 		Kandydata \(a \in K\) nazywamy zwycięzcą metody Maximina, jeżeli maksymalizuje wartość
@@ -285,15 +292,15 @@
 	
 	Profil preferencji \(R\) indukuje ważony turniej skierowany \(T_R\), którego wierzchołkami są kandydaci, a waga krawędzi \((x,y)\) wynosi \(g_R(x,y)\).
 	
-	\begin{definition}[Ranking Kemeny'ego]
-		Rankingiem Kemeny'ego nazywamy relację preferencji \(>\,\in \mathcal{R}\), która maksymalizuje zgodność z preferencjami wyborców, tj. maksymalizuje wartość
-		\[
-		\sum_{w \in V} \left|\,> \cap \overset{w}{>}\right|.
-		\]
-	\end{definition}
-	
 	\begin{definition}[Zwycięzca Kemeny'ego]
-		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny'ego wtedy i tylko wtedy, gdy zajmuje pierwsze miejsce w pewnym rankingu Kemeny'ego.
+		Niech \(>\in \mathcal{R}\) będzie rankingiem Kemeny’ego, tj. relacją preferencji maksymalizującą funkcję
+		\[
+		\sum_{w \in W} \#\{(a,b)\in K \times K \;:\; a > b \ \text{oraz}\ a \overset{w}{>} b\}.
+		\]
+		
+		Zbiór wszystkich rankingów Kemeny’ego oznaczamy przez \(\mathcal{K}(R)\).
+		
+		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny’ego, jeżeli istnieje ranking \(>\in \mathcal{K}(R)\), w którym \(a\) zajmuje pierwsze miejsce.
 	\end{definition}
 
 
