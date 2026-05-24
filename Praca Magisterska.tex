@@ -34,6 +34,7 @@
 	Niech \(K\) oznacza zbiór kandydatów, przy czym \(\#K = m\), natomiast \(W\) oznacza zbiór wyborców, gdzie \(\#W = n\).
 	
 	\begin{definition}[Elektorat]
+		\label{def:elektorat}
 		Zbiorem wszystkich elektoratów nazywamy zbiór
 		\[
 		\mathcal{E}(W) := \mathcal{P}(W) \setminus \{\emptyset\}.
@@ -44,12 +45,14 @@
 	\section{Preferencje jednostkowe}
 	
 	\begin{definition}[Relacja preferencji]
+		\label{def:relacja-preferencji}
 		Relacją preferencji na zbiorze \(K\) nazywamy zupełny i przechodni porządek liniowy określony na \(K\).
 	\end{definition}
 	
 	Relacja preferencji opisuje indywidualne upodobania wyborcy względem kandydatów. Zupełność oznacza, że każda para kandydatów jest porównywalna, natomiast przechodniość zapewnia spójność preferencji.
 	
 	\begin{definition}[Relacja preferencji wyborcy]
+		\label{def:relacja-preferencji-wyborcy}
 		Dla każdego wyborcy \(w \in W\) jego relację preferencji oznaczamy przez \(\overset{w}{>}\). Zapis
 		\[
 		a \overset{w}{>} b
@@ -58,6 +61,7 @@
 	\end{definition}
 	
 	\begin{definition}[Przestrzeń relacji preferencji]
+		\label{def:przestrzen-relacjo-preferencji}
 		Przestrzenią relacji preferencji na zbiorze \(K\) nazywamy zbiór wszystkich relacji preferencji na \(K\), oznaczany przez
 		\[
 		\mathcal{R}.
@@ -93,6 +97,7 @@
 	\]
 	
 	\begin{definition}[Słaba preferencja]
+		\label{def:slaba-preferencja}
 		Niech \(\overset{w}{>}\) będzie relacją preferencji wyborcy \(w \in W\).
 		Relacją słabej preferencji związaną z \(\overset{w}{>}\) nazywamy relację \(\overset{w}{\geq}\) określoną wzorem
 		\[
@@ -107,6 +112,7 @@
 	\section{Profile preferencji}
 	
 	\begin{definition}[Profil preferencji]
+		\label{def:profil-preferencji}
 		Profilem preferencji na zbiorze wyborców \(W\) nazywamy funkcję
 		\[
 		R : W \to \mathcal{R},
@@ -141,6 +147,7 @@
 	\section{Model wyborczy}
 	
 	\begin{definition}[Model wyborczy]
+		\label{def:model-wyborczy}
 		Modelem wyborczym nazywamy parę uporządkowaną
 		\[
 		\Sigma = (V, R|_V),
@@ -157,21 +164,24 @@
 	\end{itemize}
 	
 	\begin{definition}[Metoda wyborcza]
+		\label{def:metoda-wyborcza}
 		Metodą wyborczą nazywamy funkcję
 		\[
-		M : \mathcal{R}^{V} \to \mathcal{P}(K),
+		M : \Sigma \to \mathcal{P}(K),
 		\]
 		która każdemu profilowi preferencji przyporządkowuje zbiór zwycięzców.
 	\end{definition}
 	
 	\begin{definition}[Metoda rozstrzygająca]
+		\label{def:metoda-rozstrzygajaca}
 		Metodę wyborczą \(M\) nazywamy rozstrzygającą, jeżeli dla każdego profilu preferencji wskazuje dokładnie jednego zwycięzcę, tj.
 		\[
-		M : \mathcal{R}^{V} \to K.
+		M : \Sigma \to K.
 		\]
 	\end{definition}
 	
 	\begin{definition}[Metoda efektywna]
+		\label{def:metoda-efektywna}
 		Metodę wyborczą nazywamy efektywną, jeżeli dla każdego dopuszczalnego profilu preferencji wyłania co najmniej jednego zwycięzcę.
 	\end{definition}
 	
@@ -224,6 +234,7 @@
 	\section{Kryteria wyborcze}
 	
 	\begin{definition}[Kandydat Condorceta]
+		\label{def:kandydat-condorceta}
 		Niech \(R \in \mathcal{R}^{V}\) będzie profilem preferencji. Kandydat \(a \in K\) jest kandydatem Condorceta (zwycięzcą Condorceta), jeżeli w bezpośrednich porównaniach większościowych wygrywa z każdym innym kandydatem, tj.
 		\[
 		\forall b \in K,\ b \neq a \quad
@@ -234,20 +245,15 @@
 	\end{definition}
 	
 	\begin{definition}[Kryterium Condorceta]
+		\label{def:kryterium-condorceta}
 		Metoda wyborcza \(M\) spełnia kryterium Condorceta wtedy i tylko wtedy, gdy dla każdego profilu preferencji \(R\), jeśli istnieje kandydat Condorceta \(a \in K\), to jest on jedynym zwycięzcą wyłonionym przez metodę \(M\), tj.
-		\[
-		M(R) = \{a\}.
-		\]
-	\end{definition}
-
-	\begin{definition}[Kryterium Condorceta]
-		Metoda wyborcza \(M\) spełnia kryterium Condorceta, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\), gdy istnieje kandydat Condorceta \(a \in K\), to
 		\[
 		M(R) = \{a\}.
 		\]
 	\end{definition}
 	
 	\begin{definition}[Przegrany Condorceta]
+		\label{def:przegrany-condorceta}
 		Niech \(R \in \mathcal{R}^{V}\). Kandydat \(a \in K\) jest przegranym Condorceta, jeżeli przegrywa z każdym innym kandydatem w porównaniach parami, tj.
 		\[
 		\forall b \in K,\ b \neq a \quad
@@ -268,6 +274,7 @@
 	%\end{definition}
 	
 	\begin{definition}[Margines większości]
+		\label{def:margines-wiekszosci}
 		Dla profilu preferencji \(R\) funkcją marginesu większości nazywamy funkcję
 		\[
 		g_R : K \times K \to \mathbb{Z},
@@ -286,13 +293,30 @@
 	[TODO - rozpisać własności funkcji marginesu większości]
 	
 	\begin{definition}[Zwycięzca Maximina]
-		Kandydata \(a \in K\) nazywamy zwycięzcą metody Maximina, jeżeli maksymalizuje wartość
+		\label{def:zwyciezca-maximina}
+		Kandydata \(a \in K\) nazywamy zwycięzcą Maximina, jeżeli maksymalizuje wartość
 		\[
 		\min_{k \in K \setminus \{a\}} g_R(a,k),
 		\]
 	\end{definition}
 
+	\begin{definition}[Kryterium maximina]
+		\label{def:kryterium_maximina}
+		Metoda wyborcza \(M\) spełnia kryterium maximina, jeżeli dla każdego profilu \(R \in \mathcal{R}^W\),
+		jeśli istnieje kandydat \(a \in K\) taki, że
+		\[
+		a \in \left\{ x \in K :
+		\forall y \in K,\; x\neq y, \;
+		\min_{k \in K \setminus \{x\}} g_R(x,k)
+		\ge
+		\min_{k \in K \setminus \{y\}} g_R(y,k)
+		\right\},
+		\]
+		to \(a \in M(R)\).
+	\end{definition}
+
 	\begin{definition}[Wartość minimalnego wyniku kandydata]
+		\label{def:wartosc-minimalnego-wyniku-kandydata}
 		Dla każdego kandydata \(k \in K\) definiujemy wartość
 		\[
 		m_k := \min_{x \in K \setminus \{k\}} g_R(k,x).
@@ -660,21 +684,436 @@
 		Dla dwóch kandydatów własność ta wynika bezpośrednio z większościowego charakteru metody.
 	\end{proof}
 
-	\begin{theorem}[Moulin \cite{moulin1988}]
-		Jeżeli liczba kandydatów spełnia \(\#K \geq 4\), to każda metoda wyborcza spełniająca kryterium Condorceta jest podatna na paradoks nieobecności.
+	\begin{lemma}\label{lem:condorcet_obecnosc}
+		Załóżmy, że metoda \(M\) spełnia kryterium Condorceta oraz pozytywne kryterium obecności. Wówczas dla każdych różnych kandydatów \(a,b \in K\), każdego elektoratu \(W\) oraz każdego profilu preferencji \(> \in R^W\),
+		\[
+		m_a < 0
+		\qquad \text{oraz} \qquad
+		m_a - 2 \geq g_R(b,a)
+		\]
+		implikuje
+		\[
+		M(R^{W}) \neq b.
+		\]
+	\end{lemma}
+	
+	\begin{proof}
+		Rozważmy dowolny elektorat \(W\), profil preferencji \(> \in R^W\) oraz kandydatów \(a,b \in K\), dla których
+		\[
+		m_a < 0
+		\qquad \text{oraz} \qquad
+		m_a - 2 \geq g_R(b,a),
+		\]
+		i załóżmy przeciwnie, że
+		\[
+		M(R^{W}) = b.
+		\]
+		
+		Ponieważ \(m_a < 0\), kandydat \(a\) przegrywa co najmniej jedno porównanie parami, a zatem nie jest zwycięzcą Condorceta.
+		
+		Niech \(R^{V}\) będzie profilem otrzymanym z \(R^W\) przez dodanie \(1-m_a\) nowych wyborców, z których każdy umieszcza kandydata \(b\) na pierwszym miejscu, a kandydata \(a\) na drugim miejscu.
+		
+		\[
+		\begin{array}{|c|}\hline
+			1-m_a\\\hline
+			b\\
+			a\\
+			\vdots
+			\\\hline
+		\end{array}
+		\]
+		
+		W profilu \(R^W\) najgorszy wynik kandydata \(a\) ma wartość \(m_a\). Ponadto z założenia
+		\[
+		m_a - 2 \geq g_R(b,a),
+		\]
+		a więc
+		\[
+		g_R(a,b) = -g_R(b,a) \geq 2 - m_a.
+		\]
+		
+		Dodanie \(1-m_a\) nowych wyborców zwiększa o \(1-m_a\) wynik kandydata \(a\) w porównaniach parami ze wszystkimi kandydatami różnymi od \(b\). Natomiast wynik porównania parami pomiędzy \(a\) i \(b\) zmniejsza się o \(1-m_a\).
+		
+		W szczególności wszystkie porażki parami kandydata \(a\) zostają wyeliminowane. Ponadto kandydat \(a\) nadal pokonuje kandydata \(b\), gdyż
+		\[
+		g_R(a,b) - (1-m_a) \geq 1.
+		\]
+		
+		Zatem kandydat \(a\) staje się zwycięzcą Condorceta w profilu \(R^{V}\).
+		
+		Ponieważ jednak metoda \(M\) wybrała kandydata \(b\) w profilu \(R^W\), pozytywne kryterium obecności wymaga, aby kandydat \(b\) został wybrany również w profilu \(R^{V}\).
+		
+		Otrzymujemy sprzeczność z kryterium Condorceta, gdyż w profilu \(R^{V}\) zwycięzcą Condorceta jest kandydat \(a\). Kończy to dowód.
+	\end{proof}
+	
+	\begin{theorem}
+		Jeżeli liczba kandydatów spełnia \(\#K \geq 4\), to żadna metoda wyborcza nie spełnia jednocześnie kryterium Condorceta oraz pozytywnego kryterium obecności.
 	\end{theorem}
 	
 	\begin{proof}
-		TODO
+		Niech \(M\) będzie metodą spełniającą kryterium Condorceta oraz pozytywne kryterium obecności. Rozważmy czterech kandydatów:
+		\[
+		a,b,c,d.
+		\]
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|c|}
+				\hline
+				6 & 3 & 8 & 7\\
+				\hline
+				a & a & d & b\\
+				d & d & b & c\\
+				c & b & c & a\\
+				b & c & a & d\\
+				\hline
+			\end{array}
+			\]
+			\caption{Pierwszy profil preferencji}
+			\label{tab:pierwszy_profil}
+		\end{table}
+		
+		Pierwszy profil przedstawiono w Tabeli~\ref{tab:pierwszy_profil}. Liczby nad kolumnami oznaczają liczbę wyborców posiadających ranking zapisany poniżej. Wszyscy pozostali kandydaci (jeżeli istnieją) są umieszczani poniżej kandydatów \(a,b,c,d\).
+		
+		\begin{figure}[h]
+			\centering
+			
+			\begin{tikzpicture}[
+				>=stealth,
+				thick,
+				vertex/.style={circle, draw, minimum size=1.2cm},
+				edge label/.style={draw=none, fill=none, inner sep=1pt}
+				]
+				
+				% Wierzchołki
+				\node[vertex] (a) at (0,6) {$a$};
+				\node[vertex] (b) at (6,6) {$b$};
+				\node[vertex] (c) at (0,0) {$c$};
+				\node[vertex] (d) at (6,0) {$d$};
+				
+				% krawędzie (majority relations)
+				\draw[->] (b) -- node[edge label, above] {$6$} (a);
+				\draw[->] (c) -- node[edge label, left] {$6$} (a);
+				
+				\draw[->] (a) -- node[edge label, sloped, above, pos=0.65] {$8$} (d);
+				
+				\draw[->] (d) -- node[edge label, right] {$10$} (b);
+				\draw[->] (d) -- node[edge label, below] {$10$} (c);
+				
+				\draw[->] (b) -- node[edge label, sloped, below, pos=0.65] {$12$} (c);
+				
+			\end{tikzpicture}
+		
+		\end{figure}
+		
+		\begin{figure}[h]
+			\centering
+			\begin{tikzpicture}[
+				>=stealth,
+				thick,
+				vertex/.style={circle, draw, minimum size=1.2cm}
+				]
+				
+				% Wierzchołki
+				\node[vertex] (a) at (0,6) {$a$};
+				\node[vertex] (b) at (6,6) {$b$};
+				\node[vertex] (c) at (0,0) {$c$};
+				\node[vertex] (d) at (6,0) {$d$};
+				
+				% krawędzie
+				\draw[->] (b) -- (a);
+				\draw[->] (c) -- (a);
+				
+				\draw[->] (a) -- (d);
+				\draw[->] (d) -- (b);
+				\draw[->] (d) -- (c);
+				\draw[->] (b) -- (c);
+				
+				% etykiety (OSOBNO – pełna kontrola)
+				\node at (3,6.3) {$6$};   % b -> a
+				\node at (-0.3,3) {$6$};  % c -> a
+				
+				\node at (5.2,1.8) {$8$};   % a -> d (przekątna)
+				\node at (0.8,1.8) {$12$};  % b -> c (przekątna)
+				
+				\node at (6.3,3) {$10$};  % d -> b
+				\node at (3,-0.3) {$10$}; % d -> c
+				
+			\end{tikzpicture}
+		\caption{Graf większościowy dla profilu z Tabeli~\ref{tab:pierwszy_profil}}
+		\label{fig:graf_pierwszy_profil}
+		\end{figure}
+		
+		Rysunek~\ref{fig:graf_pierwszy_profil} przedstawia skierowany graf ważony opisujący marginesy zwycięstw i porażek parami pomiędzy czterema głównymi kandydatami. Krawędź skierowana z \(b\) do \(a\) o wadze \(6\) oznacza, że kandydat \(b\) pokonuje kandydata \(a\) przewagą \(6\) głosów.
+		
+		W profilu uczestniczy \(24\) wyborców. Mamy:
+		\[
+		m_a = -6
+		\qquad \text{oraz} \qquad
+		g_R(a,d)=8.
+		\]
+		Na mocy Lematu~\ref{lem:condorcet_obecnosc} metoda \(M\) nie może wybrać kandydata \(d\).
+		
+		Ponadto:
+		\[
+		m_d = -8
+		\qquad \text{oraz} \qquad
+		g_R(d,b)=10,
+		\]
+		więc metoda \(M\) nie może wybrać kandydata \(b\).
+		
+		Dla każdego kandydata
+		\[
+		x \in K \setminus \{a,b,c,d\}
+		\]
+		zachodzi:
+		\[
+		m_a=-6
+		\qquad \text{oraz} \qquad
+		g_R(a,x)=24,
+		\]
+		a więc metoda \(M\) nie może wybrać kandydata \(x\).
+		
+		Zatem zbiór zwycięzców ogranicza się do kandydata \(a\) albo \(c\).
+		
+		Dodajmy teraz ośmiu wyborców, otrzymując drugi profil preferencji. Każdy z nowych wyborców traktuje kandydatów \(a\) i \(c\) jako równorzędnych i umieszcza ich wspólnie na pierwszym miejscu. Następnie preferowany jest kandydat \(b\), potem kandydat \(d\), a wszyscy pozostali kandydaci znajdują się poniżej \(d\).
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|c|c|}
+				\hline
+				6 & 3 & 8 & 7 & 8\\
+				\hline
+				a & a & d & b & a \\
+				d & d & b & c & c \\
+				c & b & c & a & b \\
+				b & c & a & d & d \\
+				\hline
+			\end{array}
+			\]
+			\caption{Drugi profil preferencji (z dodanymi ośmioma wyborcami)}
+			\label{tab:drugi_profil}
+		\end{table}
+		
+		Odpowiadający temu profilowi graf przedstawiono na Rysunku~2.
+		
+		\begin{figure}[h]
+			\centering
+			
+			\begin{tikzpicture}[
+				>=stealth,
+				thick,
+				vertex/.style={circle, draw, minimum size=1.2cm},
+				edge label/.style={draw=none, fill=none, inner sep=1pt}
+				]
+				
+				% Wierzchołki
+				\node[vertex] (a) at (0,6) {$a$};
+				\node[vertex] (b) at (6,6) {$b$};
+				\node[vertex] (c) at (0,0) {$c$};
+				\node[vertex] (d) at (6,0) {$d$};
+				
+				% --- relacje większościowe (bazowe) ---
+				\draw[->] (a) -- node[edge label, above] {$2$} (b);
+				\draw[->] (c) -- node[edge label, left] {$6$} (a);
+				
+				\draw[->] (a) -- node[edge label, sloped, above, pos=0.65] {$16$} (d);
+				
+				\draw[->] (d) -- node[edge label, right] {$2$} (b);
+				\draw[->] (d) -- node[edge label, below] {$2$} (c);
+				
+				\draw[->] (b) -- node[edge label, sloped, below, pos=0.65] {$4$} (c);				
+			\end{tikzpicture}
+			
+			\caption{Graf większościowy dla drugiego profilu preferencji (po dodaniu ośmiu wyborców)}
+			\label{fig:drugi_profil_graf}
+			
+		\end{figure}
+		
+		W nowym profilu uczestniczy \(32\) wyborców. Otrzymujemy:
+		\[
+		m_c = -4
+		\qquad \text{oraz} \qquad
+		g_R(c,a)=6,
+		\]
+		więc — ponownie na mocy Lematu~\ref{lem:condorcet_obecnosc} — metoda \(M\) nie może wybrać kandydata \(a\).
+		
+		Ponadto:
+		\[
+		m_b=-2
+		\qquad \text{oraz} \qquad
+		g_R(b,c)=4,
+		\]
+		więc metoda \(M\) nie może wybrać kandydata \(c\).
+		
+		Jednak pozytywne kryterium obecności wymaga, aby metoda \(M\) wybrała \(a\) lub \(c\). 
+		
+		Zatem przed zmianą profilu zbiór zwycięzców jest zawarty w \(\{a,c\}\).
+		Po zmianie profilu żaden z tych kandydatów nie może być wybrany, co przeczy pozytywnemu kryterium obecności.
 	\end{proof}
 	
-	\newpage
+	\begin{proof}
+		Załóżmy, że zbiór wyborców \(W\) zawiera co najmniej \(34\) wyborców oraz że metoda \(M\) spełnia negatywne kryterium obecności.
+		
+		Rozważmy czterech kandydatów:
+		\[
+		a,b,c,d.
+		\]
+		
+		Niech \(u\) oznacza profil preferencji przedstawiony w Tabeli~\ref{tab:profil_v_typy}. W szczególności każdy kandydat \(x \in A \setminus \{a,b,c,d\}\) znajduje się w preferencjach wszystkich wyborców poniżej kandydatów \(a,b,c,d\), zatem nie wpływa on na relacje większościowe pomiędzy tymi czterema kandydatami.
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|c|c|c|}
+				\hline
+				\alpha & \beta & \gamma & \delta & \varepsilon & \zeta \\
+				\hline
+				4 & 5 & 1 & 6 & 4 & 6 \\
+				\hline
+				b & a & d & a & d & b \\
+				c & c & a & d & b & d \\
+				a & d & b & b & c & c \\
+				dx & bx & cx & cx & ax & ax \\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil preferencji $R^W$}
+			\label{tab:profil_v_typy}
+		\end{table}
+		
+		Odpowiadający profilowi \(u\) graf większościowy (dla kandydatów \(a,b,c,d\)) przedstawiono na Rysunku~\ref{fig:graf_u}.
+		
+		\begin{figure}[h]
+			\centering
+			
+			\begin{tikzpicture}[
+				>=stealth,
+				thick,
+				vertex/.style={circle, draw, minimum size=1.2cm},
+				edge label/.style={draw=none, fill=none, inner sep=1pt}
+				]
+				
+				% Wierzchołki
+				\node[vertex] (a) at (0,6) {$a$};
+				\node[vertex] (b) at (6,6) {$b$};
+				\node[vertex] (c) at (0,0) {$c$};
+				\node[vertex] (d) at (6,0) {$d$};
+				
+				% relacje większościowe
+				\draw[->] (b) -- node[edge label, above] {$2$} (a);
+				\draw[->] (c) -- node[edge label, left] {$2$} (a);
+				
+				\draw[->] (a) -- node[edge label, sloped, above, pos=0.65] {$4$} (d);
+				
+				\draw[->] (d) -- node[edge label, right] {$6$} (b);
+				\draw[->] (d) -- node[edge label, below] {$8$} (c);
+				
+				\draw[->] (b) -- node[edge label, sloped, below, pos=0.65] {$16$} (c);
+				
+			\end{tikzpicture}
+			
+			\caption{Graf większościowy dla profilu \(R^W\)}
+			\label{fig:graf_u}
+			
+		\end{figure}
+		
+		W profilu \(R^W\) uczestniczy \(26\) wyborców. Rozważmy zmiany profilu poprzez usuwanie wybranych wyborców:
+		
+		- po usunięciu trzech wyborców typu \(\alpha\) kandydat \(a\) staje się zwycięzcą Condorceta,
+		a więc na mocy negatywnego kryterium obecności metoda \(M\) nie może wykluczyć kandydata \(a\) w profilu \(R^W\);
+		
+		- po usunięciu pięciu wyborców typu \(\beta\) kandydat \(d\) staje się zwycięzcą Condorceta, natomiast kandydat \(b\), umieszczany przez tych wyborców na ostatnim miejscu, nie może zostać wybrany w profilu \(R^W\).
+		
+		W konsekwencji zbiór zwycięzców w profilu \(R^W\) zawiera się w:
+		\[
+		\{a,c\}.
+		\]
+		
+		Dodajmy teraz ośmiu nowych wyborców, otrzymując profil \(R^V\). Każdy z nich preferuje:
+		\[
+		c > a > b = d  > x \quad \text{dla } x \in A \setminus \{a,b,c,d\}.
+		\]
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|c|c|c|c|}
+				\hline
+				\alpha & \beta & \gamma & \delta & \varepsilon & \zeta & \eta \\
+				\hline
+				4 & 5 & 1 & 6 & 4 & 6 & 8 \\
+				\hline
+				b & a & d & a & d & b & c \\
+				c & c & a & d & b & d & a \\
+				a & d & b & b & c & c & b\sim d \\
+				d & b & c & c & a & a & x \\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil preferencji \(R^V\)}
+			\label{tab:profil_v_typy}
+		\end{table}
+		
+		Odpowiadający profilowi \(R^V\) graf większościowy przedstawiono na Rysunku~\ref{fig:graf_v}.
+		
+		\begin{figure}[h]
+			\centering
+			
+			\begin{tikzpicture}[
+				>=stealth,
+				thick,
+				vertex/.style={circle, draw, minimum size=1.2cm},
+				edge label/.style={draw=none, fill=none, inner sep=1pt}
+				]
+				
+				% Wierzchołki
+				\node[vertex] (a) at (0,6) {$a$};
+				\node[vertex] (b) at (6,6) {$b$};
+				\node[vertex] (c) at (0,0) {$c$};
+				\node[vertex] (d) at (6,0) {$d$};
+				
+				% relacje większościowe
+				\draw[->] (a) -- node[edge label, above] {$6$} (b);
+				\draw[->] (c) -- node[edge label, left] {$10$} (a);
+				
+				\draw[->] (a) -- node[edge label, sloped, above, pos=0.65] {$12$} (d);
+				
+				\draw[->] (d) -- node[edge label, right] {$6$} (b);
+				
+				\draw[->] (b) -- node[edge label, sloped, below, pos=0.65] {$8$} (c);
+				
+			\end{tikzpicture}
+			
+			\caption{Graf większościowy dla profilu \(R^V\)}
+			\label{fig:graf_v}
+			
+		\end{figure}
+		
+		W nowym profilu uczestniczy \(34\) wyborców. Ponownie rozważamy operacje usuwania wyborców:
+		
+		- po usunięciu czterech wyborców typu \(\varepsilon\) oraz pięciu spośród sześciu wyborców typu \(\zeta\), kandydat \(c\) staje się zwycięzcą Condorceta, zatem metoda \(M\) nie może wybrać kandydata \(a\) w profilu \(R^V\);
+		
+		- po usunięciu jednego wyborcy typu \(\gamma\) oraz sześciu wyborców typu \(\delta\), kandydat \(b\) staje się zwycięzcą Condorceta, zatem metoda \(M\) nie może wybrać kandydata \(c\) w profilu \(R^V\).
+		
+		Otrzymujemy więc, że żaden z kandydatów \(a\) i \(c\) nie może zostać wybrany w profilu \(v\), co przeczy negatywnemu kryterium obecności, które wymaga, aby co najmniej jeden z nich należał do zbioru zwycięzców.
+		
+		To kończy dowód.
+	\end{proof}	
 	
+	\begin{theorem}[Moulin \cite{moulin1988}]
+		Jeżeli liczba kandydatów spełnia \(\#K \geq 4\) oraz liczba wyborców wynosi conajlminej 37 (34 w przypadku negatywnego kryterium obecności), to każda metoda wyborcza spełniająca kryterium Condorceta jest podatna na paradoks nieobecności.
+	\end{theorem}
 	
-	
-	
-	
-	
+	\begin{proof}
+		Załóżmy teraz, że zbiór \(K\) zawiera co najmniej czterech kandydatów oraz że metoda \(M\) spełnia kryterium Condorceta. Najpierw pokażemy, że jeżeli zbiór potencjalnych wyborców \(W\) zawiera co najmniej \(37\) wyborców, to metoda \(M\) nie spełnia pozytywnego kryterium obecności. Następnie pokażemy, że jeżeli \(W\) zawiera co najmniej \(34\) wyborców, to metoda \(M\) nie spełnia negatywnego kryterium obecności.
+		
+		Dowód pierwszej części opiera się na argumencie przedstawionym przez Moulin \cite{moulin1988}.
+		
+		Przechodzimy teraz do dowodu drugiej części.
+	\end{proof}
 	
 	
 	
@@ -771,10 +1210,10 @@
 			\hline
 			10 & 5 & 4 & 6\\
 			\hline
-			A & B & B & C\\
-			B & C & C & D\\
-			C & A & D & A\\
-			D & D & A & B\\
+			a & b & b & c\\
+			b & c & c & d\\
+			c & a & d & a\\
+			d & d & a & b\\
 			\hline
 		\end{array}
 		\]
@@ -783,7 +1222,7 @@
 		
 		Rozważmy teraz sytuację, w której grupa \(4\) wyborców o preferencjach
 		\[
-		B \succ C \succ D \succ A
+		b > c > d > a
 		\]
 		rezygnuje z udziału w głosowaniu. Otrzymujemy wówczas zmodyfikowany profil:
 		\[
@@ -791,19 +1230,19 @@
 			\hline
 			10 & 5 & 6\\
 			\hline
-			A & B & C\\
-			B & C & D\\
-			C & A & A\\
-			D & D & B\\
+			a & b & c\\
+			b & c & d\\
+			c & a & a\\
+			d & d & b\\
 			\hline
 		\end{array}
 		\]
 		
 		W tym przypadku zwycięzcą zostaje kandydat \(C\).
 		
-		Ponieważ dla wyborców o preferencjach \(B \succ C \succ D \succ A\) zachodzi
+		Ponieważ dla wyborców o preferencjach \(b > c > d > a\) zachodzi
 		\[
-		C \succ A,
+		c \succ a,
 		\]
 		oznacza to, że wynik po ich rezygnacji z udziału w głosowaniu jest przez nich ściśle preferowany względem wyniku uzyskanego przy ich uczestnictwie.
 		
@@ -854,16 +1293,34 @@
 	\begin{theorem}
 		Nie istnieje metoda wyborcza spełniająca kryterium Maximina, która jednocześnie spełnia kryterium obecności dla
 		\[
-		|K| \geq 4
+		\#K \geq 4
 		\quad \text{oraz} \quad
-		|W| \geq 7.
+		\#W \geq 7.
 		\]
 	\end{theorem}
 	
 	\begin{proof}
-		Niech \(f\) będzie rozszerzeniem metody Maximina spełniającym warunek uczestnictwa.
+		Niech \(M\) będzie metodą spełniającą kryterium Maximina oraz warunek uczestnictwa.
 		
-		Rozważmy profil sześciu wyborców \(R\) przedstawiony na Rysunku~1. (Liczby nad każdą kolumną opisują, ile razy dana relacja preferencji występuje w profilu \(R\). Na przykład w \(R\) dokładnie dwóch wyborców ma ranking \(bdca\).)
+		Rozważmy profil sześciu wyborców \(R\) przedstawiony w Tabeli~\ref{fig:profil_R}. (Liczby nad każdą kolumną opisują, ile razy dana relacja preferencji występuje w profilu \(R\). Na przykład w \(R\) dokładnie dwóch wyborców ma ranking \(bdca\).)
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|c|}
+				\hline
+				1 & 2 & 2 & 1\\
+				\hline
+				a & b & c & d\\
+				b & d & a & c\\
+				d & c & b & a\\
+				c & a & d & b\\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil preferencji \(R\)}
+			\label{fig:profil_R}
+		\end{table}
 		
 		Przypuśćmy, że \(f(R) \in \{a,b\}\). Dodanie głosu typu \(abcd\) prowadzi do ważonego turnieju, w którym alternatywa \(c\) jest jedynym zwycięzcą Maximina, zatem funkcja \(f\) musi wskazać \(c\). Prowadzi to jednak do sprzeczności z warunkiem uczestnictwa, ponieważ wyborca, który dodał swój głos, uzyskałby lepszy wynik, gdyby wstrzymał się od głosowania.
 		
