@@ -1108,11 +1108,7 @@
 	\end{theorem}
 	
 	\begin{proof}
-		Załóżmy teraz, że zbiór \(K\) zawiera co najmniej czterech kandydatów oraz że metoda \(M\) spełnia kryterium Condorceta. Najpierw pokażemy, że jeżeli zbiór potencjalnych wyborców \(W\) zawiera co najmniej \(37\) wyborców, to metoda \(M\) nie spełnia pozytywnego kryterium obecności. Następnie pokażemy, że jeżeli \(W\) zawiera co najmniej \(34\) wyborców, to metoda \(M\) nie spełnia negatywnego kryterium obecności.
-		
-		Dowód pierwszej części opiera się na argumencie przedstawionym przez Moulin \cite{moulin1988}.
-		
-		Przechodzimy teraz do dowodu drugiej części.
+		Korzystając z poprzednich twierdzeń oraz z faktu że brak spełnienia pozytywnego(negatywnego) kryterium obecności implikuje brak spełnienia kryterium obecności dostajemy teze.
 	\end{proof}
 	
 	
@@ -1256,7 +1252,8 @@
 	[TODO - cała sekcja, póki co ta część jest tylko przetłumaczona]
 	
 	\begin{lemma}
-		Załóżmy, że metoda wyborcza \(M\) spełnia kryterium Condorceta oraz warunek uczestnictwa. Niech \(R\) będzie profilem preferencji, a \(B \subseteq K\) zbiorem tzw. \emph{złych} alternatyw, przy czym każdy wyborca klasyfikuje każdą alternatywę \(x \in B\) niżej niż każdą alternatywę \(y \in K \setminus B\). Wówczas
+		\label{lemma:sat_1}
+		Załóżmy, że metoda wyborcza \(M\) spełnia kryterium Condorceta oraz kryterium obecności. Niech \(R\) będzie profilem preferencji, a \(B \subseteq K\) zbiorem tzw. \emph{złych} alternatyw, przy czym każdy wyborca klasyfikuje każdą alternatywę \(x \in B\) niżej niż każdą alternatywę \(y \in K \setminus B\). Wówczas
 		\[
 		M(R) \notin B.
 		\]
@@ -1302,7 +1299,7 @@
 	\begin{proof}
 		Niech \(M\) będzie metodą spełniającą kryterium Maximina oraz warunek uczestnictwa.
 		
-		Rozważmy profil sześciu wyborców \(R\) przedstawiony w Tabeli~\ref{fig:profil_R}. (Liczby nad każdą kolumną opisują, ile razy dana relacja preferencji występuje w profilu \(R\). Na przykład w \(R\) dokładnie dwóch wyborców ma ranking \(bdca\).)
+		Rozważmy profil sześciu wyborców \(R\) przedstawiony w Tabeli~\ref{fig:profil_R}.
 		
 		\begin{table}[h]
 			\centering
@@ -1322,16 +1319,120 @@
 			\label{fig:profil_R}
 		\end{table}
 		
-		Przypuśćmy, że \(f(R) \in \{a,b\}\). Dodanie głosu typu \(abcd\) prowadzi do ważonego turnieju, w którym alternatywa \(c\) jest jedynym zwycięzcą Maximina, zatem funkcja \(f\) musi wskazać \(c\). Prowadzi to jednak do sprzeczności z warunkiem uczestnictwa, ponieważ wyborca, który dodał swój głos, uzyskałby lepszy wynik, gdyby wstrzymał się od głosowania.
+		Przypuśćmy, że \(M(R) \in \{a,b\}\). Dodanie głosu typu \(abcd\) prowadzi do ważonego turnieju, w którym alternatywa \(c\) jest jedynym zwycięzcą Maximina, zatem metoda \(M\) musi wskazać \(c\) jako zwycięzce. Prowadzi to jednak do sprzeczności z kryterium obecności, ponieważ wyborca, który dodał swój głos, uzyskałby lepszy wynik, gdyby wstrzymał się od głosowania.
 		
-		Analogicznie, jeśli \(f(R) \in \{c,d\}\), to dodanie głosu typu \(dcba\) prowadzi do ważonego turnieju, w którym \(b\) jest jedynym zwycięzcą Maximina, co ponownie przeczy warunkowi uczestnictwa.
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|c|c|}
+				\hline
+				1 & 2 & 2 & 1 & 1\\
+				\hline
+				a & b & c & d & a\\
+				b & d & a & c & b\\
+				d & c & b & a & c\\
+				c & a & d & b & d\\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil otrzymany po dodaniu głosu typu \(abcd\)}
+			\label{tab:profil_abcd}
+		\end{table}
+	
+		\begin{figure}[h]
+			\centering
+			
+			\begin{tikzpicture}[
+				>=stealth,
+				thick,
+				vertex/.style={circle, draw, minimum size=1.2cm},
+				edge label/.style={draw=none, fill=none, inner sep=1pt}
+				]
+				
+				% Wierzchołki
+				\node[vertex] (a) at (0,6) {$a$};
+				\node[vertex] (b) at (6,6) {$b$};
+				\node[vertex] (c) at (0,0) {$c$};
+				\node[vertex] (d) at (6,0) {$d$};
+				
+				% relacje większościowe
+				\draw[->] (a) -- node[edge label, above] {$3$} (b);
+				\draw[->] (c) -- node[edge label, left] {$3$} (a);
+				
+				\draw[->] (a) -- node[edge label, sloped, above, pos=0.65] {$1$} (d);
+				
+				\draw[->] (b) -- node[edge label, right] {$5$} (d);
+				\draw[->] (d) -- node[edge label, below] {$1$} (c);
+				
+				\draw[->] (b) -- node[edge label, sloped, below, pos=0.65] {$1$} (c);
+				
+			\end{tikzpicture}
+			
+			\caption{Graf otrzymany po dodaniu głosu typu \(abcd\)}
+			\label{fig:graf_1_1}
+			
+		\end{figure}
+		
+		Analogicznie, jeśli \(M(R) \in \{c,d\}\), to dodanie głosu typu \(dcba\) prowadzi do ważonego turnieju, w którym \(b\) jest jedynym zwycięzcą Maximina, co ponownie przeczy kryterium obecności.
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|c|c|}
+				\hline
+				1 & 2 & 2 & 1 & 1\\
+				\hline
+				a & b & c & d & d\\
+				b & d & a & c & c\\
+				d & c & b & a & b\\
+				c & a & d & b & a\\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil otrzymany po dodaniu głosu typu \(dcba\)}
+			\label{tab:profil_dcba}
+		\end{table}
+	
+		\begin{figure}[h]
+			\centering
+			
+			\begin{tikzpicture}[
+				>=stealth,
+				thick,
+				vertex/.style={circle, draw, minimum size=1.2cm},
+				edge label/.style={draw=none, fill=none, inner sep=1pt}
+				]
+				
+				% Wierzchołki
+				\node[vertex] (a) at (0,6) {$a$};
+				\node[vertex] (b) at (6,6) {$b$};
+				\node[vertex] (c) at (0,0) {$c$};
+				\node[vertex] (d) at (6,0) {$d$};
+				
+				% relacje większościowe
+				\draw[->] (b) -- node[edge label, above] {$2$} (a);
+				\draw[->] (c) -- node[edge label, left] {$2$} (a);
+				
+				\draw[->] (a) -- node[edge label, sloped, above, pos=0.65] {$4$} (d);
+				
+				\draw[->] (d) -- node[edge label, right] {$6$} (b);
+				\draw[->] (d) -- node[edge label, below] {$8$} (c);
+				
+				\draw[->] (b) -- node[edge label, sloped, below, pos=0.65] {$16$} (c);
+				
+			\end{tikzpicture}
+			
+			\caption{Graf otrzymany po dodaniu głosu typu \(dcba\)}
+			\label{fig:graf_1_2}
+			
+		\end{figure}
 		
 		Symetria tego argumentu wynika z automorfizmu profilu \(R\), polegającego na przekształceniu etykiet alternatyw zgodnie z odwzorowaniem \(abcd \mapsto dcba\).
 		
-		Jeżeli \(m > 4\), do każdego profilu wyborców w \(R\) oraz do wszystkich dodatkowych wyborców użytych w dowodzie dodajemy nowe „złe” alternatywy \(x_1, x_2, \dots, x_{m-4}\) umieszczone na dole każdego rankingu. Z Lematu~1 wynika, że \(f\) wybiera w każdym kroku dowodu spośród zbioru \(\{a,b,c,d\}\), więc dowód przebiega identycznie jak wcześniej.
-		
-		Wynik istnienia dla \(n \leq 6\) został uzyskany metodami opisanymi w Sekcji~5.
+		Jeżeli \(\#K > 4\), do każdego profilu wyborców w \(R\) oraz do wszystkich dodatkowych wyborców użytych w dowodzie dodajemy nowe „złe” alternatywy \(x_1, x_2, \dots, x_m\) umieszczone na dole każdego rankingu. Z Lematu~~\ref{lemma:sat_1} wynika, że \(M\) wybiera w każdym kroku dowodu spośród zbioru \(\{a,b,c,d\}\), więc dowód przebiega identycznie jak wcześniej.
 	\end{proof}
+	
+	Wynik istnienia dla \(n \leq 6\) został uzyskany metodami opisanymi w~\cite{brandt2017sat}.
 	
 	\begin{theorem}
 		Nie istnieje metoda wyborcza spełniająca kryterium Kemeny'ego, która jednocześnie spełnia kryterium obecności dla
