@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,a4paper]{mwrep}
 
 \input{/home/tabaka/Documents/GitHub/Defs/defs.tex}
 
@@ -347,7 +347,124 @@
 		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny’ego, jeżeli istnieje ranking \(>\in \mathcal{K}(R)\), w którym \(a\) zajmuje pierwsze miejsce.
 	\end{definition}
 
+	\begin{definition}[Ranking i zwycięzca Kemeny’ego]
+		Niech \(\mathcal R\) oznacza zbiór wszystkich liniowych porządków na zbiorze kandydatów \(K\).
+		
+		Ranking \(\succ \in \mathcal R\) nazywamy rankingiem Kemeny’ego dla profilu \(R\), jeżeli maksymalizuje wartość
+		\[
+		\sum_{w \in W}
+		\#\{(a,b)\in K\times K \;:\; a \succ b \text{ oraz } a \succ_w b\}.
+		\]
+		
+		Zbiór wszystkich rankingów Kemeny’ego oznaczamy przez \(\mathcal K(R)\).
+		
+		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny’ego, jeżeli istnieje ranking
+		\[
+		\succ \in \mathcal K(R),
+		\]
+		w którym kandydat \(a\) zajmuje pierwsze miejsce.
+	\end{definition}
 
+	\begin{example}
+		Rozważmy profil preferencji \(R\) dany przez tabelę:
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|}
+				\hline
+				3 & 2 & 2\\
+				\hline
+				a & b & c\\
+				b & c & a\\
+				c & a & b\\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil preferencji dla metody Kemeny’ego}
+			\label{tab:kemeny_example}
+		\end{table}
+		
+		Policzmy marginesy większościowe:
+		\[
+		g_R(a,b)=3,
+		\qquad
+		g_R(b,c)=3,
+		\qquad
+		g_R(c,a)=1.
+		\]
+		
+		Otrzymujemy więc cykl Condorceta:
+		\[
+		a \succ_M b,
+		\qquad
+		b \succ_M c,
+		\qquad
+		c \succ_M a.
+		\]
+		
+		Aby wyznaczyć ranking Kemeny’ego, obliczamy dla każdego rankingu sumę marginesów zgodnych z tym rankingiem.
+		
+		Dla rankingu
+		\[
+		a \succ b \succ c
+		\]
+		otrzymujemy wartość:
+		\[
+		g_R(a,b)+g_R(a,c)+g_R(b,c).
+		\]
+		
+		Ponieważ
+		\[
+		g_R(a,c)=-g_R(c,a)=-1,
+		\]
+		dostajemy:
+		\[
+		3+(-1)+3=5.
+		\]
+		
+		Z kolei ranking przeciwny
+		\[
+		c \succ b \succ a
+		\]
+		otrzymuje wartość przeciwną:
+		\[
+		-5.
+		\]
+		
+		W istocie dla każdego rankingu \(>\) zachodzi:
+		\[
+		\operatorname{score}(>^{-1})
+		=
+		-\operatorname{score}(>),
+		\]
+		gdzie \(>^{-1}\) oznacza ranking odwrotny.
+		
+		Wystarczy więc analizować jedynie połowę wszystkich rankingów.
+		
+		W przedstawionym przykładzie największą wartość uzyskuje ranking
+		\[
+		a \succ b \succ c,
+		\]
+		a zatem jest on rankingiem Kemeny’ego.
+		
+		W konsekwencji jedynym zwycięzcą Kemeny’ego jest kandydat
+		\[
+		a.
+		\]
+		
+		Intuicyjnie metoda Kemeny’ego stara się zachować możliwie najwięcej silnych relacji większościowych. W tym przypadku relacje
+		\[
+		a \succ_M b
+		\qquad \text{oraz} \qquad
+		b \succ_M c
+		\]
+		mają większy margines niż relacja
+		\[
+		c \succ_M a,
+		\]
+		dlatego ranking Kemeny’ego „łamie” jedynie tę ostatnią relację.
+	\end{example}
 
 
 
@@ -1437,24 +1554,58 @@
 	\begin{theorem}
 		Nie istnieje metoda wyborcza spełniająca kryterium Kemeny'ego, która jednocześnie spełnia kryterium obecności dla
 		\[
-		|K| \geq 4
+		\#K \geq 4
 		\quad \text{oraz} \quad
-		|W| \geq 4.
+		\#W \geq 4.
 		\]
 	\end{theorem}
 	
 	\begin{proof}
-		Niech \(f\) będzie rozszerzeniem metody Kemeny’ego spełniającym warunek uczestnictwa.
+		Niech \(M\) będzie metodą wyborczą spełniającą kryterium Kemeny'ego oraz kryterium obecności.
 		
-		Rozważmy profil czterech wyborców \(R\) przedstawiony na Rysunku~2.
+		Rozważmy profil czterech wyborców \(R\) przedstawiony w Tabeli~\ref{tab:kemeny_1}.
 		
-		Przypuśćmy, że \(f(R)=d\). Wówczas usunięcie preferencji \(cbad\) z profilu \(R\) prowadzi do ważonego turnieju, w którym ranking \(adcb\) jest jedynym rankingiem Kemeny’ego (o wartości 12), a zatem \(a\) jest jedynym zwycięzcą Kemeny’ego, co przeczy warunkowi uczestnictwa.
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|c|}
+				\hline
+				1 & 1 & 1 & 1\\
+				\hline
+				a & d & c & b\\
+				b & a & d & c\\
+				c & b & a & d\\
+				d & c & b & a\\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil preferencji \(R\)}
+			\label{tab:kemeny_1}
+		\end{table}
+	
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{c|cccc}
+				\Rsh & a & b & c & d\\
+				\hline
+				a & - & 0 & 0 & 0\\
+				b & 0 & - & 0 & 0\\
+				c & 0 & 0 & - & 0\\
+				d & 0 & 0 & 0 & -\\
+			\end{array}
+			\]
+			\caption{Macierz marginesów większości dla profilu}
+			\label{tab:marginesy_kemeny}
+		\end{table}
 		
-		Analogicznie możemy wykluczyć pozostałe trzy możliwe wyniki dla profilu \(R\), rozważając sytuację, w której jeden z wyborców się wstrzymuje od głosowania. W każdym przypadku otrzymujemy jednoznacznego zwycięzcę Kemeny’ego oraz sprzeczność z warunkiem uczestnictwa.
+		Przypuśćmy, że \(M(R)=c\). Wówczas usunięcie wyborcy z preferencji \(cbad\) z profilu \(R\) prowadzi do ważonego turnieju, w którym ranking \(adcb\) jest jedynym rankingiem Kemeny'ego (o wartości 12), a zatem kandydat \(a\) jest jedynym zwycięzcą Kemeny'ego. Otrzymujemy sprzeczność z kryterium obecności.
 		
-		Argumenty te są identyczne, ponieważ profil \(R\) jest całkowicie symetryczny w tym sensie, że dla każdej pary alternatyw \(x\) i \(y\) istnieje automorfizm profilu \(R\), który odwzorowuje \(x\) na \(y\).
+		Analogicznie można wykluczyć pozostałe trzy możliwe wyniki dla profilu \(R\), rozważając sytuację, w której jeden z wyborców się wstrzymuje od głosowania. W każdym przypadku otrzymujemy jednoznacznego zwycięzcę Kemeny'ego oraz sprzeczność z kryterium obecności.
 		
-		Podobnie jak w Twierdzeniu~1, jeżeli \(m > 4\), do profilu \(R\) oraz do dodatkowych wyborców dodajemy nowe „złe” alternatywy \(x_1, x_2, \dots, x_{m-4}\) umieszczone na dole każdego rankingu. Z Lematu~1 wynika, że \(f\) wybiera w każdym kroku spośród zbioru \(\{a,b,c,d\}\), co kończy dowód.
+		Argumenty te są identyczne, ponieważ profil \(R\) jest całkowicie symetryczny w tym sensie, że dla każdej pary kandydatów \(x\) i \(y\) istnieje automorfizm profilu \(R\), który odwzorowuje \(x\) na \(y\).
+		
+		Podobnie jak w Twierdzeniu~1, jeżeli \(\#K > 4\), do profilu \(R\) oraz do dodatkowych wyborców dodajemy nowych kandydatów \(x_1, x_2, \dots, x_{\#K-4}\), umieszczone na dole każdego rankingu. Z Lematu~1 wynika, że \(M\) wybiera w każdym kroku spośród zbioru \(\{a,b,c,d\}\), co kończy dowód.
 	\end{proof}
 	
 	\begin{theorem}
@@ -1813,6 +1964,14 @@
 		\item \(\#A\) — liczność zbioru \(A\).
 	\end{itemize}
 	
-	\chapter*{Skorowidz}
+	\chapter*{Inne fragmenty do "wrzucenia" w prace}
+	
+	\begin{remark}
+		Suma marginesów większościowych
+		\[
+		\sum_{x\neq a} g_R(a,x)
+		\]
+		indukuje ten sam porządek kandydatów co metoda Bordy.
+	\end{remark}
 	
 \end{document}
