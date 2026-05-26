@@ -21,19 +21,17 @@
 		
 	\chapter*{Wstęp}
 	
-	\chapter*{Cel i zakres pracy}
-	
 	\newpage
 	
-	\chapter{Preliminaria}
+	\chapter{Wiadomości wstępne}
 	
 	\section{Podstawowe pojęcia i oznaczenia}
 	
-	W niniejszej pracy wprowadzamy podstawowe oznaczenia oraz pojęcia z zakresu teorii wyboru, które będą wykorzystywane w dalszej części pracy. Formalizacja ta umożliwia precyzyjne sformułowanie oraz analizę paradoksu nieobecności.
+	W tym rozdziale wprowadzamy podstawowe oznaczenia oraz pojęcia z zakresu teorii wyboru, które będą wykorzystywane w dalszej części pracy. Formalizacja ta umożliwia precyzyjne sformułowanie oraz analizę paradoksu nieobecności.
 	
 	Niech \(K\) oznacza zbiór kandydatów, przy czym \(\#K = m\), natomiast \(W\) oznacza zbiór wyborców, gdzie \(\#W = n\).
 	
-	\begin{definition}[Elektorat]
+	\begin{definition}[elektorat]
 		\label{def:elektorat}
 		Zbiorem wszystkich elektoratów nazywamy zbiór
 		\[
@@ -44,23 +42,23 @@
 	
 	\section{Preferencje jednostkowe}
 	
-	\begin{definition}[Relacja preferencji]
+	\begin{definition}[relacja preferencji]
 		\label{def:relacja-preferencji}
 		Relacją preferencji na zbiorze \(K\) nazywamy zupełny i przechodni porządek liniowy określony na \(K\).
 	\end{definition}
 	
 	Relacja preferencji opisuje indywidualne upodobania wyborcy względem kandydatów. Zupełność oznacza, że każda para kandydatów jest porównywalna, natomiast przechodniość zapewnia spójność preferencji.
 	
-	\begin{definition}[Relacja preferencji wyborcy]
+	\begin{definition}[relacja preferencji wyborcy]
 		\label{def:relacja-preferencji-wyborcy}
-		Dla każdego wyborcy \(w \in W\) jego relację preferencji oznaczamy przez \(\overset{w}{>}\). Zapis
+		Dla każdego wyborcy \(w \in W\) jego relację preferencji oznaczamy przez \(\overset{w}{\succ}\). Zapis
 		\[
-		a \overset{w}{>} b
+		a \overset{w}{\succ} b
 		\]
 		oznacza, że wyborca \(w\) preferuje kandydata \(a\) względem kandydata \(b\).
 	\end{definition}
 	
-	\begin{definition}[Przestrzeń relacji preferencji]
+	\begin{definition}[przestrzeń relacji preferencji]
 		\label{def:przestrzen-relacjo-preferencji}
 		Przestrzenią relacji preferencji na zbiorze \(K\) nazywamy zbiór wszystkich relacji preferencji na \(K\), oznaczany przez
 		\[
@@ -70,7 +68,7 @@
 	
 	Dla każdego wyborcy \(w \in W\) jego relacja preferencji należy do przestrzeni \(\mathcal{R}\), tj.
 	\[
-	\overset{w}{>} \in \mathcal{R}.
+	\overset{w}{\succ} \in \mathcal{R}.
 	\]
 	
 	Dla zwięzłości zapisu pomijamy indeks wyborcy, gdy nie prowadzi to do niejednoznaczności. Wówczas ciąg symboli
@@ -79,7 +77,7 @@
 	\]
 	oznacza relację preferencji postaci
 	\[
-	a \overset{w}{>} b \overset{w}{>} c \overset{w}{>} d.
+	a \overset{w}{\succ} b \overset{w}{\succ} c \overset{w}{\succ} d.
 	\]
 	
 	Równoważnie można ją przedstawić w postaci pionowej:
@@ -96,22 +94,23 @@
 	\end{array}
 	\]
 	
-	\begin{definition}[Słaba preferencja]
+	\begin{definition}[słaba preferencja]
 		\label{def:slaba-preferencja}
-		Niech \(\overset{w}{>}\) będzie relacją preferencji wyborcy \(w \in W\).
-		Relacją słabej preferencji związaną z \(\overset{w}{>}\) nazywamy relację \(\overset{w}{\geq}\) określoną wzorem
+		Niech \(\overset{w}{\succ}\) będzie relacją preferencji wyborcy \(w \in W\).
+		Relacją słabej preferencji związaną z \(\overset{w}{\succ}\) nazywamy relację \(\overset{w}{\succsim}\) określoną wzorem
 		\[
-		a \overset{w}{\geq} b
+		a \overset{w}{\succsim} b
 		\iff
-		a \overset{w}{>} b \ \text{lub}\ a = b.
+		a \overset{w}{\succ} b \ \text{lub}\ a \sim b.
 		\]
+		Mówimy wtedy, że wyborca \(w\) słabo preferuje kandydata \(a\) nad kandydatem \(b\).
 	\end{definition}
 	
 	W dalszej części pracy rozważamy ustalony elektorat \(V \in \mathcal{E}(W)\).
 	
 	\section{Profile preferencji}
 	
-	\begin{definition}[Profil preferencji]
+	\begin{definition}[profil preferencji]
 		\label{def:profil-preferencji}
 		Profilem preferencji na zbiorze wyborców \(W\) nazywamy funkcję
 		\[
@@ -125,7 +124,7 @@
 	\mathcal{R}^{W}.
 	\]
 	
-	W dalszej części pracy, dla przejrzystości zapisu, będziemy czasem posługiwać się przedstawieniem zagregowanym profilu preferencji. W takim ujęciu profil opisuje liczebność grup wyborców posiadających daną relację preferencji.
+	W dalszej części pracy, dla przejrzystości zapisu, będziemy czasem posługiwać się takim przedstawieniem profilu preferencji, w którym profil opisuje liczebność grup wyborców posiadających daną relację preferencji.
 	
 	\[
 	\begin{array}{|c|c|}
@@ -146,13 +145,13 @@
 	
 	\section{Model wyborczy}
 	
-	\begin{definition}[Model wyborczy]
+	\begin{definition}[model wyborczy]
 		\label{def:model-wyborczy}
 		Modelem wyborczym nazywamy parę uporządkowaną
 		\[
 		\Sigma = (V, R|_V),
 		\]
-		gdzie \(V \in \mathcal{E}(W)\) jest elektoratem, natomiast \(R \in \mathcal{R}^{W}\) jest profilem preferencji na zbiorze wszystkich wyborców.
+		przy czym \(V \in \mathcal{E}(W)\) jest elektoratem, natomiast \(R \in \mathcal{R}^{W}\) jest profilem preferencji na zbiorze wszystkich wyborców.
 		
 		Ograniczenie \(R|_V\) oznacza zawężenie profilu preferencji do wyborców należących do elektoratu \(V\).
 	\end{definition}
@@ -163,7 +162,7 @@
 		\item każdy dopuszczalny profil preferencji wyznacza pewien wynik wyborów.
 	\end{itemize}
 	
-	\begin{definition}[Metoda wyborcza]
+	\begin{definition}[metoda wyborcza]
 		\label{def:metoda-wyborcza}
 		Metodą wyborczą nazywamy funkcję
 		\[
@@ -172,15 +171,15 @@
 		która każdemu profilowi preferencji przyporządkowuje zbiór zwycięzców.
 	\end{definition}
 	
-	\begin{definition}[Metoda rozstrzygająca]
-		\label{def:metoda-rozstrzygajaca}
-		Metodę wyborczą \(M\) nazywamy rozstrzygającą, jeżeli dla każdego profilu preferencji wskazuje dokładnie jednego zwycięzcę, tj.
+	\begin{definition}[metoda decyzyjna]
+		\label{def:metoda-decyzyjna}
+		Metodę wyborczą \(M\) nazywamy decyzyjną, jeżeli dla każdego profilu preferencji wskazuje dokładnie jednego zwycięzcę, tj.
 		\[
 		M : \Sigma \to K.
 		\]
 	\end{definition}
 	
-	\begin{definition}[Metoda efektywna]
+	\begin{definition}[metoda efektywna]
 		\label{def:metoda-efektywna}
 		Metodę wyborczą nazywamy efektywną, jeżeli dla każdego dopuszczalnego profilu preferencji wyłania co najmniej jednego zwycięzcę.
 	\end{definition}
@@ -189,16 +188,16 @@
 	
 	W dalszej części pracy analizujemy wpływ udziału wyborców w głosowaniu na wynik wyborów. W tym celu wprowadzamy operacje modyfikacji elektoratu oraz odpowiadających im profili preferencji.
 	
-	Niech \(V \in \mathcal{E}(W)\) oraz \(R \in \mathcal{R}^{V}\). Zakładamy, że każdemu wyborcy \(w \in W\) przypisana jest relacja preferencji \(\overset{w}{>} \in \mathcal{R}\).
+	Niech \(V \in \mathcal{E}(W)\) oraz \(R \in \mathcal{R}^{V}\). Zakładamy, że każdemu wyborcy \(w \in W\) przypisana jest relacja preferencji \(\overset{w}{\succ} \in \mathcal{R}\).
 	
 	Dla \(w \in V\) definiujemy usunięcie wyborcy:
 	\[
-	R - w := R \setminus \{(w, \overset{w}{>})\} \in \mathcal{R}^{V \setminus \{w\}}.
+	R - w := R \setminus \{(w, \overset{w}{\succ})\} \in \mathcal{R}^{V \setminus \{w\}}.
 	\]
 	
 	Dla \(w \in W \setminus V\) definiujemy dodanie wyborcy:
 	\[
-	R + w := R \cup \{(w, \overset{w}{>})\} \in \mathcal{R}^{V \cup \{w\}}.
+	R + w := R \cup \{(w, \overset{w}{\succ})\} \in \mathcal{R}^{V \cup \{w\}}.
 	\]
 	
 	Dla \(k \in \mathbb{N}_+\) zapisujemy skrótowo:
@@ -207,7 +206,7 @@
 	\qquad
 	R - k \cdot w,
 	\]
-	gdzie oznacza to odpowiednio dodanie lub usunięcie \(k\) wyborców o relacji preferencji \(\overset{w}{>}\).
+	gdzie oznacza to odpowiednio dodanie lub usunięcie \(k\) wyborców o relacji preferencji \(\overset{w}{\succ}\).
 	
 	Wprowadzone operacje pozwalają analizować zależność wyniku wyborów od składu elektoratu.
 	
@@ -233,18 +232,18 @@
 	
 	\section{Kryteria wyborcze}
 	
-	\begin{definition}[Kandydat Condorceta]
+	\begin{definition}[kandydat Condorceta]
 		\label{def:kandydat-condorceta}
 		Niech \(R \in \mathcal{R}^{V}\) będzie profilem preferencji. Kandydat \(a \in K\) jest kandydatem Condorceta (zwycięzcą Condorceta), jeżeli w bezpośrednich porównaniach większościowych wygrywa z każdym innym kandydatem, tj.
 		\[
 		\forall b \in K,\ b \neq a \quad
-		\#\{w \in V : a \overset{w}{>} b\}
+		\#\{w \in V : a \overset{w}{\succ} b\}
 		>
-		\#\{w \in V : b \overset{w}{>} a\}.
+		\#\{w \in V : b \overset{w}{\succ} a\}.
 		\]
 	\end{definition}
 	
-	\begin{definition}[Kryterium Condorceta]
+	\begin{definition}[kryterium Condorceta]
 		\label{def:kryterium-condorceta}
 		Metoda wyborcza \(M\) spełnia kryterium Condorceta wtedy i tylko wtedy, gdy dla każdego profilu preferencji \(R\), jeśli istnieje kandydat Condorceta \(a \in K\), to jest on jedynym zwycięzcą wyłonionym przez metodę \(M\), tj.
 		\[
@@ -252,14 +251,14 @@
 		\]
 	\end{definition}
 	
-	\begin{definition}[Przegrany Condorceta]
+	\begin{definition}[przegrany Condorceta]
 		\label{def:przegrany-condorceta}
 		Niech \(R \in \mathcal{R}^{V}\). Kandydat \(a \in K\) jest przegranym Condorceta, jeżeli przegrywa z każdym innym kandydatem w porównaniach parami, tj.
 		\[
 		\forall b \in K,\ b \neq a \quad
-		\#\{w \in V : b \overset{w}{>} a\}
+		\#\{w \in V : b \overset{w}{\succ} a\}
 		>
-		\#\{w \in V : a \overset{w}{>} b\}.
+		\#\{w \in V : a \overset{w}{\succ} b\}.
 		\]
 	\end{definition}
 	
@@ -268,12 +267,12 @@
 	%begin{definition}[Kryterium obecności]
 	%	Metoda wyborcza \(M\) spełnia kryterium obecności, jeżeli każdy wyborca słabo preferuje udział w głosowaniu względem jego braku, tj.
 	%	\[
-	%	M(R) \overset{v}{\geq} M(R - v),
+	%	M(R) \overset{v}{\succsim} M(R - v),
 	%	\]
 	%	dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\), każdego elektoratu \(V \in \mathcal{E}(W)\) oraz każdego wyborcy \(v \in V\).
 	%\end{definition}
 	
-	\begin{definition}[Margines większości]
+	\begin{definition}[margines większości]
 		\label{def:margines-wiekszosci}
 		Dla profilu preferencji \(R\) funkcją marginesu większości nazywamy funkcję
 		\[
@@ -282,9 +281,9 @@
 		określoną wzorem
 		\[
 		g_R(a,b) =
-		\#\{w \in V : a \overset{w}{>} b\}
+		\#\{w \in V : a \overset{w}{\succ} b\}
 		-
-		\#\{w \in V : b \overset{w}{>} a\}.
+		\#\{w \in V : b \overset{w}{\succ} a\}.
 		\]
 	\end{definition}
 	
@@ -292,7 +291,7 @@
 	
 	[TODO - rozpisać własności funkcji marginesu większości]
 	
-	\begin{definition}[Zwycięzca Maximina]
+	\begin{definition}[zwycięzca Maximina]
 		\label{def:zwyciezca-maximina}
 		Kandydata \(a \in K\) nazywamy zwycięzcą Maximina, jeżeli maksymalizuje wartość
 		\[
@@ -300,7 +299,7 @@
 		\]
 	\end{definition}
 
-	\begin{definition}[Kryterium maximina]
+	\begin{definition}[kryterium maximina]
 		\label{def:kryterium_maximina}
 		Metoda wyborcza \(M\) spełnia kryterium maximina, jeżeli dla każdego profilu \(R \in \mathcal{R}^W\),
 		jeśli istnieje kandydat \(a \in K\) taki, że
@@ -315,7 +314,7 @@
 		to \(a \in M(R)\).
 	\end{definition}
 
-	\begin{definition}[Wartość minimalnego wyniku kandydata]
+	\begin{definition}[wartość minimalnego wyniku kandydata]
 		\label{def:wartosc-minimalnego-wyniku-kandydata}
 		Dla każdego kandydata \(k \in K\) definiujemy wartość
 		\[
@@ -327,7 +326,7 @@
 	Profil preferencji \(R\) indukuje ważony turniej skierowany \(T_R\), którego wierzchołkami są kandydaci, a waga krawędzi \((x,y)\) wynosi \(g_R(x,y)\).
 	% TODO: rozpisać przykładowy graf oraz go wyjaśnić
 	
-	\begin{definition}[Zbiór Kramera]
+	\begin{definition}[zbiór Kramera]
 		Zbiór Kramera \(K^\ast\) definiujemy jako zbiór wszystkich kandydatów maksymalizujących wartość ich najgorszego wyniku w porównaniach parami, tj.
 		\[
 		K^\ast = \{a \in K : m_a \ge m_k \ \text{dla każdego } k \in K\}.
@@ -336,18 +335,18 @@
 	
 	Innymi słowy, \(K^\ast\) jest zbiorem kandydatów o najmniejszej maksymalnej porażce w porównaniach parami.
 	
-	\begin{definition}[Zwycięzca Kemeny'ego]
-		Niech \(>\in \mathcal{R}\) będzie rankingiem Kemeny’ego, tj. relacją preferencji maksymalizującą funkcję
+	\begin{definition}[zwycięzca Kemeny'ego]
+		Niech \(\succ\in \mathcal{R}\) będzie rankingiem Kemeny’ego, tj. relacją preferencji maksymalizującą funkcję
 		\[
-		\sum_{w \in W} \#\{(a,b)\in K \times K \;:\; a > b \ \text{oraz}\ a \overset{w}{>} b\}.
+		\sum_{w \in W} \#\{(a,b)\in K \times K \;:\; a \succ b \ \text{oraz}\ a \overset{w}{\succ} b\}.
 		\]
 		
 		Zbiór wszystkich rankingów Kemeny’ego oznaczamy przez \(\mathcal{K}(R)\).
 		
-		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny’ego, jeżeli istnieje ranking \(>\in \mathcal{K}(R)\), w którym \(a\) zajmuje pierwsze miejsce.
+		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny’ego, jeżeli istnieje ranking \(\succ\in \mathcal{K}(R)\), w którym \(a\) zajmuje pierwsze miejsce.
 	\end{definition}
 
-	\begin{definition}[Ranking i zwycięzca Kemeny’ego]
+	\begin{definition}[ranking i zwycięzca Kemeny’ego]
 		Niech \(\mathcal R\) oznacza zbiór wszystkich liniowych porządków na zbiorze kandydatów \(K\).
 		
 		Ranking \(\succ \in \mathcal R\) nazywamy rankingiem Kemeny’ego dla profilu \(R\), jeżeli maksymalizuje wartość
@@ -366,6 +365,7 @@
 	\end{definition}
 
 	\begin{example}
+		[TODO - przerób to]
 		Rozważmy profil preferencji \(R\) dany przez tabelę:
 		
 		\begin{table}[h]
@@ -432,7 +432,7 @@
 		-5.
 		\]
 		
-		W istocie dla każdego rankingu \(>\) zachodzi:
+		W istocie dla każdego rankingu \(\succ\) zachodzi:
 		\[
 		\operatorname{score}(>^{-1})
 		=
@@ -575,7 +575,7 @@
 	
 	\section{Przykład paradoksu nieobecności}
 	
-	\begin{example}[Paradoks nieobecności dla procedury głosowań parami]
+	\begin{example}[paradoks nieobecności dla procedury głosowań parami]
 		Rozważmy procedurę głosowań parami ze statusem quo równym kandydatowi \(D\).
 		Agenda głosowań ma postać:
 		\[
@@ -625,7 +625,7 @@
 	
 	Poniższy przykład ilustruje występowanie tego zjawiska dla metody Copelanda.
 	
-	\begin{example}[Paradoks nieobecności dla metody Copelanda]
+	\begin{example}[paradoks nieobecności dla metody Copelanda]
 		Rozważmy profil preferencji:
 		\[
 		\begin{array}{|c|c|c|c|}
@@ -672,22 +672,22 @@
 	
 	\medskip
 	
-	\begin{definition}[Pozytywne kryterium obecności]
+	\begin{definition}[pozytywne kryterium obecności]
 		Metoda wyborcza \(M\) spełnia pozytywne kryterium obecności, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi:
 		
 		\[
-		\text{jeżeli } a \in M(R - w) \text{ oraz } a \overset{w}{\geq} b \ \text{dla każdego } b \in K,
+		\text{jeżeli } a \in M(R - w) \text{ oraz } a \overset{w}{\succsim} b \ \text{dla każdego } b \in K,
 		\text{ to } a \in M(R).
 		\]
 		
 		Innymi słowy, jeżeli kandydat najwyżej oceniany przez wyborcę \(w\) zostaje wybrany przy jego nieobecności, to pozostaje on zwycięzcą również przy jego udziale.
 	\end{definition}
 
-	\begin{definition}[Negatywne kryterium obecności]
+	\begin{definition}[negatywne kryterium obecności]
 		Metoda wyborcza \(M\) spełnia negatywne kryterium obecności, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi:
 		
 		\[
-		\text{jeżeli } a \in M(R) \text{ oraz } b \overset{w}{\geq} a \ \text{dla każdego } b \in K,
+		\text{jeżeli } a \in M(R) \text{ oraz } b \overset{w}{\succsim} a \ \text{dla każdego } b \in K,
 		\text{ to } a \in M(R - w).
 		\]
 		
@@ -696,10 +696,10 @@
 	
 	Formalnie własność tę ujmujemy następująco.
 	
-	\begin{definition}[Metoda odporna na nieobecność]
+	\begin{definition}[metoda odporna na nieobecność]
 		Metodę wyborczą \(M\) nazywamy odporną na nieobecność, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi
 		\[
-		M(R) \overset{w}{\geq} M(R - w).
+		M(R) \overset{w}{\succsim} M(R - w).
 		\]
 	\end{definition}
 	
@@ -752,7 +752,7 @@
 		Co więcej, ponieważ dla każdego \(k \neq a\) zachodzi \(m_k < m_a\), kandydat \(a\) jest jedynym maksymalizatorem tej wartości. A zatem \(a\) jest jedynym zwycięzcą metody maximina.
 	\end{proof}
 
-	\begin{theorem}[Istnienie metody Condorceta zgodnej z partycypacją dla \(\leq 3\) kandydatów]
+	\begin{theorem}[o istnienie metody Condorceta zgodnej z partycypacją dla \(\leq 3\) kandydatów]
 		Jeżeli liczba kandydatów nie przekracza trzech, to istnieje metoda wyborcza spełniająca kryterium Condorceta oraz jednocześnie pozytywne i negatywne kryterium obecności.
 	\end{theorem}
 	
@@ -802,7 +802,7 @@
 	\end{proof}
 
 	\begin{lemma}\label{lem:condorcet_obecnosc}
-		Załóżmy, że metoda \(M\) spełnia kryterium Condorceta oraz pozytywne kryterium obecności. Wówczas dla każdych różnych kandydatów \(a,b \in K\), każdego elektoratu \(W\) oraz każdego profilu preferencji \(> \in R^W\),
+		Załóżmy, że metoda \(M\) spełnia kryterium Condorceta oraz pozytywne kryterium obecności. Wówczas dla każdych różnych kandydatów \(a,b \in K\), każdego elektoratu \(W\) oraz każdego profilu preferencji \(\succ \in R^W\),
 		\[
 		m_a < 0
 		\qquad \text{oraz} \qquad
@@ -815,7 +815,7 @@
 	\end{lemma}
 	
 	\begin{proof}
-		Rozważmy dowolny elektorat \(W\), profil preferencji \(> \in R^W\) oraz kandydatów \(a,b \in K\), dla których
+		Rozważmy dowolny elektorat \(W\), profil preferencji \(\succ \in R^W\) oraz kandydatów \(a,b \in K\), dla których
 		\[
 		m_a < 0
 		\qquad \text{oraz} \qquad
@@ -1151,7 +1151,7 @@
 		
 		Dodajmy teraz ośmiu nowych wyborców, otrzymując profil \(R^V\). Każdy z nich preferuje:
 		\[
-		c > a > b = d  > x \quad \text{dla } x \in A \setminus \{a,b,c,d\}.
+		c \succ a \succ b \sim d  \succ x \quad \text{dla } x \in A \setminus \{a,b,c,d\}.
 		\]
 		
 		\begin{table}[h]
@@ -1252,7 +1252,7 @@
 		
 		Z definicji metody dyktatorskiej wynik wyborów jest zawsze równy najbardziej preferowanemu kandydatowi dyktatora. Oznacza to, że dla każdego profilu preferencji \(R\)
 		\[
-		M(R)=\max_{\overset{d}{>}} K.
+		M(R)=\max_{\overset{d}{\succ}} K.
 		\]
 		
 		Rozważmy dowolnego wyborcę \(v \in W\).
@@ -1260,7 +1260,7 @@
 		\begin{itemize}
 			\item Jeżeli \(v=d\), to po usunięciu dyktatora wynik wyborów albo pozostaje taki sam, albo zmienia się na mniej preferowany z punktu widzenia dyktatora. W szczególności
 			\[
-			M(R) \overset{d}{\geq} M(R-d).
+			M(R) \overset{d}{\succsim} M(R-d).
 			\]
 			
 			\item Jeżeli \(v\neq d\), to usunięcie wyborcy \(v\) nie wpływa na wynik wyborów, ponieważ wynik zależy wyłącznie od preferencji dyktatora. Zatem
@@ -1279,7 +1279,7 @@
 		
 		Bez straty ogólności załóżmy, że preferencje wyborcy \(w\) mają postać
 		\[
-		k_1 \overset{w}{>} k_2 \overset{w}{>} \dots \overset{w}{>} k_m.
+		k_1 \overset{w}{\succ} k_2 \overset{w}{\succ} \dots \overset{w}{\succ} k_m.
 		\]
 		
 		W metodzie Bordy kandydat znajdujący się na \(i\)-tej pozycji otrzymuje \(m-i\) punktów.
@@ -1335,7 +1335,7 @@
 		
 		Rozważmy teraz sytuację, w której grupa \(4\) wyborców o preferencjach
 		\[
-		b > c > d > a
+		b \succ c \succ d \succ a
 		\]
 		rezygnuje z udziału w głosowaniu. Otrzymujemy wówczas zmodyfikowany profil:
 		\[
@@ -1353,7 +1353,7 @@
 		
 		W tym przypadku zwycięzcą zostaje kandydat \(C\).
 		
-		Ponieważ dla wyborców o preferencjach \(b > c > d > a\) zachodzi
+		Ponieważ dla wyborców o preferencjach \(b \succ c \succ d \succ a\) zachodzi
 		\[
 		c \succ a,
 		\]
@@ -1379,13 +1379,13 @@
 	\begin{proof}
 		Dowód przeprowadzimy indukcyjnie względem liczby wyborców.
 		
-		\textbf{1 krok indukcyjny} Załóżmy, że elektorat składa się z jednego wyborcy, tj. \(R=\{(w,\overset{w}{>})\}\). Wówczas kandydatem Condorceta jest alternatywa znajdująca się na pierwszym miejscu w preferencjach wyborcy \(w\). Z kryterium Condorceta wynika więc, że metoda \(M\) wskazuje tę właśnie alternatywę jako zwycięzcę. Ponieważ każda alternatywa z \(B\) jest klasyfikowana niżej niż każda alternatywa z \(K\setminus B\), zwycięzca nie należy do \(B\).
+		\textbf{1 krok indukcyjny} Załóżmy, że elektorat składa się z jednego wyborcy, tj. \(R=\{(w,\overset{w}{\succ})\}\). Wówczas kandydatem Condorceta jest alternatywa znajdująca się na pierwszym miejscu w preferencjach wyborcy \(w\). Z kryterium Condorceta wynika więc, że metoda \(M\) wskazuje tę właśnie alternatywę jako zwycięzcę. Ponieważ każda alternatywa z \(B\) jest klasyfikowana niżej niż każda alternatywa z \(K\setminus B\), zwycięzca nie należy do \(B\).
 		
 		\textbf{2 krok indukcyjny} Załóżmy, że teza zachodzi dla każdego profilu złożonego z \(n-1\) wyborców, gdzie \(n \geq 2\), i rozważmy profil \(R\) złożony z \(n\) wyborców. Niech \(v \in V\) będzie dowolnym wyborcą.
 		
 		Z warunku uczestnictwa otrzymujemy
 		\[
-		M(R) \overset{v}{\geq} M(R-v).
+		M(R) \overset{v}{\succsim} M(R-v).
 		\]
 		
 		Przypuśćmy nie wprost, że \(M(R)\in B\). Ponieważ każdy kandydat spoza zbioru \(B\) jest przez wyborcę \(v\) oceniany wyżej niż każdy kandydat należący do \(B\), z powyższej nierówności wynika, że również \(M(R-v)\in B\).
@@ -1796,7 +1796,7 @@
 	
 	Prowadzi to do naturalnego wzmocnienia rozważanego zjawiska.
 	
-	\begin{definition}[Silny paradoks nieobecności]
+	\begin{definition}[silny paradoks nieobecności]
 		Mówimy, że metoda wyborcza \(M\) jest podatna na silny paradoks nieobecności, jeżeli istnieje profil preferencji \(R \in \mathcal{R}^{V}\), grupa wyborców \(S \subseteq V\) oraz kandydat \(a \in K\), taki że:
 		\begin{itemize}
 			\item kandydat \(a\) jest najbardziej preferowaną alternatywą dla wszystkich wyborców z \(S\),
@@ -1869,7 +1869,7 @@
 	
 	Niech \(q \in \left[\tfrac{1}{2},1\right]\). Mówimy, że kandydat \(a\) dominuje kandydata \(b\) w sensie \(q\)-większości, jeżeli
 	\[
-	\#\{w \in V : a \overset{w}{>} b\} \ge q \cdot \#V.
+	\#\{w \in V : a \overset{w}{\succ} b\} \ge q \cdot \#V.
 	\]
 	
 	Zbiór kandydatów niedominowanych definiujemy jako
@@ -1941,6 +1941,8 @@
 	\begin{itemize}
 		\item \(W\) — zbiór wszystkich wyborców, \(\#W = n\),
 		\item \(K\) — zbiór wszystkich kandydatów, \(\#K = m\),
+
+		\item \(\#A\) — liczność zbioru \(A\).
 		
 		\item \(\mathcal{P}(W)\) — zbiór potęgowy zbioru \(W\),
 		\item \(\mathcal{E}(W) := \mathcal{P}(W) \setminus \{\emptyset\}\) — zbiór wszystkich elektoratów (niepustych podzbiorów zbioru \(W\)),
@@ -1948,8 +1950,12 @@
 		\item \(\mathcal{R}\) — zbiór wszystkich relacji preferencji na zbiorze \(K\),
 		\item \(\mathcal{R}^{V}\) — zbiór wszystkich profili preferencji określonych na elektoracie \(V\),
 		
-		\item \(\overset{w}{>}\) — relacja ścisłej preferencji wyborcy \(w \in W\),
-		\item \(\overset{w}{\geq}\) — relacja słabej preferencji wyborcy \(w \in W\),
+		\item \(\overset{w}{\succ}\) — relacja ścisłej preferencji wyborcy \(w \in W\),
+		\item \(\overset{w}{\sim}\) — relacja równej preferencji wyborcy \(w \in W\),
+		\item \(\overset{w}{\succcurlyeq}\) — relacja słabej preferencji wyborcy \(w \in W\),
+		
+		\Pytanie{Który ze znaków najlepiej opisuje słabą relację? 
+		$$\succeq\qquad\succcurlyeq\qquad\succsim$$}
 		
 		\item \(R : V \to \mathcal{R}\) — profil preferencji na elektoracie \(V\),
 		\item \(\Sigma = (V, R)\) — model wyborczy,
@@ -1961,7 +1967,7 @@
 		
 		\item \(T_R\) — ważony turniej indukowany przez profil preferencji \(R\),
 		
-		\item \(\#A\) — liczność zbioru \(A\).
+		
 	\end{itemize}
 	
 	\chapter*{Inne fragmenty do "wrzucenia" w prace}
