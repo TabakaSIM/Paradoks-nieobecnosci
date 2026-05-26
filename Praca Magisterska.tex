@@ -25,6 +25,8 @@
 	
 	\chapter{Wiadomości wstępne}
 	
+	\Komentarz{Czy musi się znajdować tutaj 'rozdział'?}
+	
 	\section{Podstawowe pojęcia i oznaczenia}
 	
 	W tym rozdziale wprowadzamy podstawowe oznaczenia oraz pojęcia z zakresu teorii wyboru, które będą wykorzystywane w dalszej części pracy. Formalizacja ta umożliwia precyzyjne sformułowanie oraz analizę paradoksu nieobecności.
@@ -55,7 +57,7 @@
 		\[
 		a \overset{w}{\succ} b
 		\]
-		oznacza, że wyborca \(w\) preferuje kandydata \(a\) względem kandydata \(b\).
+		oznacza, że wyborca \(w\) silnie preferuje kandydata \(a\) względem kandydata \(b\).
 	\end{definition}
 	
 	\begin{definition}[przestrzeń relacji preferencji]
@@ -101,10 +103,12 @@
 		\[
 		a \overset{w}{\succsim} b
 		\iff
-		a \overset{w}{\succ} b \ \text{lub}\ a \sim b.
+		a \overset{w}{\succ} b \ \text{lub}\ a \overset{w}{\sim} b,
 		\]
+		przy czym zapis \(a \overset{w}{\sim} b\) oznacza, że wyborca \(w\) jest obojętny pomiędzy kandydatami \(a\) i \(b\).
 		Mówimy wtedy, że wyborca \(w\) słabo preferuje kandydata \(a\) nad kandydatem \(b\).
 	\end{definition}
+	[TODO - czy to jest potrzebne?]
 	
 	W dalszej części pracy rozważamy ustalony elektorat \(V \in \mathcal{E}(W)\).
 	
@@ -124,24 +128,34 @@
 	\mathcal{R}^{W}.
 	\]
 	
-	W dalszej części pracy, dla przejrzystości zapisu, będziemy czasem posługiwać się takim przedstawieniem profilu preferencji, w którym profil opisuje liczebność grup wyborców posiadających daną relację preferencji.
+	Dla przejrzystości dalszych rozważań profile preferencji będziemy przedstawiać w postaci tabel opisujących liczebności grup wyborców posiadających dane relacje preferencji. Przykładowy profil przedstawiono w Tabeli~\ref{tab:przyklad_profilu}.
 	
+	\begin{table}[h]
+		\centering
+		\[
+		\begin{array}{|c|c|}
+			\hline
+			1 & 3\\
+			\hline
+			a & d\\
+			b & c\\
+			c & b\\
+			d & a\\
+			\hline
+		\end{array}
+		\]
+		\caption{Przykładowy profil preferencji}
+		\label{tab:przyklad_profilu}
+	\end{table}
+	
+	Pierwsza kolumna oznacza jednego wyborcę o preferencjach
 	\[
-	\begin{array}{|c|c|}
-		\hline
-		1 & 2\\
-		\hline
-		A & D\\
-		B & C\\
-		C & B\\
-		D & A\\
-		\hline
-	\end{array}
+	a \succ b \succ c \succ d,
 	\]
-	
-	W powyższym przykładzie pierwszy blok oznacza jednego wyborcę o preferencjach
-	\(A \succ B \succ C \succ D\), natomiast drugi blok oznacza dwóch wyborców o preferencjach
-	\(D \succ C \succ B \succ A\).
+	natomiast druga kolumna oznacza trzech wyborców o preferencjach
+	\[
+	d \succ c \succ b \succ a.
+	\]
 	
 	\section{Model wyborczy}
 	
@@ -173,10 +187,7 @@
 	
 	\begin{definition}[metoda decyzyjna]
 		\label{def:metoda-decyzyjna}
-		Metodę wyborczą \(M\) nazywamy decyzyjną, jeżeli dla każdego profilu preferencji wskazuje dokładnie jednego zwycięzcę, tj.
-		\[
-		M : \Sigma \to K.
-		\]
+		Metodę wyborczą \(M\) nazywamy decyzyjną, jeżeli dla każdego profilu preferencji wskazuje dokładnie jednego zwycięzcę.
 	\end{definition}
 	
 	\begin{definition}[metoda efektywna]
@@ -230,7 +241,7 @@
 	%	Innymi słowy, metoda rozstrzygająca nie dopuszcza remisów ani zbioru współzwycięzców, lecz zawsze wskazuje jednego kandydata jako wynik wyborów.
 	%\end{definition}
 	
-	\section{Kryteria wyborcze}
+	\section{Kryterium Condorceta}
 	
 	\begin{definition}[kandydat Condorceta]
 		\label{def:kandydat-condorceta}
@@ -261,19 +272,120 @@
 		\#\{w \in V : a \overset{w}{\succ} b\}.
 		\]
 	\end{definition}
+
+	\begin{definition}[kryterium przegranego Condorceta]
+		\label{def:kryterium-przegranego-condorceta}
+		Metoda wyborcza \(M\) spełnia kryterium przegranego Condorceta wtedy i tylko wtedy, gdy dla każdego profilu preferencji \(R\), jeśli istnieje przegrany Condorceta \(a \in K\), to kandydat ten nie należy do zbioru zwycięzców wyłonionych przez metodę \(M\), tj.
+		\[
+		a \notin M(R).
+		\]
+	\end{definition}
 	
 	Kandydat będący przegranym Condorceta nie wygrywa żadnego porównania większościowego i stanowi naturalne przeciwieństwo zwycięzcy Condorceta.
 	
-	%begin{definition}[Kryterium obecności]
-	%	Metoda wyborcza \(M\) spełnia kryterium obecności, jeżeli każdy wyborca słabo preferuje udział w głosowaniu względem jego braku, tj.
-	%	\[
-	%	M(R) \overset{v}{\succsim} M(R - v),
-	%	\]
-	%	dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\), każdego elektoratu \(V \in \mathcal{E}(W)\) oraz każdego wyborcy \(v \in V\).
-	%\end{definition}
+	\begin{example}
+		Rozważmy profil preferencji przedstawiony w Tabeli~\ref{tab:condorcet_przyklad}.
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|}
+				\hline
+				2 & 3 & 2\\
+				\hline
+				a & b & c\\
+				b & c & b\\
+				c & a & a\\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil preferencji dla trzech kandydatów}
+			\label{tab:condorcet_przyklad}
+		\end{table}
+		
+		W celu wyznaczenia relacji większościowych porównujemy kandydatów parami. Dla przykładu, w Tabeli~\ref{tab:porownanie_ab} wyróżniono pozycje kandydatów \(a\) oraz \(b\).
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|}
+				\hline
+				2 & 3 & 2\\
+				\hline
+				\mathbf{a} & \mathbf{b} & c\\
+				\mathbf{b} & c & \mathbf{b}\\
+				c & \mathbf{a} & \mathbf{a}\\
+				\hline
+			\end{array}
+			\]
+			\caption{Porównanie większościowe kandydatów \(a\) i \(b\)}
+			\label{tab:porownanie_ab}
+		\end{table}
+		
+		Otrzymujemy następujące wyniki porównań większościowych:
+		\[
+		b \text{ pokonuje } a \text{ stosunkiem głosów } 5:2,
+		\]
+		\[
+		a \text{ pokonuje } c \text{ stosunkiem głosów } 4:3,
+		\]
+		\[
+		b \text{ pokonuje } c \text{ stosunkiem głosów } 5:2.
+		\]
+		
+		Otrzymujemy więc relację większościową:
+		\[
+		b \succ a \succ c.
+		\]
+		
+		Ponieważ kandydat \(b\) wygrywa z każdym innym kandydatem w bezpośrednich porównaniach większościowych, jest kandydatem Condorceta. Z kolei kandydat \(c\) przegrywa z każdym innym kandydatem, a więc jest przegranym Condorceta.
+	\end{example}
+
+	\begin{example}[paradox Condorceta]
+		Rozważmy profil preferencji przedstawiony w Tabeli~\ref{tab:rps_condorcet}.
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{|c|c|c|}
+				\hline
+				2 & 3 & 2\\
+				\hline
+				a & b & c\\
+				b & c & a\\
+				c & a & b\\
+				\hline
+			\end{array}
+			\]
+			\caption{Profil preferencji typu kamień–papier–nożyce}
+			\label{tab:rps_condorcet}
+		\end{table}
+		
+		Otrzymujemy następujące porównania parami:
+		\[
+		a \succ b \quad (4:3),
+		\]
+		\[
+		b \succ c \quad (5:2),
+		\]
+		\[
+		c \succ a \quad (5:2).
+		\]
+		
+		Zatem relacja większościowa ma cykliczną postać:
+		\[
+		a \succ b \succ c \succ a.
+		\]
+		
+		W szczególności otrzymujemy błędne koło preferencji określane jako cykl condorcetowski \cite{rzazewski2014}.
+	\end{example}
+
+	\section{Kryterium maximina}
+	
+	\Komentarz{Dalej pozostał problem "maximina". Może faktycznie zapisze to jako maxi-mina.}
 	
 	\begin{definition}[margines większości]
-		\label{def:margines-wiekszosci}
+		\label{def:magines-wiekszosci}
 		Dla profilu preferencji \(R\) funkcją marginesu większości nazywamy funkcję
 		\[
 		g_R : K \times K \to \mathbb{Z},
@@ -281,38 +393,42 @@
 		określoną wzorem
 		\[
 		g_R(a,b) =
-		\#\{w \in V : a \overset{w}{\succ} b\}
+		\#\{w \in W : a \overset{w}{\succ} b\}
 		-
-		\#\{w \in V : b \overset{w}{\succ} a\}.
-		\]
-	\end{definition}
-	
-	Funkcja \(g_R\) mierzy przewagę jednego kandydata nad drugim w porównaniach parami.
-	
-	[TODO - rozpisać własności funkcji marginesu większości]
-	
-	\begin{definition}[zwycięzca Maximina]
-		\label{def:zwyciezca-maximina}
-		Kandydata \(a \in K\) nazywamy zwycięzcą Maximina, jeżeli maksymalizuje wartość
-		\[
-		\min_{k \in K \setminus \{a\}} g_R(a,k),
+		\#\{w \in W : b \overset{w}{\succ} a\}.
 		\]
 	\end{definition}
 
-	\begin{definition}[kryterium maximina]
-		\label{def:kryterium_maximina}
-		Metoda wyborcza \(M\) spełnia kryterium maximina, jeżeli dla każdego profilu \(R \in \mathcal{R}^W\),
-		jeśli istnieje kandydat \(a \in K\) taki, że
-		\[
-		a \in \left\{ x \in K :
-		\forall y \in K,\; x\neq y, \;
-		\min_{k \in K \setminus \{x\}} g_R(x,k)
-		\ge
-		\min_{k \in K \setminus \{y\}} g_R(y,k)
-		\right\},
-		\]
-		to \(a \in M(R)\).
-	\end{definition}
+	Funkcja \(g_R\) mierzy przewagę jednego kandydata nad drugim w porównaniach parami.
+	
+	\begin{lemma}[Własności funkcji marginesu większości]
+		\label{lem:wlasnosci-marginesu}
+		Dla dowolnego profilu preferencji \(R\) oraz kandydatów \(a,b,c \in K\) zachodzą następujące własności funkcji \(g_R\):
+		
+		\begin{enumerate}
+			
+			\item \textbf{Antysymetryczność:}
+			\[
+			g_R(a,b) = - g_R(b,a).
+			\]
+			
+			\item \textbf{Ograniczoność wartości:}
+			\[
+			- |W| \leq g_R(a,b) \leq |W|.
+			\]
+			
+			\item \textbf{Neutralność w porównaniu identycznych kandydatów:}
+			\[
+			g_R(a,a) = 0.
+			\]
+			
+			\item \textbf{Zależność od relacji większościowej:}
+			\[
+			g_R(a,b) > 0 \iff a \text{ pokonuje } b \text{ w porównaniu większościowym}.
+			\]
+			
+		\end{enumerate}
+	\end{lemma}
 
 	\begin{definition}[wartość minimalnego wyniku kandydata]
 		\label{def:wartosc-minimalnego-wyniku-kandydata}
@@ -320,11 +436,195 @@
 		\[
 		m_k := \min_{x \in K \setminus \{k\}} g_R(k,x).
 		\]
-		Wartość \(m_k\) interpretuje się jako najsłabszy (najmniej korzystny) wynik kandydata \(k\) w porównaniach parami.
+		Liczba \(m_k\) jest najsłabszym (najmniej korzystnym) wynikiem kandydata \(k\) w porównaniach parami.
 	\end{definition}
 	
-	Profil preferencji \(R\) indukuje ważony turniej skierowany \(T_R\), którego wierzchołkami są kandydaci, a waga krawędzi \((x,y)\) wynosi \(g_R(x,y)\).
-	% TODO: rozpisać przykładowy graf oraz go wyjaśnić
+	
+
+	\begin{definition}[ważony turniej większościowy]
+		Niech \(R\) będzie profilem preferencji na zbiorze kandydatów \(K\).
+		Profil \(R\) indukuje ważony turniej skierowany \(T_R\), którego:
+		\begin{itemize}
+			\item wierzchołkami są kandydaci \(K\),
+			\item każdej uporządkowanej parze \((x,y)\) przypisujemy krawędź skierowaną z wagą \(g_R(x,y)\).
+		\end{itemize}
+	\end{definition}
+
+	\begin{example}[ważony turniej większościowy]
+		\label{przyklad:truniej-wiekszosciowy}
+		Rozważmy profil preferencji \(R\):
+		\[
+		\begin{array}{|c|c|c|c|}
+			\hline
+			2 & 1 & 1 & 1\\
+			\hline
+			a & b & c & d\\
+			b & c & a & a\\
+			c & a & b & b\\
+			d & d & d & c\\
+			\hline
+		\end{array}
+		\]
+		
+		Otrzymujemy następujące marginesy:
+		\[
+		g_R(a,b)=2,\quad g_R(a,c)=1,\quad g_R(a,d)=1,
+		\]
+		\[
+		g_R(b,c)=0,\quad g_R(b,d)=1,\quad g_R(c,d)=1.
+		\]
+		
+		Marginesy te możemy zapisać w postaci tabeli~\ref{tab:tabela_marginesow}.
+		
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{c|cccc}
+				g_R(x,y) & a & b & c & d\\
+				\hline
+				a & - & 2 & 1 & 1\\
+				b & -2 & - & 0 & 1\\
+				c & -1 & 0 & - & 1\\
+				d & -1 & -1 & -1 & -
+			\end{array}
+			\]
+			\caption{Macierz marginesów większości profilu \(R\)}
+			\label{tab:tabela_marginesow}
+		\end{table}
+	
+		Macierz z Tabeli~\ref{tab:tabela_marginesow} stanowi algebraiczną reprezentację ważonego turnieju, który indukowany jest przez profil \(R\). Indukowany ważony turniej \(T_R\) przedstawiono na Rysunku~\ref{fig:graf_turniej}.
+		
+		\begin{figure}[ht]
+			\centering
+			
+			\begin{tikzpicture}[
+				>=stealth,
+				thick,
+				vertex/.style={circle, draw, minimum size=1.2cm},
+				edge label/.style={draw=none, fill=none, inner sep=1pt}
+				]
+				
+				% Wierzchołki
+				\node[vertex] (a) at (0,6) {$a$};
+				\node[vertex] (b) at (6,6) {$b$};
+				\node[vertex] (c) at (0,0) {$c$};
+				\node[vertex] (d) at (6,0) {$d$};
+				
+				% krawędzie (majority relations)
+				\draw[->] (a) -- node[edge label, above] {$2$} (b);
+				\draw[->] (a) -- node[edge label, left] {$1$} (c);
+				
+				\draw[->] (a) -- node[edge label, sloped, above, pos=0.65] {$1$} (d);
+				
+				\draw[->] (b) -- node[edge label, right] {$1$} (d);
+				\draw[->] (c) -- node[edge label, above] {$1$} (d);	
+			\end{tikzpicture}
+			\caption{Graf większościowy dla profilu \(R\)}
+			\label{fig:graf_turniej}
+		\end{figure}
+	
+		Strzałki w grafie reprezentują relacje większościowe między kandydatami: skierowanie krawędzi od \(x\) do \(y\) oznacza, że kandydat \(x\) pokonuje kandydata \(y\) w porównaniu parami. W przypadku braku strzałki między dwoma kandydatami mamy remis, tj. \(g_R(x,y)=0\).
+		
+		Z przedstawionego grafu można również bezpośrednio odczytać strukturę Condorcetowską profilu: kandydat \(a\) jest zwycięzcą Condorceta, natomiast kandydat \(d\) jest przegranym Condorceta.
+	\end{example}
+		
+	\begin{definition}[zwyciężca maximina]
+		Kandydata \(a \in K\) nazywamy zwycięzcą maximina, jeżeli maksymalizuje wartość
+		\[
+		\min_{k \in K \setminus \{a\}} g_R(a,k)
+		\]
+		przyjmuje wartość największą spośród wszystkich kandydatów z \(K\).
+	\end{definition}
+
+	Metodę która wybiera zwycięzców jako zbiór Kramera nazywamy metodą maximina.
+	
+	\begin{example}[zwycięzca Maximina]
+		Rozważmy profil preferencji \(R\):
+		\[
+		\begin{array}{|c|c|c|c|}
+			\hline
+			2 & 3 & 3 & 1\\
+			\hline
+			a & b & c & d\\
+			c & a & d & b\\
+			b & c & b & c\\
+			d & d & a & a\\
+			\hline
+		\end{array}
+		\]
+		
+		Otrzymujemy macierz marginesów:
+		\begin{table}[h]
+			\centering
+			\[
+			\begin{array}{c|cccc|c}
+				g_R(x,y) & a & b & c & d & m_x\\
+				\hline
+				a & - & \textbf{-5} & 1 & 1 & -5\\
+				b & 5 & - & \textbf{-1} & 1 & -1\\
+				c & \textbf{-1} & 1 & - & 7 & -1\\
+				d & -1 & -1 & \textbf{-7} & - & -7
+			\end{array}
+			\]
+			\caption{Macierz marginesów większości profilu \(R\)}
+		\end{table}
+		
+		Zatem kandydaci \(b\) i \(c\) maksymalizują wartość minimalną wyniku i są zwyciężcami maximina.
+	\end{example}
+	
+	\begin{wniosek}
+		Każdy zwycięzca Condorceta jest zwycięzcą maximina.
+	\end{wniosek}
+	
+	\begin{proof}
+		Załóżmy, że \(a\) jest zwycięzcą Condorceta, tzn.
+		\[
+		g_R(a,x) > 0 \quad \text{dla każdego } x \neq a.
+		\]
+		Z antysymetryczności marginesu większości mamy
+		\[
+		g_R(x,a) = -g_R(a,x) < 0 \quad \text{dla każdego } x \neq a.
+		\]
+		Stąd dla każdego \(x \neq a\) istnieje kandydat \(a\), taki że
+		\[
+		g_R(x,a) < 0,
+		\]
+		a więc
+		\[
+		m_x = \min_{y \neq x} g_R(x,y) \le g_R(x,a) < 0.
+		\]
+		Zatem \(m_x < 0\) dla każdego \(x \neq a\).
+		
+		Ponadto
+		\[
+		m_a = \min_{y \neq a} g_R(a,y) > 0,
+		\]
+		co kończy dowód.
+	\end{proof}
+	
+	W rozważanym wcześniej przykładzie~\ref{przyklad:truniej-wiekszosciowy}, kandydat \(a\) jest zwycięzcą Condorceta oraz spełnia on warunek
+	
+	\[
+	m_a = 1 > 0,
+	\]
+	czyli kandydat \(a\) jest zwycięzcą maximina.
+	
+	Natomiast dla pozostałych kandydatów w tym przykładzie zachodzi
+	\[
+	m_b = -2, \qquad
+	m_c = -1, \qquad
+	m_d = -1,
+	\]
+	co pokazuje, że kandydaci niebędący zwycięzcą Condorceta mają ujemne wartości minimalnego wyniku.
+	
+	\begin{definition}[kryterium maximina]
+		\label{def:kryterium_maximina}
+		Metoda wyborcza \(M\) spełnia kryterium maximina, jeżeli dla każdego profilu \(R \in \mathcal{R}^W\), jeśli \(a\) jest zwyciężcą maximina, to \(M(R) = a\).
+	\end{definition}
+
+	\Komentarz{Metoda maximina \(\neq\) kryterium maximina. Musze to prawdopodobnie rozdzielić.
+	
+	Umieścić w dobrym miejscu w pracy definicje zbioru Kramera.}
 	
 	\begin{definition}[zbiór Kramera]
 		Zbiór Kramera \(K^\ast\) definiujemy jako zbiór wszystkich kandydatów maksymalizujących wartość ich najgorszego wyniku w porównaniach parami, tj.
@@ -335,18 +635,10 @@
 	
 	Innymi słowy, \(K^\ast\) jest zbiorem kandydatów o najmniejszej maksymalnej porażce w porównaniach parami.
 	
-	\begin{definition}[zwycięzca Kemeny'ego]
-		Niech \(\succ\in \mathcal{R}\) będzie rankingiem Kemeny’ego, tj. relacją preferencji maksymalizującą funkcję
-		\[
-		\sum_{w \in W} \#\{(a,b)\in K \times K \;:\; a \succ b \ \text{oraz}\ a \overset{w}{\succ} b\}.
-		\]
-		
-		Zbiór wszystkich rankingów Kemeny’ego oznaczamy przez \(\mathcal{K}(R)\).
-		
-		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny’ego, jeżeli istnieje ranking \(\succ\in \mathcal{K}(R)\), w którym \(a\) zajmuje pierwsze miejsce.
-	\end{definition}
-
-	\begin{definition}[ranking i zwycięzca Kemeny’ego]
+	\section{Kryterium Kemenego}
+	
+	\begin{definition}[ranking Kemeny’ego]
+		\label{def:ranking-kemeny}
 		Niech \(\mathcal R\) oznacza zbiór wszystkich liniowych porządków na zbiorze kandydatów \(K\).
 		
 		Ranking \(\succ \in \mathcal R\) nazywamy rankingiem Kemeny’ego dla profilu \(R\), jeżeli maksymalizuje wartość
@@ -355,9 +647,16 @@
 		\#\{(a,b)\in K\times K \;:\; a \succ b \text{ oraz } a \succ_w b\}.
 		\]
 		
-		Zbiór wszystkich rankingów Kemeny’ego oznaczamy przez \(\mathcal K(R)\).
-		
-		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny’ego, jeżeli istnieje ranking
+		Zbiór wszystkich rankingów Kemeny’ego dla profilu \(R\) oznaczamy przez \(\mathcal K(R)\).
+	\end{definition}
+
+	\Komentarz{Zapis poniżej \[
+		\succ \in \mathcal K(R),
+		\] jest fatalny i należy go poprawić.}
+	
+	\begin{definition}[zwycięzca Kemeny’ego]
+		\label{def:zwyciezca-kemeny}
+		Kandydata \(a \in K\) nazywamy zwycięzcą Kemeny’ego dla profilu \(R\), jeżeli istnieje ranking
 		\[
 		\succ \in \mathcal K(R),
 		\]
@@ -365,8 +664,8 @@
 	\end{definition}
 
 	\begin{example}
-		[TODO - przerób to]
-		Rozważmy profil preferencji \(R\) dany przez tabelę:
+		\label{przyklad:kemeny}
+		Rozważmy profil preferencji dany przez tabelę:
 		
 		\begin{table}[h]
 			\centering
@@ -384,188 +683,81 @@
 			\caption{Profil preferencji dla metody Kemeny’ego}
 			\label{tab:kemeny_example}
 		\end{table}
-		
-		Policzmy marginesy większościowe:
+	
+		Otrzymujemy następujące porównania parami:
 		\[
-		g_R(a,b)=3,
-		\qquad
-		g_R(b,c)=3,
-		\qquad
-		g_R(c,a)=1.
+		a \succ b \quad (5:2),
+		\]
+		\[
+		c \succ a \quad (4:3),
+		\]
+		\[
+		b \succ c \quad (5:2).
 		\]
 		
-		Otrzymujemy więc cykl Condorceta:
+		Rozważmy ranking
 		\[
-		a \succ_M b,
-		\qquad
-		b \succ_M c,
-		\qquad
-		c \succ_M a.
+		a \succ b \succ c.
 		\]
 		
-		Aby wyznaczyć ranking Kemeny’ego, obliczamy dla każdego rankingu sumę marginesów zgodnych z tym rankingiem.
+		Przeliczamy ile wyborców zgadza się z preferencjami
+		\[a \succ b, \qquad b\succ c, \qquad a \succ c\],
+		oraz wartości te sumujemy. Wówczas wartość tego porządku wynosi
+		\[
+		5 + 3 + 5 = 13,
+		\]
+		po przeliczeniu wszystkich porządków otrzymujemy:
 		
-		Dla rankingu
 		\[
-		a \succ b \succ c
-		\]
-		otrzymujemy wartość:
-		\[
-		g_R(a,b)+g_R(a,c)+g_R(b,c).
-		\]
-		
-		Ponieważ
-		\[
-		g_R(a,c)=-g_R(c,a)=-1,
-		\]
-		dostajemy:
-		\[
-		3+(-1)+3=5.
-		\]
-		
-		Z kolei ranking przeciwny
-		\[
-		c \succ b \succ a
-		\]
-		otrzymuje wartość przeciwną:
-		\[
-		-5.
+		\begin{array}{c|c}
+			\text{Ranking} & \text{Wartość Kemeny’ego}\\
+			\hline
+			a \succ b \succ c & 13\\
+			a \succ c \succ b & 10\\
+			b \succ a \succ c & 10\\
+			b \succ c \succ a & 11\\
+			c \succ a \succ b & 11\\
+			c \succ b \succ a & 8
+		\end{array}
 		\]
 		
-		W istocie dla każdego rankingu \(\succ\) zachodzi:
-		\[
-		\operatorname{score}(>^{-1})
-		=
-		-\operatorname{score}(>),
-		\]
-		gdzie \(>^{-1}\) oznacza ranking odwrotny.
-		
-		Wystarczy więc analizować jedynie połowę wszystkich rankingów.
-		
-		W przedstawionym przykładzie największą wartość uzyskuje ranking
-		\[
-		a \succ b \succ c,
-		\]
-		a zatem jest on rankingiem Kemeny’ego.
-		
-		W konsekwencji jedynym zwycięzcą Kemeny’ego jest kandydat
-		\[
-		a.
-		\]
-		
-		Intuicyjnie metoda Kemeny’ego stara się zachować możliwie najwięcej silnych relacji większościowych. W tym przypadku relacje
-		\[
-		a \succ_M b
-		\qquad \text{oraz} \qquad
-		b \succ_M c
-		\]
-		mają większy margines niż relacja
-		\[
-		c \succ_M a,
-		\]
-		dlatego ranking Kemeny’ego „łamie” jedynie tę ostatnią relację.
+		Ostatecznie porzadek \(a\succ b\succ c\) jest rankingiem Kemeny'ego, a kandydat \(a\) jest zwyciężcą Kemeny'ego.
 	\end{example}
 
+	\begin{definition}[kryterium Kemeny’ego]
+		\label{def:kryterium_kemeny}
+		Metoda wyborcza \(M\) spełnia kryterium Kemeny’ego, jeżeli dla każdego profilu \(R \in \mathcal{R}^W\), jeśli \(a\) jest zwycięzcą Kemeny’ego, to \(M(R) = a\).
+	\end{definition}
 
+	Metoda, która wybiera zwycięzców Kemeny'ego nazywamy metodą Kemeny'ego.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	\newpage
-	
-	Mówimy, że metoda wyborcza spełnia kryterium Maximina (odpowiednio kryterium Kemeny'ego), jeżeli dla każdego profilu preferencji wybiera zwycięzcę Maximina (odpowiednio zwycięzcę Kemeny'ego). Jeżeli w danym profilu istnieje wielu takich kandydatów, metoda musi rozstrzygnąć remis i wskazać dokładnie jednego zwycięzcę.
-	
-	Ponieważ zwycięzca Condorceta, o ile istnieje, jest jednocześnie jedynym zwycięzcą Maximina oraz jedynym zwycięzcą Kemeny'ego dla danego profilu preferencji, każda metoda spełniająca odpowiednie kryterium stanowi rozszerzenie kryterium Condorceta.
-	
-	Możemy teraz przejść do udowodnienia prostszej wersji twierdzenia Moulina dla bardziej ograniczonych klas metod wyborczych.
-	
-	W tym celu najpierw przedstawimy użyteczny lemat, który pozwala rozszerzyć dowody niemożliwości dla czterech alternatyw na przypadki, gdy liczba alternatyw jest większa niż cztery. Jego dowód stanowi również pierwszą wskazówkę, w jaki sposób zgodność z kryterium Condorceta oraz warunek uczestnictwa wzajemnie na siebie oddziałują.
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	\newpage
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	\begin{wniosek}
+		Każdy zwycięzca Condorceta jest zwycięzcą Kemeny’ego.
+	\end{wniosek}
+	
+	\begin{proof}
+		Załóżmy, że \(a\) jest zwycięzcą Condorceta dla profilu \(R\). Wówczas dla każdego kandydata \(x \neq a\) zachodzi
+		\[
+		a \succ x,
+		\]
+		tzn. większość wyborców preferuje \(a\) względem \(x\).
+		
+		Niech \(\succ\) będzie rankingiem Kemeny’ego. Załóżmy nie wprost, że kandydat \(a\) nie zajmuje w nim pierwszego miejsca, czyli istnieje taki kandydat \(b\), że
+		\[
+		b \succ a.
+		\]
+		Ponieważ jednak \(a\) wygrywa większościowo z każdym kandydatem, w szczególności z \(b\), zamiana pozycji kandydatów \(a\) oraz \(b\) zwiększa wartość funkcji Kemeny’ego. Otrzymujemy sprzeczność z maksymalnością wartością rankingu Kemeny'ego.
+		
+		Zatem istnieje ranking Kemeny’ego, w którym kandydat \(a\) zajmuje pierwsze miejsce, czyli \(a\) jest zwycięzcą Kemeny’ego.
+	\end{proof}
 	
 	\chapter{Paradoks nieobecności}
 	
 	\section{Wprowadzenie}
 	
-	Paradoks nieobecności (ang.~\emph{no-show paradox}) jest jednym z istotnych i zarazem zaskakujących zjawisk badanych w teorii wyboru społecznego. Polega on na tym, że w przypadku pewnych metod wyborczych udział wyborcy w głosowaniu może prowadzić do wyniku mniej dla niego korzystnego niż jego abstencja.
+	Paradoks nieobecności (ang.~\emph{no-show paradox}) jest jednym z istotnych i zarazem zaskakujących zjawisk badanych w teorii wyboru społecznego. Polega on na tym, że w przypadku pewnych metod wyborczych udział wyborcy w głosowaniu może prowadzić do wyniku mniej dla niego korzystnego niż jego absencja.
 	
-	Zjawisko to zostało po raz pierwszy opisane przez Fishburna i Bramsa \cite{fishburn1983} i od tego czasu stanowi ważny przedmiot badań w teorii systemów wyborczych. Co szczególnie istotne, Moulin \cite{moulin1988} wykazał, że szeroka klasa metod spełniających kryterium Condorceta jest podatna na ten paradoks, co często interpretuje się jako argument przeciwko stosowaniu tzw.~Condorcet extensions.
+	Zjawisko to zostało po raz pierwszy opisane przez Fishburna i Bramsa \cite{fishburn1983} i od tego czasu stanowi ważny przedmiot badań w teorii systemów wyborczych. Co szczególnie istotne, Moulin \cite{moulin1988} wykazał, że szeroka klasa metod spełniających kryterium Condorceta jest podatna na ten paradoks, co często interpretuje się jako argument przeciwko stosowaniu tzw.~Condorcet extensions (czyli sprawdzeniu czy istnieje kandydat Condorceta i jeśli istnieje to wybraniu go jako zwyciężcę).
 	
 	W literaturze podkreśla się, że paradoksy wyborcze stanowią nieuniknioną konsekwencję ogólności modeli głosowania oraz braku możliwości jednoczesnego spełnienia wszystkich naturalnych postulatów racjonalności procedur wyborczych. Jednocześnie pozostaje otwarte pytanie, na ile zjawiska te mają znaczenie praktyczne.
 	
@@ -1932,6 +2124,10 @@
 		\textit{Condorcet’s Principle Implies the No-Show Paradox},
 		Journal of Economic Theory, 45(1) (1988), 53--64.
 		
+		\bibitem{rzazewski2014}
+		K.~Rzążewski, W.~Słomczyński, and K.~Życzkowski,
+		\textit{Każdy głos się liczy! Wędrówka przez krainę wyborów}, Warszawa, 2014.
+		
 	\end{thebibliography}
 	
 	\chapter*{Spis symboli i oznaczeń}
@@ -1953,9 +2149,9 @@
 		\item \(\overset{w}{\succ}\) — relacja ścisłej preferencji wyborcy \(w \in W\),
 		\item \(\overset{w}{\sim}\) — relacja równej preferencji wyborcy \(w \in W\),
 		\item \(\overset{w}{\succcurlyeq}\) — relacja słabej preferencji wyborcy \(w \in W\),
-		
+
 		\Pytanie{Który ze znaków najlepiej opisuje słabą relację? 
-		$$\succeq\qquad\succcurlyeq\qquad\succsim$$}
+			$$\succeq\qquad\succcurlyeq\qquad\succsim$$}
 		
 		\item \(R : V \to \mathcal{R}\) — profil preferencji na elektoracie \(V\),
 		\item \(\Sigma = (V, R)\) — model wyborczy,
@@ -1979,5 +2175,19 @@
 		\]
 		indukuje ten sam porządek kandydatów co metoda Bordy.
 	\end{remark}
+
+	\Pytanie{Które z:
+		\begin{itemize}
+			\item Twierdzenie
+			\item Definicja
+			\item Lemat
+			\item etc.
+		\end{itemize}
+	numerować 1.1, 1.2, 2.1 itd. a które np Tw. 1, Tw. 2, Tw. 3?
+	}
+
+	\Komentarz{Musze naprawić w dalszym ciągu wstawione "w złe miejsca" grafiki...}
+	
+	\Komentarz{Uczywam "na poniższej tabeli", a później jest ona podpisana jako "tablica". Czy mam to słownictwo uwspólnić?}
 	
 \end{document}
