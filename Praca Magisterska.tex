@@ -768,12 +768,12 @@
 	\section{Przykład paradoksu nieobecności}
 	
 	\begin{example}[paradoks nieobecności dla procedury głosowań parami]
-		Rozważmy procedurę głosowań parami ze statusem quo równym kandydatowi \(D\).
+		Rozważmy procedurę głosowań parami ze statusem quo równym kandydatowi \(d\), to znaczy, że jeśli pewna ilość wborców nie zagłosuje to zwyciężcą zostaje kandydat \(d\).
 		Agenda głosowań ma postać:
 		\[
-		B \text{ vs } D,\qquad
-		\text{następnie zwycięzca vs } A,\qquad
-		\text{następnie zwycięzca vs } C.
+		b \text{ vs } d,\qquad
+		\text{następnie zwycięzca vs } a,\qquad
+		\text{następnie zwycięzca vs } c.
 		\]
 		
 		Niech profil preferencji będzie dany tabelą:
@@ -782,22 +782,22 @@
 			\hline
 			10 & 10 & 10\\
 			\hline
-			A & B & D\\
-			B & D & C\\
-			D & C & A\\
-			C & A & B\\
+			a & b & d\\
+			b & d & c\\
+			d & c & a\\
+			c & a & b\\
 			\hline
 		\end{array}
 		\]
 		
 		\begin{itemize}
-			\item W pierwszym głosowaniu porównywani są kandydaci \(B\) oraz \(D\). Kandydat \(B\) wygrywa stosunkiem głosów \(20:10\).
+			\item W pierwszym głosowaniu porównywani są kandydaci \(b\) oraz \(d\). Kandydat \(b\) wygrywa stosunkiem głosów \(20:10\).
 			
-			\item Następnie kandydat \(B\) zostaje porównany z kandydatem \(A\). W tym głosowaniu zwycięża \(A\) stosunkiem głosów \(20:10\).
+			\item Następnie kandydat \(b\) zostaje porównany z kandydatem \(a\). W tym głosowaniu zwycięża \(a\) stosunkiem głosów \(20:10\).
 			
-			\item W ostatnim etapie kandydat \(A\) zostaje zestawiony z kandydatem \(C\). Kandydat \(C\) wygrywa stosunkiem głosów \(20:10\), a zatem końcowym zwycięzcą procedury zostaje \(C\).
+			\item W ostatnim etapie kandydat \(a\) zostaje zestawiony z kandydatem \(c\). Kandydat \(c\) wygrywa stosunkiem głosów \(20:10\), a zatem końcowym zwycięzcą procedury zostaje \(c\).
 			
-			\item Każda z trzech grup wyborców preferuje kandydata \(D\) względem zwycięzcy \(C\).
+			\item Każda z trzech grup wyborców preferuje kandydata \(d\) względem zwycięzcy \(c\).
 			
 			\item Oznacza to, że wszyscy wyborcy preferowaliby utrzymanie status quo względem wyniku uzyskanego przy pełnej frekwencji.
 			
@@ -805,7 +805,7 @@
 		\end{itemize}
 	\end{example}
 	
-	Procedura ta nie jest neutralna, ponieważ kolejność głosowań ma istotny wpływ na wynik.
+	W tej procedurze kolejność głosowań ma istotny wpływ na wynik, przez co metoda nie jest neutralna.
 	
 	\section{Odporność na nieobecność}
 	
