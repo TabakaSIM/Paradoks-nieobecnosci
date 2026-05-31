@@ -372,7 +372,7 @@
 		c \succ a \quad (5:2).
 		\]
 		
-		Zatem relacja większościowa ma cykliczną postać:
+		Relacja większościowa ma zatem cykliczną postać:
 		\[
 		a \succ b \succ c \succ a.
 		\]
@@ -569,7 +569,7 @@
 			\caption{Macierz marginesów większości profilu \(R\)}
 		\end{table}
 		
-		Zatem kandydaci \(b\) i \(c\) maksymalizują wartość minimalną wyniku i są zwyciężcami maximina.
+		Kandydaci \(b\) i \(c\) maksymalizują wartość minimalną wyniku i są zwyciężcami maximina.
 	\end{example}
 	
 	\begin{wniosek}
@@ -593,7 +593,7 @@
 		\[
 		m_x = \min_{y \neq x} g_R(x,y) \le g_R(x,a) < 0.
 		\]
-		Zatem \(m_x < 0\) dla każdego \(x \neq a\).
+		Otrzymujemy \(m_x < 0\) dla każdego \(x \neq a\).
 		
 		Ponadto
 		\[
@@ -748,8 +748,16 @@
 		\]
 		Ponieważ jednak \(a\) wygrywa większościowo z każdym kandydatem, w szczególności z \(b\), zamiana pozycji kandydatów \(a\) oraz \(b\) zwiększa wartość funkcji Kemeny’ego. Otrzymujemy sprzeczność z maksymalnością wartością rankingu Kemeny'ego.
 		
-		Zatem istnieje ranking Kemeny’ego, w którym kandydat \(a\) zajmuje pierwsze miejsce, czyli \(a\) jest zwycięzcą Kemeny’ego.
+		Istnieje zatem ranking Kemeny’ego, w którym kandydat \(a\) zajmuje pierwsze miejsce, czyli \(a\) jest zwycięzcą Kemeny’ego.
 	\end{proof}
+
+	\section{Wybrane metody wyborcze}
+	
+	\begin{itemize}
+		\item Dyktatura
+		\item Metoda punktów Bordy
+		\item Metoda Copelanda
+	\end{itemize}
 	
 	\chapter{Paradoks nieobecności}
 	
@@ -886,7 +894,7 @@
 		Innymi słowy, jeżeli kandydat najniżej oceniany przez wyborcę \(w\) zostaje wybrany przy jego udziale, to pozostaje on zwycięzcą również przy jego nieobecności.
 	\end{definition}
 	
-	Formalnie własność tę ujmujemy następująco.
+	Powyższe kryteria analizują konsekwencje obecności wyborcy dla poszczególnych kandydatów. W szczególności pozytywne kryterium obecności chroni kandydatów najwyżej ocenianych przez wyborcę, natomiast negatywne kryterium obecności dotyczy kandydatów ocenianych najniżej. Uogólnieniem tych idei jest własność odporności na nieobecność, która porównuje wyniki wyborów przed i po usunięciu wyborcy z punktu widzenia jego preferencji.
 	
 	\begin{definition}[metoda odporna na nieobecność]
 		Metodę wyborczą \(M\) nazywamy odporną na nieobecność, jeżeli dla każdego profilu preferencji \(R \in \mathcal{R}^{V}\) oraz każdego wyborcy \(w \in V\) zachodzi
@@ -931,7 +939,7 @@
 		m_k = \min_{x \neq k} g_R(k,x) \le g_R(k,a) < 0.
 		\]
 		
-		Zatem dla każdego \(k \neq a\) mamy ścisłą nierówność
+		Dla każdego \(k \neq a\) mamy silną nierówność
 		\[
 		m_a > m_k.
 		\]
@@ -941,15 +949,15 @@
 		m_a = \max_{k \in K} m_k.
 		\]
 		
-		Co więcej, ponieważ dla każdego \(k \neq a\) zachodzi \(m_k < m_a\), kandydat \(a\) jest jedynym maksymalizatorem tej wartości. A zatem \(a\) jest jedynym zwycięzcą metody maximina.
+		Co więcej, ponieważ dla każdego \(k \neq a\) zachodzi \(m_k < m_a\), kandydat \(a\) jest jedynym maksymalizatorem tej wartości. Kandydat \(a\) jest zatem jedynym zwycięzcą metody maximina.
 	\end{proof}
 
-	\begin{theorem}[o istnienie metody Condorceta zgodnej z partycypacją dla \(\leq 3\) kandydatów]
+	\begin{theorem}[o istnieniu metody Condorceta odpornej na nieobecnośc dla conajwyżej 3 kandydatów]
 		Jeżeli liczba kandydatów nie przekracza trzech, to istnieje metoda wyborcza spełniająca kryterium Condorceta oraz jednocześnie pozytywne i negatywne kryterium obecności.
 	\end{theorem}
 	
 	\begin{proof}
-		Rozważamy metodę wyborczą wybierającą zawsze kandydata ze zbioru Kramera, zgodnie z podejściem Moulin \cite{moulin1988}. Z Lematu~\ref{lem:condorcet-minimax} wynika, że metoda \(M\) spełnia kryterium Condorceta.
+		Rozważamy metodę wyborczą wybierającą zawsze kandydata ze zbioru Kramera, zgodnie z podejściem Moulin \cite{moulin1988}. Z lematu~\ref{lem:condorcet-minimax} wynika, że metoda \(M\) spełnia kryterium Condorceta.
 		
 		Pokażemy teraz, że metoda \(M\) spełnia również pozytywne oraz negatywne kryterium obecności dla trzech kandydatów.
 		
@@ -958,14 +966,14 @@
 		m_a \geq m_b \quad \text{oraz} \quad m_a \geq m_c.
 		\]
 		
-		Rozważamy teraz zmianę profilu polegającą na dodaniu jednego wyborcy. Każda wartość \(m_k\) może zmienić się co najwyżej o \(1\), ponieważ pojedynczy głos wpływa jedynie o jednostkową zmianę na marginesy porównań parami.
+		Rozważamy teraz zmianę profilu polegającą na dodaniu jednego wyborcy. Każda wartość \(m_k\) może zmienić się co najwyżej o \(1\) przy zmianie elektoratu o jednego wyborce.
 		
 		W związku z tym analizujemy wszystkie możliwe relacje preferencyjne nowego wyborcy względem kandydatów \(a,b,c\). Rozróżniamy trzy istotne przypadki.
 		
 		\begin{enumerate}
-			\item Nowy wyborca ściśle preferuje \(a\) względem \(b\) oraz \(c\).
+			\item Nowy wyborca silnie preferuje \(a\) względem \(b\) oraz \(c\).
 			
-			\item Nowy wyborca słabo preferuje \(b\) względem \(a\), ale ściśle preferuje \(a\) względem \(c\).
+			\item Nowy wyborca słabo preferuje \(b\) względem \(a\), ale silnie preferuje \(a\) względem \(c\).
 			
 			\item Nowy wyborca słabo preferuje zarówno \(b\), jak i \(c\) względem \(a\).
 		\end{enumerate}
@@ -976,16 +984,14 @@
 			m_a \geq m_b \quad \text{oraz} \quad m_a \geq m_c.
 			\]
 			
-			Zatem kandydat \(a\) pozostaje w zbiorze Kramera po dodaniu wyborcy, a więc metoda \(M\) nadal go wybiera. Oznacza to spełnienie zarówno pozytywnego, jak i negatywnego kryterium obecności.
+			Kandydat \(a\) pozostaje zatem w zbiorze Kramera po dodaniu wyborcy, a więc metoda \(M\) nadal go wybiera. Oznacza to spełnienie zarówno pozytywnego, jak i negatywnego kryterium obecności.
 			
 			\item W drugim przypadku wartość \(m_c\) maleje o \(1\), natomiast \(m_a\) może zmaleć co najwyżej o \(1\), więc nadal zachodzi:
 			\[
 			m_a \geq m_c.
 			\]
 			
-			Oznacza to, że kandydat $c$ nie może wyprzedzić kandydata $a$ w rankingu wartości $m_k$, a więc nie może wejść do zbioru Kramera, jeśli wcześniej do niego nie należał.
-			
-			W szczególności dodanie nowego wyborcy nie prowadzi do wykluczenia kandydata $a$ z $K^\ast$, a metoda pozostaje zgodna zarówno z pozytywnym, jak i negatywnym kryterium obecności.
+			Oznacza to, że kandydat $c$ nie może wyprzedzić kandydata $a$ w rankingu wartości $m_k$, a więc nie może wejść do zbioru Kramera, jeśli wcześniej do niego nie należał. W szczególności dodanie nowego wyborcy nie prowadzi do wykluczenia kandydata $a$ z $K^\ast$, a metoda pozostaje zgodna zarówno z pozytywnym, jak i negatywnym kryterium obecności.
 			
 			\item W trzecim przypadku zmiany nie naruszają relacji preferencyjnych istotnych dla zbioru Kramera w sposób wymuszający wykluczenie kandydata \(a\), więc oba kryteria mogą być spełnione bez sprzeczności.
 		\end{enumerate}
@@ -1048,7 +1054,7 @@
 		g_R(a,b) - (1-m_a) \geq 1.
 		\]
 		
-		Zatem kandydat \(a\) staje się zwycięzcą Condorceta w profilu \(R^{V}\).
+		Kandydat \(a\) staje się zatem zwycięzcą Condorceta w profilu \(R^{V}\).
 		
 		Ponieważ jednak metoda \(M\) wybrała kandydata \(b\) w profilu \(R^W\), pozytywne kryterium obecności wymaga, aby kandydat \(b\) został wybrany również w profilu \(R^{V}\).
 		
@@ -1184,7 +1190,7 @@
 		\]
 		a więc metoda \(M\) nie może wybrać kandydata \(x\).
 		
-		Zatem zbiór zwycięzców ogranicza się do kandydata \(a\) albo \(c\).
+		Zbiór zwycięzców ogranicza się zatem do kandydata \(a\) albo \(c\).
 		
 		Dodajmy teraz ośmiu wyborców, otrzymując drugi profil preferencji. Każdy z nowych wyborców traktuje kandydatów \(a\) i \(c\) jako równorzędnych i umieszcza ich wspólnie na pierwszym miejscu. Następnie preferowany jest kandydat \(b\), potem kandydat \(d\), a wszyscy pozostali kandydaci znajdują się poniżej \(d\).
 		
@@ -1259,7 +1265,7 @@
 		
 		Jednak pozytywne kryterium obecności wymaga, aby metoda \(M\) wybrała \(a\) lub \(c\). 
 		
-		Zatem przed zmianą profilu zbiór zwycięzców jest zawarty w \(\{a,c\}\).
+		W związku z tym przed zmianą profilu zbiór zwycięzców jest zawarty w \(\{a,c\}\).
 		Po zmianie profilu żaden z tych kandydatów nie może być wybrany, co przeczy pozytywnemu kryterium obecności.
 	\end{proof}
 	
@@ -1413,6 +1419,7 @@
 	\end{proof}	
 	
 	\begin{theorem}[Moulin \cite{moulin1988}]
+		\label{tw:moulin-final}
 		Jeżeli liczba kandydatów spełnia \(\#K \geq 4\) oraz liczba wyborców wynosi conajlminej 37 (34 w przypadku negatywnego kryterium obecności), to każda metoda wyborcza spełniająca kryterium Condorceta jest podatna na paradoks nieobecności.
 	\end{theorem}
 	
@@ -1432,7 +1439,7 @@
 
 	\section{Metody nie spełniające kryterium Condorceta}
 	
-	Twierdzenie to pokazuje fundamentalne napięcie pomiędzy naturalnymi własnościami metod wyborczych: zgodność z kryterium Condorceta implikuje możliwość wystąpienia paradoksu nieobecności.
+	Twierdzenie \ref{tw:moulin-final} ukazuje istotną zależność pomiędzy własnościami metod wyborczych: zgodność z kryterium Condorceta pociąga za sobą możliwość wystąpienia paradoksu nieobecności.
 	
 	\medskip
 	
@@ -1440,9 +1447,9 @@
 	
 	\begin{proof}[Dyktatura jest metodą odporną na nieobecność]
 		
-		Niech \(M\) będzie metodą dyktatorską z dyktatorem \(d \in W\).
+		Niech \(M\) będzie dyktaturą z dyktatorem \(d \in W\).
 		
-		Z definicji metody dyktatorskiej wynik wyborów jest zawsze równy najbardziej preferowanemu kandydatowi dyktatora. Oznacza to, że dla każdego profilu preferencji \(R\)
+		Z definicji dyktatury wynik wyborów jest zawsze równy najbardziej preferowanemu kandydatowi dyktatora. Oznacza to, że dla każdego profilu preferencji \(R\)
 		\[
 		M(R)=\max_{\overset{d}{\succ}} K.
 		\]
@@ -1455,7 +1462,7 @@
 			M(R) \overset{d}{\succsim} M(R-d).
 			\]
 			
-			\item Jeżeli \(v\neq d\), to usunięcie wyborcy \(v\) nie wpływa na wynik wyborów, ponieważ wynik zależy wyłącznie od preferencji dyktatora. Zatem
+			\item Jeżeli \(v\neq d\), to usunięcie wyborcy \(v\) nie wpływa na wynik wyborów, ponieważ wynik zależy wyłącznie od preferencji dyktatora, zatem
 			\[
 			M(R) \overset{v}{=} M(R-v).
 			\]
@@ -1474,22 +1481,16 @@
 		k_1 \overset{w}{\succ} k_2 \overset{w}{\succ} \dots \overset{w}{\succ} k_m.
 		\]
 		
-		W metodzie Bordy kandydat znajdujący się na \(i\)-tej pozycji otrzymuje \(m-i\) punktów.
-		
-		Niech
+		W metodzie Bordy kandydat znajdujący się na \(i\)-tej pozycji otrzymuje \(m-i\) punktów. Niech
 		\[
 		s_i
 		\]
-		oznacza liczbę punktów uzyskaną przez kandydata \(k_i\) w profilu \(R\).
-		
-		Po usunięciu wyborcy \(w\) kandydat \(k_i\) traci dokładnie \(m-i\) punktów, a więc jego nowy wynik wynosi
+		oznacza liczbę punktów uzyskaną przez kandydata \(k_i\) w profilu \(R\). Po usunięciu wyborcy \(w\) kandydat \(k_i\) traci dokładnie \(m-i\) punktów, a więc jego nowy wynik wynosi
 		\[
 		s_i-(m-i).
 		\]
 		
-		Zauważmy, że kandydaci wyżej oceniani przez wyborcę \(w\) tracą więcej punktów niż kandydaci oceniani niżej.
-		
-		W szczególności, jeżeli
+		Zauważmy, że kandydaci wyżej oceniani przez wyborcę \(w\) tracą więcej punktów niż kandydaci oceniani niżej. W szczególności, jeżeli
 		\[
 		i<j,
 		\]
@@ -1505,11 +1506,11 @@
 		M(R-w)\overset{w}{\leq} M(R).
 		\]
 		
-		Zatem metoda punktów Bordy spełnia kryterium obecności.
+		Metoda punktów Bordy spełnia zatem kryterium obecności.
 	\end{proof}
 	
-	\begin{example}[Metoda Hare'a a paradoks nieobecności]
-		Rozważmy metodę Hare'a (IRV) oraz profil preferencji przedstawiony w tabeli:
+	\begin{example}[metoda Hare'a a paradoks nieobecności]
+		Rozważmy metodę Hare'a oraz profil preferencji przedstawiony w tabeli:
 		\[
 		\begin{array}{|c|c|c|c|}
 			\hline
@@ -1549,9 +1550,7 @@
 		\[
 		c \succ a,
 		\]
-		oznacza to, że wynik po ich rezygnacji z udziału w głosowaniu jest przez nich ściśle preferowany względem wyniku uzyskanego przy ich uczestnictwie.
-		
-		W konsekwencji metoda Hare'a jest podatna na paradoks nieobecności, mimo że nie spełnia kryterium Condorceta.
+		co oznacza, że wynik po ich rezygnacji z udziału w głosowaniu jest przez nich ściśle preferowany względem wyniku uzyskanego przy ich uczestnictwie. W konsekwencji metoda Hare'a jest podatna na paradoks nieobecności, mimo że nie spełnia kryterium Condorceta.
 	\end{example}
 	
 	Przykład ten pokazuje, że brak spełnienia kryterium Condorceta nie implikuje odporności na paradoks nieobecności.
@@ -1822,7 +1821,7 @@
 		\]
 		Jest to jednak sprzeczne z faktem, że profil \(R_\alpha - 2\cdot bdca + acdb\) posiada zwycięzcę Condorceta, którym jest \(c\).
 		
-		Zatem musi zachodzić \(f(R_\alpha)=b\), co implikuje \(f(R_\alpha - dcab)=b\), a więc
+		Mmusi zatem zachodzić \(f(R_\alpha)=b\), co implikuje \(f(R_\alpha - dcab)=b\), a więc
 		\[
 		f(R_\beta := R_\alpha - dcab - 2\cdot cabd) \in \{b,d\}.
 		\]
@@ -1940,7 +1939,7 @@
 		\]
 		jednak profil \(R_\alpha - 3\cdot bdca\) posiada zwycięzcę Condorceta \(c\), co prowadzi do sprzeczności.
 		
-		Zatem musi zachodzić \(b \in F(R_\alpha)\), co implikuje \(b \in F(R_\alpha - dcab)\). Niech
+		Musi zatem zachodzić \(b \in F(R_\alpha)\), co implikuje \(b \in F(R_\alpha - dcab)\). Niech
 		\[
 		R_\beta := R_\alpha - dcab - 3\cdot cabd.
 		\]
@@ -1984,53 +1983,53 @@
 	
 	\chapter{Silny paradoks nieobecności}
 	
-	Klasyczny paradoks nieobecności polega na tym, że pewna grupa wyborców może uzyskać bardziej preferowany wynik poprzez rezygnację z udziału w głosowaniu. W wielu przypadkach zjawisko to nie wydaje się jednak szczególnie istotne, jeżeli uzyskana w ten sposób poprawa dotyczy alternatywy, która nie jest dla tej grupy zdecydowanie preferowana.
+	Klasyczny paradoks nieobecności polega na tym, że pewna grupa wyborców może uzyskać bardziej preferowany wynik poprzez rezygnację z udziału w głosowaniu. W wielu przypadkach zjawisko to nie wydaje się jednak szczególnie istotne, jeżeli uzyskana w ten sposób poprawa dotyczy kandydatów, która nie jest dla tej grupy zdecydowanie preferowana.
 	
 	Prowadzi to do naturalnego wzmocnienia rozważanego zjawiska.
 	
 	\begin{definition}[silny paradoks nieobecności]
-		Mówimy, że metoda wyborcza \(M\) jest podatna na silny paradoks nieobecności, jeżeli istnieje profil preferencji \(R \in \mathcal{R}^{V}\), grupa wyborców \(S \subseteq V\) oraz kandydat \(a \in K\), taki że:
+		Mówimy, że metoda wyborcza \(M\) jest podatna na silny paradoks nieobecności, jeżeli istnieje profil preferencji \(R \in \mathcal{R}^{W}\), grupa wyborców \(V \subseteq W\) oraz kandydat \(a \in K\), dla których:
 		\begin{itemize}
-			\item kandydat \(a\) jest najbardziej preferowaną alternatywą dla wszystkich wyborców z \(S\),
-			\item przy pełnym udziale \(S\) w głosowaniu wynik \(M(R)\) jest przez nich mniej preferowany niż \(a\),
-			\item natomiast po rezygnacji grupy \(S\) z udziału w głosowaniu zachodzi
+			\item kandydat \(a\) jest najbardziej preferowanym kandydatem dla wszystkich wyborców z \(V\),
+			\item przy pełnym udziale \(V\) w głosowaniu wynik \(M(R)\) jest przez nich mniej preferowany niż \(a\),
+			\item po rezygnacji grupy \(V\) z udziału w głosowaniu zachodzi
 			\[
-			a \succ M(R - S).
+			a \succ M(R - V).
 			\]
 		\end{itemize}
 	\end{definition}
 	
-	Innymi słowy, w silnej wersji paradoksu nieobecności grupa wyborców może doprowadzić do wyboru swojej najbardziej preferowanej alternatywy poprzez wstrzymanie się od głosu, mimo że aktywny udział w głosowaniu prowadzi do wyniku dla niej gorszego.
+	Innymi słowy, w silnej wersji paradoksu nieobecności grupa wyborców może doprowadzić do wyboru swojego najbardziej preferowanego kandydata poprzez wstrzymanie się od głosu, mimo że aktywny udział w głosowaniu prowadzi do wyniku dla niej gorszego.
 	
 	\medskip
 	
 	Zjawisko to można zilustrować na przykładzie procedury głosowania sekwencyjnego.
 	
-	\begin{example}[Silny paradoks nieobecności – procedura sekwencyjna]
+	\begin{example}[silny paradoks nieobecności – procedura sekwencyjna]
 		Rozważmy profil preferencji:
 		\[
 		\begin{array}{|c|c|c|c|}
 			\hline
 			2 & 3 & 2 & 2\\
 			\hline
-			A & B & C & C\\
-			B & C & A & B\\
-			C & A & B & A\\
+			a & a & c & c\\
+			b & c & a & b\\
+			c & a & b & a\\
 			\hline
 		\end{array}
 		\]
 		
-		Przy ustalonej agendzie głosowań:
+		Przy ustalonej kolejności głosowań:
 		\[
-		A \text{ vs } B,\quad \text{następnie zwycięzca vs } C,
+		a \text{ vs } b,\quad \text{następnie zwycięzca vs } c,
 		\]
-		wynikiem końcowym przy pełnej frekwencji jest kandydat \(B\).
+		wynikiem końcowym przy pełnej frekwencji jest kandydat \(b\).
 		
 		Rozważmy teraz sytuację, w której dwóch wyborców o preferencjach
 		\[
-		C \succ A \succ B
+		c \succ a \succ b
 		\]
-		rezygnuje z udziału w głosowaniu. Wówczas zmodyfikowany profil prowadzi do zwycięstwa kandydata \(C\), który jest dla tej grupy najbardziej preferowaną alternatywą.
+		rezygnuje z udziału w głosowaniu. Wówczas zmodyfikowany profil prowadzi do zwycięstwa kandydata \(c\), który jest dla tej grupy najbardziej preferowanym kandydatem.
 		
 		Oznacza to, że rezygnacja z udziału w głosowaniu prowadzi do wyniku bardziej korzystnego dla tych wyborców niż ich aktywny udział.
 	\end{example}
@@ -2049,7 +2048,7 @@
 		Jeżeli \(\#K \geq 4\), to każda metoda wyborcza spełniająca kryterium Condorceta jest podatna na silny paradoks nieobecności.
 	\end{theorem}
 	
-	Twierdzenie to pokazuje, że zgodność z kryterium Condorceta nie eliminuje możliwości wystąpienia silnego paradoksu nieobecności.
+	Twierdzenie to pokazuje, że spełnienie kryterium Condorceta nie eliminuje możliwości wystąpienia silnego paradoksu nieobecności.
 	
 	\medskip
 	
@@ -2057,7 +2056,7 @@
 	
 	\medskip
 	
-	Istotnym pytaniem jest również istnienie warunków strukturalnych, które pozwalają kontrolować możliwość wystąpienia tego typu paradoksów. Jednym z podejść jest wprowadzenie ograniczeń typu \(q\)-majority.
+	Istotnym pytaniem jest również istnienie warunków strukturalnych, które pozwalają na kontrolowanie możliwości wystąpienia tego typu paradoksów. Jednym z podejść jest wprowadzenie ograniczeń typu \(q\)-większości.
 	
 	Niech \(q \in \left[\tfrac{1}{2},1\right]\). Mówimy, że kandydat \(a\) dominuje kandydata \(b\) w sensie \(q\)-większości, jeżeli
 	\[
@@ -2066,7 +2065,7 @@
 	
 	Zbiór kandydatów niedominowanych definiujemy jako
 	\[
-	C(q,R) = \{a \in K \mid \nexists b \in K \text{ takie, że } b \text{ dominuje } a\}.
+	C(q,R) = \{a \in K \mid \nexists b \in K : b \text{ dominuje } a\}.
 	\]
 	
 	\begin{definition}[\(q\)-warunek zgodności]
@@ -2146,7 +2145,7 @@
 		\item \(\mathcal{R}\) — zbiór wszystkich relacji preferencji na zbiorze \(K\),
 		\item \(\mathcal{R}^{V}\) — zbiór wszystkich profili preferencji określonych na elektoracie \(V\),
 		
-		\item \(\overset{w}{\succ}\) — relacja ścisłej preferencji wyborcy \(w \in W\),
+		\item \(\overset{w}{\succ}\) — relacja silnej preferencji wyborcy \(w \in W\),
 		\item \(\overset{w}{\sim}\) — relacja równej preferencji wyborcy \(w \in W\),
 		\item \(\overset{w}{\succcurlyeq}\) — relacja słabej preferencji wyborcy \(w \in W\),
 
