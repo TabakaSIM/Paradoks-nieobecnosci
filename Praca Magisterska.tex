@@ -25,7 +25,7 @@
 	
 	\chapter*{Wstęp}
 	
-	Teoria wyboru społecznego stanowi jeden z fundamentalnych działów ekonomii matematycznej oraz matematyki dyskretnej, którego celem jest formalne badanie procesów podejmowania decyzji zbiorowych. W centrum zainteresowania znajduje się pytanie, w jaki sposób indywidualne preferencje wielu podmiotów mogą zostać zagregowane w jedną spójną decyzję społeczną, taką jak wybór kandydata, ranking alternatyw lub wybór zbioru zwycięzców. Problem ten, mimo swojej pozornej prostoty, prowadzi do szeregu głębokich wyników o charakterze aksjomatycznym, z których wiele ma charakter twierdzeń niemożliwości.
+	Teoria wyboru społecznego stanowi jeden z fundamentalnych działów ekonomii matematycznej oraz matematyki dyskretnej, którego celem jest formalne badanie procesów podejmowania decyzji zbiorowych. W centrum zainteresowania znajduje się pytanie, w jaki sposób indywidualne preferencje wielu podmiotów mogą zostać zagregowane w jedną spójną decyzję społeczną, taką jak wybór kandydata, ranking kandydatów lub wybór zbioru zwycięzców. Problem ten, mimo swojej pozornej prostoty, prowadzi do szeregu głębokich wyników o charakterze aksjomatycznym, z których wiele ma charakter twierdzeń niemożliwości.
 	
 	Klasyczny model rozważany w teorii wyboru społecznego zakłada skończony zbiór kandydatów oraz skończony zbiór wyborców, z których każdy posiada pełny i przechodni porządek preferencji nad kandydatami. Zbiór tych preferencji nazywany jest profilem preferencji. Na jego podstawie definiuje się metody wyborcze, które przypisują każdemu profilowi jeden lub więcej zwycięzców. Metody te mogą przyjmować bardzo różnorodne formy — od prostych reguł większościowych, przez metody punktowe, aż po bardziej złożone procedury oparte na globalnej optymalizacji.
 	
@@ -37,7 +37,7 @@
 	
 	Paradoks ten stanowi interesujący przykład napięcia pomiędzy lokalnymi zmianami w profilu preferencji a globalnym wynikiem procedury wyborczej. W szczególności pokazuje on, że nawet niewielkie zmiany w składzie elektoratu mogą prowadzić do nieprzewidywalnych zmian wyniku. W związku z tym analizuje się zarówno warunki jego występowania, jak i metody odporne na tego typu zjawiska.
 	
-	W niniejszej pracy rozważana jest również wzmocniona wersja tego zjawiska, określana jako silny paradoks nieobecności. W tej wersji zmiana wyniku nie polega jedynie na poprawie preferencji względem pewnych alternatyw, lecz prowadzi do sytuacji, w której grupa wyborców może doprowadzić do wyboru swojego najbardziej preferowanego kandydata poprzez rezygnację z udziału w głosowaniu. Zjawisko to ma istotne konsekwencje dla oceny stabilności metod wyborczych.
+	W niniejszej pracy rozważana jest również wzmocniona wersja tego zjawiska, określana jako silny paradoks nieobecności. W tej wersji zmiana wyniku nie polega jedynie na poprawie preferencji względem pewnych kandydatów, lecz prowadzi do sytuacji, w której grupa wyborców może doprowadzić do wyboru swojego najbardziej preferowanego kandydata poprzez rezygnację z udziału w głosowaniu. Zjawisko to ma istotne konsekwencje dla oceny stabilności metod wyborczych.
 	
 	Celem niniejszej pracy jest analiza wybranych metod wyborczych w kontekście ich własności aksjomatycznych, ze szczególnym uwzględnieniem kryterium Condorceta oraz podatności na paradoks nieobecności i jego silną wersję. Badane są również relacje pomiędzy strukturą marginesów większości a odpornością metod na zmiany w elektoracie.
 	
@@ -1661,9 +1661,7 @@
 	\end{theorem}
 	
 	\begin{proof}
-		Niech \(M\) będzie metodą spełniającą kryterium max-min oraz warunek uczestnictwa.
-		
-		Rozważmy profil sześciu wyborców \(R\) przedstawiony w tabeli~\ref{fig:profil_R}.
+		Niech \(M\) będzie metodą będzie rozszerzeniem max-min oraz spełnia warunek uczestnictwa. Rozważmy profil sześciu wyborców \(R\) przedstawiony w tabeli~\ref{fig:profil_R}.
 		
 		\begin{table}[H]
 			\centering
@@ -1683,7 +1681,7 @@
 			\label{fig:profil_R}
 		\end{table}
 		
-		Przypuśćmy, że \(M(R) \in \{a,b\}\). Dodanie głosu typu \(abcd\) prowadzi do ważonego turnieju, w którym alternatywa \(c\) jest jedynym zwycięzcą max-min, zatem metoda \(M\) musi wskazać \(c\) jako zwycięzce. Prowadzi to jednak do sprzeczności z kryterium obecności, ponieważ wyborca, który dodał swój głos, uzyskałby lepszy wynik, gdyby wstrzymał się od głosowania.
+		Przypuśćmy, że \(M(R) \in \{a,b\}\). Dodanie głosu typu \(abcd\) prowadzi do ważonego turnieju, w którym kandydat \(c\) jest jedynym zwycięzcą max-min, zatem metoda \(M\) musi wskazać \(c\) jako zwycięzce. Prowadzi to jednak do sprzeczności z kryterium obecności, ponieważ wyborca, który dodał swój głos, uzyskałby lepszy wynik, gdyby wstrzymał się od głosowania.
 		
 		\begin{table}[H]
 			\centering
@@ -1791,9 +1789,9 @@
 			
 		\end{figure}
 		
-		Symetria tego argumentu wynika z automorfizmu profilu \(R\), polegającego na przekształceniu etykiet alternatyw zgodnie z odwzorowaniem \(abcd \mapsto dcba\).
+		Symetria tego argumentu wynika z automorfizmu profilu \(R\), polegającego na przekształceniu etykiet kandydatów zgodnie z odwzorowaniem \(abcd \mapsto dcba\).
 		
-		Jeżeli \(\#K > 4\), do każdego profilu wyborców w \(R\) oraz do wszystkich dodatkowych wyborców użytych w dowodzie dodajemy nowe „złe” alternatywy \(x_1, x_2, \dots, x_m\) umieszczone na dole każdego rankingu. Z lematu~~\ref{lemma:sat_1} wynika, że \(M\) wybiera w każdym kroku dowodu spośród zbioru \(\{a,b,c,d\}\), więc dowód przebiega identycznie jak wcześniej.
+		Jeżeli \(\#K > 4\), do każdego profilu wyborców w \(R\) oraz do wszystkich dodatkowych wyborców użytych w dowodzie dodajemy nowych „złych” kandydatów \(x_1, x_2, \dots, x_m\) umieszczone na dole każdego rankingu. Z lematu~~\ref{lemma:sat_1} wynika, że \(M\) wybiera w każdym kroku dowodu spośród zbioru \(\{a,b,c,d\}\), więc dowód przebiega identycznie jak wcześniej.
 	\end{proof}
 	
 	Wynik istnienia dla \(n \leq 6\) został uzyskany metodami opisanymi w~\cite{brandt2017sat}.
@@ -1871,24 +1869,28 @@
 		Podobnie jak w Twierdzeniu~1, jeżeli \(\#K > 4\), do profilu \(R\) oraz do dodatkowych wyborców dodajemy nowych kandydatów \(x_1, x_2, \dots, x_{\#K-4}\), umieszczone na dole każdego rankingu. Z Lematu~1 wynika, że \(M\) wybiera w każdym kroku spośród zbioru \(\{a,b,c,d\}\), co kończy dowód.
 	\end{proof}
 
+	\begin{theorem}
+		Nie istnieje metoda wyborcza będąca rozszerzeniem Condorceta, która jednocześnie spełnia kryterium obecności dla
+		\[
+		\#K \geq 4
+		\quad \text{oraz} \quad
+		\#W \geq 12.
+		\]
+	\end{theorem}
+
 	\begin{comment}
+		
+	
 		
 	
 	
 	
-	\begin{theorem}
-		Nie istnieje metoda wyborcza spełniająca kryterium Condorceta, która jednocześnie spełnia kryterium obecności dla
-		\[
-		|K| \geq 4
-		\quad \text{oraz} \quad
-		|W| \geq 12.
-		\]
-	\end{theorem}
+	
 	
 	\begin{proof}
 		Rozważmy najpierw przypadek \(m=4\). Dowód ma strukturę przedstawioną na Rysunku~3. Niech \(R\) będzie profilem preferencji pokazanym na tym rysunku.
 		
-		Ponieważ profil \(R\) pozostaje niezmieniony po przestawieniu etykiet alternatyw zgodnie z odwzorowaniem \(abcd \mapsto dcba\) oraz po permutacji wyborców, możemy bez straty ogólności założyć, że \(f(R) \in \{a,b\}\). (Jawny dowód dla przypadku \(f(R) \in \{c,d\}\) został zaznaczony na Rysunku~3.)
+		Ponieważ profil \(R\) pozostaje niezmieniony po przestawieniu etykiet kandydatów zgodnie z odwzorowaniem \(abcd \mapsto dcba\) oraz po permutacji wyborców, możemy bez straty ogólności założyć, że \(f(R) \in \{a,b\}\). (Jawny dowód dla przypadku \(f(R) \in \{c,d\}\) został zaznaczony na Rysunku~3.)
 		
 		Z warunku uczestnictwa wynika, że z \(f(R) \in \{a,b\}\) mamy również \(f(R_\alpha := R + 2\cdot abcd) \in \{a,b\}\), ponieważ wyborcy o preferencjach \(abcd\) nie mogą pogorszyć swojego wyniku przez dołączenie do elektoratu.
 		
@@ -1913,36 +1915,36 @@
 		\]
 		co stoi w sprzeczności z istnieniem zwycięzcy Condorceta \(b\). Otrzymujemy więc sprzeczność.
 		
-		Dla \(m>4\) dodajemy „złe” alternatywy \(x_1, x_2, \dots, x_{m-4}\) na dole każdego rankingu w profilu \(R\) oraz u wszystkich dodatkowych wyborców. Z Lematu~1 wynika, że \(f\) wybiera na każdym etapie spośród zbioru \(\{a,b,c,d\}\), co pozwala przeprowadzić dowód identycznie jak w przypadku \(m=4\).
+		Dla \(m>4\) dodajemy „złych” kandydatów \(x_1, x_2, \dots, x_{m-4}\) na dole każdego rankingu w profilu \(R\) oraz u wszystkich dodatkowych wyborców. Z Lematu~1 wynika, że \(f\) wybiera na każdym etapie spośród zbioru \(\{a,b,c,d\}\), co pozwala przeprowadzić dowód identycznie jak w przypadku \(m=4\).
 	\end{proof}
 	
 	\begin{theorem}[Twierdzenie 4]
 		Istnieje rozszerzenie Condorceta \(f\), które spełnia warunek uczestnictwa dla \(m=4\) oraz \(n \leq 11\). Ponadto \(f\) jest metodą parową, jest efektywne w sensie Pareto oraz stanowi uszczegółowienie cyklu górnego (top cycle).
 	\end{theorem}
 	
-	Metoda \(f\) jest zadana w postaci tablicy wyników (look-up table), która została wyznaczona przy użyciu solvera SAT. Tablica ta zawiera wszystkie \(1{,}204{,}215\) ważonych turniejów indukowalnych przez co najwyżej 11 wyborców i przyporządkowuje każdemu z nich alternatywę zwycięską (zob. Rysunek~4 dla fragmentu tej tablicy).
+	Metoda \(f\) jest zadana w postaci tablicy wyników (look-up table), która została wyznaczona przy użyciu solvera SAT. Tablica ta zawiera wszystkie \(1{,}204{,}215\) ważonych turniejów indukowalnych przez co najwyżej 11 wyborców i przyporządkowuje każdemu z nich kandydata zwycięskiego (zob. Rysunek~4 dla fragmentu tej tablicy).
 	
 	\begin{lemma}
-		Niech \(F\) będzie wielowartościowym rozszerzeniem Condorceta. Niech \(R\) będzie profilem preferencji oraz \(B \subset A\) zbiorem tzw. „złych” alternatyw, przy czym każdy wyborca klasyfikuje każdą alternatywę \(x \in B\) niżej niż każdą alternatywę \(y \in A \setminus B\).
+		Niech \(F\) będzie wielowartościowym rozszerzeniem Condorceta. Niech \(R\) będzie profilem preferencji oraz \(B \subset A\) zbiorem tzw. „złych” kandydatów, przy czym każdy wyborca klasyfikuje każdą kandydata \(x \in B\) niżej niż każdą kandydata \(y \in A \setminus B\).
 		
 		Jeżeli \(F\) spełnia optymistyczny warunek uczestnictwa, to
 		\[
 		F(R) \not\subseteq B,
 		\]
-		tj. zbiór wyników zawiera przynajmniej jedną nie-złą alternatywę.
+		tj. zbiór wyników zawiera przynajmniej jednego dobrego kandydata.
 		
 		Jeżeli \(F\) spełnia pesymistyczny warunek uczestnictwa, to
 		\[
 		F(R) \cap B = \emptyset,
 		\]
-		tj. żadna zła alternatywa nie należy do zbioru wyników.
+		tj. żadna zły kandydat nie należy do zbioru wyników.
 	\end{lemma}
 	
 	\begin{proof}
 		\textbf{Optymistyczny warunek uczestnictwa.}
 		Dowód przeprowadzamy przez indukcję względem liczby wyborców \(|N|\) w profilu \(R\).
 		
-		Jeżeli \(R\) składa się z jednego wyborcy \(i\), to ponieważ \(F\) jest rozszerzeniem Condorceta, mamy \(F(R)=\{x\}\), gdzie \(x\) jest najlepszą alternatywą wyborcy \(i\), a więc nie jest alternatywą złą.
+		Jeżeli \(R\) składa się z jednego wyborcy \(i\), to ponieważ \(F\) jest rozszerzeniem Condorceta, mamy \(F(R)=\{x\}\), gdzie \(x\) jest najlepszym kandydatem wyborcy \(i\), a więc nie jest kandydatem złym.
 		
 		Jeżeli \(R\) zawiera co najmniej dwóch wyborców i \(i \in N\), to z optymistycznego warunku uczestnictwa wynika, że
 		\[
@@ -1950,19 +1952,19 @@
 		\]
 		ponieważ \(R = R - i + \prec_i\).
 		
-		Z założenia indukcyjnego zbiór \(F(R - i)\) zawiera alternatywę nie-złą \(x\), zatem również \(\max_{\prec_i} F(R - i)\) nie jest alternatywą złą. Wynika stąd, że \(\max_{\prec_i} F(R)\) również nie jest zła, a więc \(F(R)\) zawiera alternatywę nie-złą.
+		Z założenia indukcyjnego zbiór \(F(R - i)\) zawiera kandydata dobrego \(x\), zatem również \(\max_{\prec_i} F(R - i)\) nie jest kandydatem złym. Wynika stąd, że \(\max_{\prec_i} F(R)\) również nie jest zła, a więc \(F(R)\) zawiera kanydata dobrego.
 		
 		\textbf{Pesymistyczny warunek uczestnictwa.}
 		Dowód prowadzimy przez indukcję względem \(|N|\).
 		
-		Jeżeli \(R\) składa się z jednego wyborcy \(i\), to \(F(R)=\{x\}\), gdzie \(x\) jest najlepszą alternatywą wyborcy \(i\), a więc nie jest alternatywą złą.
+		Jeżeli \(R\) składa się z jednego wyborcy \(i\), to \(F(R)=\{x\}\), gdzie \(x\) jest najlepszym kandydatem wyborcy \(i\), a więc nie jest kandydatem złym.
 		
 		Jeżeli \(R\) zawiera co najmniej dwóch wyborców i \(i \in N\), to z pesymistycznego warunku uczestnictwa mamy
 		\[
 		\min_{\prec_i} F(R) \succ_i \min_{\prec_i} F(R - i).
 		\]
 		
-		Z założenia indukcyjnego zbiór \(F(R - i)\) nie zawiera alternatyw złych, zatem \(\min_{\prec_i} F(R - i)\) również nie jest alternatywą złą. Wynika stąd, że \(\min_{\prec_i} F(R)\) nie jest zła, a więc — z definicji minimum — zbiór \(F(R)\) nie zawiera żadnej alternatywy złej.
+		Z założenia indukcyjnego zbiór \(F(R - i)\) nie zawiera kandydata złego, zatem \(\min_{\prec_i} F(R - i)\) również nie jest kandydatem złym. Wynika stąd, że \(\min_{\prec_i} F(R)\) nie jest zła, a więc — z definicji minimum — zbiór \(F(R)\) nie zawiera żadnego złego kandydata.
 	\end{proof}
 	
 	\begin{theorem}[Twierdzenie 5]
@@ -1990,7 +1992,7 @@
 		\]
 		lecz ten profil ma zwycięzcę Condorceta \(a\), co również prowadzi do sprzeczności.
 		
-		Dowód dla więcej niż 4 alternatyw wynika bezpośrednio z Lematu~2.
+		Dowód dla więcej niż 4 kandydatów wynika bezpośrednio z Lematu~2.
 	\end{proof}
 	
 	\begin{theorem}[Twierdzenie 7]
@@ -2006,7 +2008,7 @@
 		\]
 		gdzie \(R\) jest profilem z Rysunku~3. W dalszej części zastępujemy kroki, w których dodawani są wyborcy, analogicznymi krokami, w których wyborcy są usuwani, i w każdym kroku stosujemy pesymistyczny warunek uczestnictwa, aby otrzymać sprzeczność.
 		
-		Ponieważ profil \(R^*\) pozostaje niezmieniony po relabelingu alternatyw zgodnie z \(abcd \mapsto dcba\) oraz permutacji wyborców, możemy bez straty ogólności założyć, że \(a \in F(R^*)\) lub \(b \in F(R^*)\).
+		Ponieważ profil \(R^*\) pozostaje niezmieniony po relabelingu kandydatów zgodnie z \(abcd \mapsto dcba\) oraz permutacji wyborców, możemy bez straty ogólności założyć, że \(a \in F(R^*)\) lub \(b \in F(R^*)\).
 		
 		Niech \(R_\alpha := R^* - 2\cdot dcba\). Z pesymistycznego warunku uczestnictwa wynika, że również \(a \in F(R_\alpha)\) lub \(b \in F(R_\alpha)\), ponieważ wyborcy o preferencjach \(abcd\) nie powinni być lepiej sytuowani po opuszczeniu elektoratu.
 		
